@@ -1,0 +1,48 @@
+/**
+ * Base styles for the Button component
+ * Shared across Legacy and Angular worlds
+ */
+
+.chn-btn {
+    font-family: var(--chn-font-family);
+    font-size: var(--chn-font-size-base);
+    font-weight: var(--chn-font-weight-medium);
+    padding: var(--chn-padding-xxs) var(--chn-padding-sm);
+    border-radius: var(--chn-border-radius-2);
+    cursor: pointer;
+    border: 1px solid var(--chn-color-gray-600);
+    background: var(--chn-color-gray-200);
+    color: var(--chn-color-black);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    height: var(--chn-control-height-sm);
+    line-height: var(--chn-line-height-tight);
+}
+
+.chn-btn:hover {
+    background-color: var(--chn-color-gray-300);
+    box-shadow: var(--chn-shadow-sm);
+}
+
+.chn-btn-primary {
+    background-color: var(--chn-color-primary);
+    color: var(--chn-color-white);
+    border-color: var(--chn-color-primary);
+}
+
+.chn-btn-primary:hover {
+    background-color: var(--chn-color-primary-hover);
+}
+
+.chn-btn-secondary {
+    background: var(--chn-color-gray-300);
+    color: var(--chn-color-black);
+}
+
+.chn-btn-danger {
+    background-color: var(--chn-color-error-text);
+    color: var(--chn-color-white);
+    border-color: var(--chn-color-error-text);
+}

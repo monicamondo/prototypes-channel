@@ -1,0 +1,50 @@
+/**
+ * foundations/tokens/typography.css
+ * Core typography tokens mapping based on hierarchy
+ */
+
+:root {
+  /* Font Families */
+  --chn-font-family: 'Arial', 'Helvetica', 'Lucida Sans', 'FreeSans', sans-serif;
+  --chn-font-family-menu: 'Tahoma', sans-serif;
+  --chn-font-family-code: 'Courier New', Courier, monospace;
+
+  /* Font Weights */
+  --chn-font-weight-regular: 400;
+  --chn-font-weight-medium: 500;
+  --chn-font-weight-bold: 600;
+
+  /* Headings (Alias Tokens) */
+  --chn-font-size-h1: 38px;
+  --chn-font-size-h2: 30px;
+  --chn-font-size-h3: 24px;
+  --chn-font-size-h4: 20px;
+  --chn-font-size-h5: 16px;
+
+  --chn-line-height-h1: 1.211;
+  --chn-line-height-h2: 1.267;
+  --chn-line-height-h3: 1.333;
+  --chn-line-height-h4: 1.400;
+  --chn-line-height-h5: 1.500;
+
+  /* Body Text (Alias Tokens) */
+  --chn-font-size-xl: 20px;
+  --chn-font-size-lg: 16px;
+  --chn-font-size-base: 12px; /* Adjusted for Channel Legacy context */
+  --chn-font-size-sm: 10px;    /* Adjusted for Channel Legacy context */
+
+  --chn-line-height-xl: 1.500;
+  --chn-line-height-lg: 1.500;
+  --chn-line-height-base: 1.571;
+  --chn-line-height-sm: 1.667;
+
+  /* Raw Scale (Legacy Support) */
+  --chn-font-size-24: 24px;
+  --chn-font-size-14: 14px;
+  --chn-font-size-13: 13px;
+  --chn-font-size-12: 12px;
+  --chn-font-size-11: 11px;
+  --chn-font-size-10: 10px;
+  --chn-font-size-09: 9px;
+  --chn-font-size-08: 8px;
+}

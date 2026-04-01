@@ -1,0 +1,286 @@
+/* ============================================
+   Channel Design System — Legacy globals
+   Extraído do LegacyThemeStyles + CSS do produto
+   ============================================ */
+
+:root {
+    --chn-font: var(--chn-font-family);
+    --chn-font-size: var(--chn-font-size-11);
+    --chn-primary: var(--chn-color-primary);
+    --chn-navbar: var(--chn-color-navbar);
+    --chn-menu-hover-bg: var(--chn-color-gray-200);
+    --chn-menu-hover-color: var(--chn-color-black);
+    --chn-error-text: var(--chn-color-error-text);
+    --chn-error-bg: var(--chn-color-error-bg);
+    --chn-success-text: var(--chn-color-success-text);
+    --chn-success-bg: var(--chn-color-success-bg);
+    --chn-warning-text: var(--chn-color-warning-text);
+    --chn-warning-bg: var(--chn-color-warning-bg);
+    --chn-pending: var(--chn-color-pending-text);
+    --chn-link: var(--chn-color-link);
+    --chn-border: var(--chn-color-gray-500);
+    --chn-table-header-bg: var(--chn-color-gray-300);
+    --chn-table-filter-bg: var(--chn-color-gray-200);
+    --chn-table-row-alt: var(--chn-color-gray-100);
+    --chn-table-selected: var(--chn-color-success-bg);
+    --chn-pagination-bg: var(--chn-color-gray-400);
+    --chn-modal-bg: #F5F5DC; /* Specific legacy color */
+    --chn-modal-title-bg: var(--chn-color-navbar);
+    --chn-btn-bg: var(--chn-color-gray-300);
+    --chn-btn-border: #A0A0A0;
+    --chn-input-bg: var(--chn-color-gray-200);
+    --chn-input-border: var(--chn-color-gray-600);
+}
+
+/* Base */
+.legacy-page {
+    background: #ffffff;
+    color: #000000;
+    font-family: var(--chn-font);
+    font-size: var(--chn-font-size);
+}
+
+/* Shell */
+.legacy-shell {
+    border-left: 1px solid #d0d0d0;
+    border-right: 1px solid #d0d0d0;
+    box-shadow: inset 0 1px 0 #f7f7f7;
+}
+
+/* Header topo */
+.legacy-top-header {
+    background: linear-gradient(#fdfdfd, #ececec);
+    border-bottom: 1px solid #cfcfcf;
+}
+
+/* Menu */
+.legacy-menu {
+    background: linear-gradient(#454545, #2d2d2d);
+    border-top: 1px solid #5a5a5a;
+    border-bottom: 1px solid #1c1c1c;
+    height: 31px;
+}
+
+.legacy-menu-item {
+    border-right: 1px solid #4d4d4d;
+    border-left: 1px solid #2d2d2d;
+}
+
+.legacy-menu-item:hover {
+    background: #f2f2f2 !important;
+    color: #000 !important;
+}
+
+/* Conteúdo */
+.legacy-content {
+    padding: 12px 15px 18px 15px;
+}
+
+/* Tipografia */
+.legacy-page th,
+.legacy-page td,
+.legacy-page span,
+.legacy-page div,
+.legacy-page label,
+.legacy-page input,
+.legacy-page select,
+.legacy-page textarea,
+.legacy-page button {
+    font-family: var(--chn-font);
+}
+
+.legacy-page th {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.legacy-page td {
+    font-size: 11px;
+}
+
+/* Inputs e selects */
+.legacy-page input[type="text"],
+.legacy-page select,
+.legacy-page textarea {
+    border: 1px solid var(--chn-input-border) !important;
+    background: var(--chn-input-bg) !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    min-height: 20px;
+}
+
+.legacy-page textarea {
+    min-height: 70px;
+}
+
+.legacy-page button {
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Botões — Usando definições base do foundations */
+.chn-btn {
+    /* Implementação específica seguindo o base do foundations */
+    font-family: var(--chn-font);
+    font-size: var(--chn-font-size);
+    padding: 4px 10px;
+    border-radius: 0;
+    cursor: pointer;
+    border: 1px solid var(--chn-btn-border);
+    background: var(--chn-btn-bg);
+    color: #000;
+}
+
+.chn-btn:hover {
+    background: var(--chn-color-gray-400);
+}
+
+.chn-btn-primary {
+    background-color: var(--chn-primary);
+    color: white;
+    border-color: var(--chn-primary);
+}
+
+.chn-btn-primary:hover {
+    background-color: var(--chn-color-primary-hover);
+}
+
+.chn-btn-secondary {
+    background: var(--chn-btn-bg);
+    color: #000;
+    border-color: var(--chn-btn-border);
+}
+
+.chn-btn-danger {
+    background-color: var(--chn-error-text);
+    color: white;
+    border-color: var(--chn-error-text);
+}
+
+/* Tabela */
+.legacy-page table {
+    border-collapse: collapse;
+}
+
+.legacy-table-header {
+    background: var(--chn-table-header-bg) !important;
+}
+
+.legacy-table-filter {
+    background: var(--chn-table-filter-bg) !important;
+}
+
+/* Paginação */
+.legacy-pagination {
+    background: var(--chn-pagination-bg) !important;
+    border: 1px solid var(--chn-border) !important;
+    border-top: 0 !important;
+}
+
+.legacy-pagination-pages {
+    background: #cccccc;
+    border: 1px solid #b9b9b9;
+    padding: 0 4px;
+}
+
+/* Modal */
+.legacy-modal {
+    background: var(--chn-modal-bg);
+    border: 1px solid #999999;
+}
+
+.legacy-modal-title {
+    background: var(--chn-modal-title-bg);
+    color: #ffffff;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+/* Alertas */
+.chn-alert-success {
+    background: var(--chn-success-bg);
+    color: var(--chn-success-text);
+    border: 1px solid var(--chn-success-text);
+    padding: 6px 10px;
+    font-size: 11px;
+}
+
+.chn-alert-error {
+    background: var(--chn-error-bg);
+    color: var(--chn-error-text);
+    border: 1px solid var(--chn-error-text);
+    padding: 6px 10px;
+    font-size: 11px;
+}
+
+.chn-alert-warning {
+    background: var(--chn-warning-bg);
+    color: var(--chn-warning-text);
+    border: 1px solid var(--chn-warning-text);
+    padding: 6px 10px;
+    font-size: 11px;
+}
+
+/* Feedback popup (barra verde de sucesso) */
+.chn-feedback-popup {
+    background: #73B56E;
+    color: white;
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    border-radius: 2px;
+    min-width: 460px;
+}
+
+/* Abas */
+.chn-tab-bar {
+    background: #C8BF97;
+    border-bottom: 1px solid #9E9472;
+    padding: 4px 8px 0;
+}
+
+.chn-tab {
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 16px;
+    border: 1px solid #9E9472;
+    border-bottom: none;
+    cursor: pointer;
+    background: #B8AF8B;
+    color: #5A5038;
+}
+
+.chn-tab:hover {
+    background: #C8BF9A;
+}
+
+.chn-tab.active {
+    background: #D9D1B2;
+    color: #3D3827;
+    position: relative;
+    top: 1px;
+}
+
+/* Seção / fieldset */
+.legacy-section-title {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.legacy-filter-rule {
+    border-top: 1px solid #000;
+    margin-bottom: 8px;
+}
+
+.legacy-footer-legend {
+    border-top: 1px solid #d0d0d0;
+    padding-top: 6px;
+}
+
+.legacy-muted {
+    color: #8b7355 !important;
+}

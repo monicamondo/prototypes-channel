@@ -1,0 +1,58 @@
+/**
+ * Modal.css
+ * High-fidelity styles for Channel Modals
+ */
+
+.legacy-modal {
+  background: #dcd8c1;
+  border: 1px solid var(--chn-color-gray-400);
+  box-shadow: var(--chn-shadow-lg);
+  border-radius: var(--chn-border-radius-4);
+  overflow: hidden;
+  font-family: var(--chn-font-family);
+}
+
+.legacy-modal-title {
+  background-color: var(--chn-color-black);
+  color: var(--chn-color-white);
+  padding: 6px var(--chn-padding-sm);
+  font-size: var(--chn-font-size-base);
+  font-weight: var(--chn-font-weight-bold);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.legacy-modal-title span:last-child {
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.legacy-modal-body {
+  padding: var(--chn-padding-md) var(--chn-padding-sm);
+  background: transparent;
+}
+
+.legacy-modal-content {
+  font-size: var(--chn-font-size-base);
+  margin-bottom: var(--chn-margin-sm);
+  line-height: var(--chn-line-height-base);
+  color: var(--chn-color-gray-900);
+}
+
+.legacy-modal-footer {
+  background: transparent;
+  padding: 10px var(--chn-padding-sm);
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.legacy-modal-subtitle {
+  text-align: center;
+  font-size: var(--chn-font-size-sm);
+  color: #8B7355;
+  margin-bottom: var(--chn-margin-sm);
+}

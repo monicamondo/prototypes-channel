@@ -1,0 +1,277 @@
+/**
+ * Table.css
+ * High-fidelity styles for the Channel Data Tables
+ */
+
+.legacy-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--chn-color-gray-400);
+  font-size: var(--chn-font-size-base);
+  background: var(--chn-color-white);
+  font-family: var(--chn-font-family);
+}
+
+.legacy-table thead tr {
+  background: var(--chn-color-gray-200);
+  border-bottom: 1px solid var(--chn-color-gray-400);
+}
+
+.legacy-table th {
+  padding: var(--chn-padding-xxs) var(--chn-padding-xs);
+  border-right: 1px solid var(--chn-color-gray-400);
+  text-align: left;
+  font-weight: var(--chn-font-weight-bold);
+  color: var(--chn-color-black);
+  white-space: nowrap;
+}
+
+.legacy-table td {
+  padding: 4px var(--chn-padding-xs);
+  border-right: 1px solid var(--chn-color-gray-400);
+  color: var(--chn-color-gray-900);
+  vertical-align: middle;
+}
+
+.legacy-table tbody tr {
+  border-bottom: 1px solid var(--chn-color-gray-300);
+  background: #F9F9F9; /* Base gray instead of white */
+  height: var(--chn-height-row-standard);
+}
+
+.legacy-table tbody tr:nth-child(even) {
+  background: #F1F1F1; /* Darker zebra gray */
+}
+
+.legacy-table tbody tr:hover {
+  background: #E8F4F8;
+}
+
+/* Group Header (Expandable) */
+.legacy-table-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px var(--chn-padding-xs);
+  background: var(--chn-color-white);
+  border: 1px solid var(--chn-color-gray-400);
+  border-bottom: none;
+  font-family: var(--chn-font-family);
+  height: 24px;
+}
+
+.legacy-table-group-title {
+  display: flex;
+  align-items: center;
+  gap: var(--chn-margin-xs);
+  font-size: var(--chn-font-size-base);
+  font-weight: var(--chn-font-weight-bold);
+  cursor: pointer;
+}
+
+.legacy-table-group-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--chn-margin-xs);
+}
+
+.legacy-table-action-tool {
+  background: var(--chn-color-gray-600);
+  color: var(--chn-color-white);
+  padding: 2px 8px;
+  font-size: var(--chn-font-size-sm);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+}
+
+/* Status variants for rows (Priority using !important to override zebra) */
+.legacy-table tbody tr.row-selected {
+  background-color: var(--chn-color-success-bg) !important;
+}
+
+.legacy-table tbody tr.row-associated-group {
+  background-color: var(--chn-color-gray-300) !important;
+}
+
+.legacy-table tbody tr.row-status-warning {
+  background-color: var(--chn-color-warning-bg) !important;
+}
+
+.legacy-table tbody tr.row-status-active {
+  background-color: #E8F4F8 !important; 
+}
+
+/* Pagination styles */
+.legacy-pagination {
+  background: #DFDFDF;
+  border: 1px solid var(--chn-color-gray-400);
+  border-top: 0;
+  padding: var(--chn-padding-xxs) var(--chn-padding-xs);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--chn-font-size-sm);
+  font-family: var(--chn-font-family);
+}
+
+.pagination-pages {
+  display: flex;
+  align-items: center;
+  gap: var(--chn-margin-xs);
+}
+
+.pagination-numbers {
+  background: var(--chn-color-gray-300);
+  border: 1px solid var(--chn-color-gray-400);
+  padding: 0 var(--chn-padding-xxs);
+  display: flex;
+  gap: var(--chn-margin-xxs);
+}
+
+.pagination-numbers span {
+  cursor: pointer;
+}
+
+.pagination-select {
+  border: 1px solid var(--chn-color-gray-400);
+  font-size: var(--chn-font-size-sm);
+  padding: 2px;
+  background: var(--chn-color-white);
+}
+
+/* Row Accordion styles */
+.legacy-table tr.accordion-row-title {
+  cursor: pointer;
+}
+
+/* Specific background for the expanding group row in Channel */
+.legacy-table tr.accordion-row-title.is-active {
+  background-color: var(--chn-color-success-bg) !important;
+}
+
+.legacy-table tr.accordion-row-details {
+  background: var(--chn-color-white) !important;
+  display: none; /* Collapsed by default */
+}
+
+.legacy-table tr.accordion-row-details.is-open {
+  display: table-row;
+}
+
+.nested-table-container {
+  padding: 8px 16px;
+  background: var(--chn-color-white);
+}
+
+.nested-table-title {
+  background: #E8F4F8;
+  padding: 4px 8px;
+  font-size: var(--chn-font-size-base);
+  font-weight: bold;
+  border: 1px solid var(--chn-color-gray-400);
+  border-bottom: none;
+  color: #333;
+}
+
+.nested-table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid var(--chn-color-gray-400);
+  font-size: var(--chn-font-size-base);
+}
+
+.nested-table thead tr {
+  background: #D0D7E5; /* Specific light blue for nested headers */
+  border-bottom: 1px solid var(--chn-color-gray-400);
+}
+
+.nested-table th, .nested-table td {
+  padding: 4px 8px;
+  border-right: 1px solid var(--chn-color-gray-400);
+  text-align: left;
+}
+
+.nested-table tbody tr {
+  background: white;
+  border-bottom: 1px solid var(--chn-color-gray-200);
+}
+
+.legacy-table .expander-icon {
+  width: 14px;
+  transition: transform 0.2s;
+  display: inline-block;
+  font-size: 10px;
+  color: #666;
+}
+
+.legacy-table tr.accordion-row-title.is-open .expander-icon {
+  transform: rotate(90deg);
+}
+
+.legacy-table-legend {
+  margin-top: var(--chn-margin-sm);
+  display: flex;
+  gap: var(--chn-margin-md);
+  font-size: var(--chn-font-size-sm);
+  font-family: var(--chn-font-family);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--chn-margin-xxs);
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--chn-color-gray-400);
+}
+
+/* Table Action Submenu (Dropdown for actions column) */
+.legacy-action-submenu-wrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.legacy-action-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0; /* Drops to the left from the triggering icon */
+  background: #EBEBEB;
+  border: 1px solid #A0A0A0;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.25);
+  z-index: 1000;
+  min-width: 160px;
+  padding: 0;
+}
+
+.legacy-action-submenu.is-open {
+  display: block;
+}
+
+.legacy-action-submenu-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-size: 11px;
+  color: #333;
+  cursor: pointer;
+  white-space: nowrap;
+  font-family: var(--chn-font-family);
+  text-decoration: none;
+}
+
+.legacy-action-submenu-item:hover {
+  background: #606970;
+  color: #ffffff;
+}
+
+.legacy-action-submenu-item img {
+  width: 16px;
+}
+

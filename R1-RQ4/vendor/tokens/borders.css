@@ -1,0 +1,19 @@
+/**
+ * foundations/tokens/borders.css
+ * Core border tokens foundation
+ */
+
+:root {
+  --chn-border-width: 1px;
+  --chn-border-style: solid;
+  --chn-border-color: var(--chn-color-gray-500);
+  --chn-border-color-dark: var(--chn-color-gray-600);
+  
+  /* Radii */
+  --chn-border-radius-none: 0px;
+  --chn-border-radius-2: 2px;
+  --chn-border-radius-4: 4px;
+  --chn-border-radius-6: 6px;
+  --chn-border-radius-8: 8px;
+  --chn-border-radius-pill: 500px;
+}

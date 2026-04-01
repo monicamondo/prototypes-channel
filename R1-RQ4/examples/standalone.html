@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8">
+  <title>KR - Componente Completo</title>
+
+  <link rel="stylesheet" href="../src/vendor/tokens/globals.css">
+  <link rel="stylesheet" href="../src/vendor/tokens/colors.css">
+  <link rel="stylesheet" href="../src/vendor/tokens/typography.css">
+  <link rel="stylesheet" href="../src/vendor/tokens/spacing.css">
+  <link rel="stylesheet" href="../src/vendor/tokens/borders.css">
+  <link rel="stylesheet" href="../src/vendor/tokens/shadows.css">
+
+  <link rel="stylesheet" href="../src/vendor/components/header/Header.css">
+  <link rel="stylesheet" href="../src/vendor/components/navbar/Navbar.css">
+  <link rel="stylesheet" href="../src/vendor/components/table/Table.css">
+  <link rel="stylesheet" href="../src/vendor/components/modal/Modal.css">
+  <link rel="stylesheet" href="../src/vendor/components/button/Button.css">
+
+  <link rel="stylesheet" href="../src/components/kr-styles.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+  <div class="page-shell">
+
+    <!-- ══════════════════════════════════════════
+       HEADER
+  ══════════════════════════════════════════ -->
+    <header class="legacy-header">
+      <div class="legacy-header-container">
+        <div class="legacy-header-logos">
+          <div class="logo-jexperts">
+            <img src="../vendor/ds-channel/src/assets/img/logo J.svg" alt="JExperts" class="logo-j-svg" />
+          </div>
+          <div class="logo-divider"></div>
+          <div class="logo-channel">
+            <img src="../vendor/ds-channel/src/assets/img/logo-channel_.png" alt="Channel" class="logo-channel-img" />
+          </div>
+        </div>
+
+        <div class="legacy-header-actions">
+          <div class="release-notes-dropdown">
+            <div class="release-notes-trigger">
+              <span class="release-text">Release Notes</span>
+              <i class="fa fa-th grid-icon"></i>
+              <div class="notification-container">
+                <i class="fa fa-bell bell-icon"></i>
+                <span class="notification-badge">0</span>
+              </div>
+              <i class="fa fa-caret-down dropdown-caret"></i>
+            </div>
+            <div class="release-submenu">
+              <div class="submenu-item">
+                <div class="submenu-icon-box channel-bg">
+                  <img src="../vendor/ds-channel/src/assets/img/logo-channel_.png" alt="Channel"
+                    style="width:22px;filter:grayscale(1) brightness(2);" />
+                </div>
+                <span class="submenu-label">Channel</span>
+              </div>
+              <div class="submenu-item">
+                <div class="submenu-icon-box agile-bg"><i class="fa fa-refresh"></i></div>
+                <span class="submenu-label">Agile</span>
+              </div>
+              <div class="submenu-item">
+                <div class="submenu-icon-box analytics-bg"><i class="fa fa-bar-chart"></i></div>
+                <span class="submenu-label">Analytics</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="profile-dropdown">
+            <div class="profile-avatar">MM</div>
+            <div class="profile-info">
+              <span class="profile-name">Mônica Mondo</span>
+              <span class="profile-role">Gestor</span>
+            </div>
+            <i class="fa fa-caret-down dropdown-caret"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ══════════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════════ -->
+    <nav class="legacy-navbar" id="legacy-navbar">
+      <div class="navbar-home"><i class="fa fa-home"></i></div>
+
+      <!-- Plano estratégico (ativo) -->
+      <div class="navbar-item is-active-page" data-menu="plano-estrategico">
+        <div class="navbar-item-trigger">
+          <i class="fa fa-puzzle-piece"></i>
+          Plano estratégico
+        </div>
+
+        <div class="navbar-dropdown">
+          <!-- Coluna 1: links diretos -->
+          <div class="navbar-dropdown-col">
+            <a class="navbar-direct-link" href="#"><i class="fa fa-flag"></i> Objetivos</a>
+            <a class="navbar-direct-link" href="#"><i class="fa fa-puzzle-piece"></i> Diretrizes</a>
+            <a class="navbar-direct-link" href="#"><i class="fa fa-puzzle-piece"></i> Mapa estratégico</a>
+            <a class="navbar-direct-link" href="#"><i class="fa fa-bar-chart"></i> Reuniões</a>
+          </div>
+
+          <div class="navbar-col-divider"></div>
+
+          <!-- Coluna 2: Desempenho e Configurações -->
+          <div class="navbar-dropdown-col col-wide">
+            <div class="navbar-section">
+              <div class="navbar-section-title">
+                <i class="fa fa-adjust"></i> Desempenho
+              </div>
+              <ul class="navbar-section-items">
+                <li><a href="#">Planejamento de metas</a></li>
+                <li><a href="#">Medições de indicadores</a></li>
+              </ul>
+            </div>
+            <div class="navbar-section" style="margin-top: 12px;">
+              <div class="navbar-section-title">
+                <i class="fa fa-cog"></i> Configurações
+              </div>
+              <ul class="navbar-section-items">
+                <li><a href="#">Revisões</a></li>
+                <li><a href="#">Perspectivas</a></li>
+                <li><a href="#">Temas Estratégicos</a></li>
+                <li><a href="#" class="link-more">Ver mais</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="navbar-col-divider"></div>
+
+          <!-- Coluna 3: Relatórios -->
+          <div class="navbar-dropdown-col col-wide">
+            <div class="navbar-section">
+              <div class="navbar-section-title">
+                <i class="fa fa-list"></i> Relatórios
+              </div>
+              <ul class="navbar-section-items">
+                <li><a href="#">Acompanhamento de desempenho estratégico</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Meu Channel -->
+      <div class="navbar-item" data-menu="meu-channel">
+        <div class="navbar-item-trigger">
+          <img src="../vendor/ds-channel/src/assets/img/meu_channel_menul.svg" alt="" class="navbar-module-icon" />
+          Meu Channel
+        </div>
+      </div>
+
+      <!-- Estratégia -->
+      <div class="navbar-item" data-menu="estrategia">
+        <div class="navbar-item-trigger">
+          <img src="../vendor/ds-channel/src/assets/img/estrategia_menu.svg" alt="" class="navbar-module-icon" />
+          Estratégia
+        </div>
+      </div>
+
+      <!-- Desempenho -->
+      <div class="navbar-item" data-menu="desempenho">
+        <div class="navbar-item-trigger">
+          <img src="../vendor/ds-channel/src/assets/img/desempenho_menu.svg" alt="" class="navbar-module-icon" />
+          Desempenho
+        </div>
+      </div>
+
+      <!-- Projetos e demandas -->
+      <div class="navbar-item" data-menu="projetos-demandas">
+        <div class="navbar-item-trigger">
+          <img src="../vendor/ds-channel/src/assets/img/projetos_demandas_menu.svg" alt="" class="navbar-module-icon" />
+          Projetos e demandas
+        </div>
+      </div>
+
+      <!-- Administração -->
+      <div class="navbar-item" data-menu="administracao">
+        <div class="navbar-item-trigger">
+          <img src="../vendor/ds-channel/src/assets/img/administracao_meni.svg" alt="" class="navbar-module-icon" />
+          Administração
+        </div>
+      </div>
+
+      <div class="navbar-item-plain" style="margin-left:auto;">
+        <span style="font-size:13px;color:#ccc;font-weight:bold;">?</span>
+      </div>
+      <div class="navbar-item-plain">
+        <i class="fa fa-info-circle"></i>
+      </div>
+    </nav>
+
+    <!-- ══════════════════════════════════════════
+       BREADCRUMB
+  ══════════════════════════════════════════ -->
+    <div class="page-breadcrumb">
+      <span>Plano:</span> planoelkar21 &nbsp;&nbsp; <span>Ciclo:</span> 2025
+    </div>
+
+    <!-- ══════════════════════════════════════════
+       CONTEÚDO PRINCIPAL
+  ══════════════════════════════════════════ -->
+    <div class="page-content">
+
+      <!-- Revisões -->
+      <div class="revisoes-row">
+        <label for="sel-revisoes">Revisões</label>
+        <select id="sel-revisoes">
+          <option>2025</option>
+          <option>2024</option>
+          <option>2023</option>
+        </select>
+      </div>
+
+      <!-- Cabeçalho da seção -->
+      <div class="section-header">
+        <div class="section-title">
+          Objetivos <span style="font-weight:normal;">(2 itens)</span>
+          <span class="info-btn" title="Objetivos Estratégicos do Plano">i</span>
+        </div>
+
+        <div class="section-actions">
+          <button class="btn-section btn-primary-action" title="Importar objetivos via planilha Excel">
+            <img src="../vendor/ds-channel/src/assets/img/ico_file_xls.gif" alt=""
+              style="width:14px;vertical-align:middle;" />
+            Importar do Excel
+          </button>
+          <button class="btn-section btn-primary-action">[reordenar...]</button>
+          <button class="btn-section btn-primary-action">[associar objetivo de contribuição...]</button>
+          <button class="btn-section btn-primary-action"
+            onclick="alert('Abriria modal de inclusão de objetivo estratégico')">
+            [incluir objetivo estratégico...]
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── Tabela de Objetivos ──────────────────── -->
+      <div class="table-responsive" style="overflow: visible; width: 100%;">
+        <table class="legacy-table" id="table-objetivos">
+          <thead>
+            <!-- Cabeçalho de colunas -->
+            <tr style="background:#E5E5E5;">
+              <th style="width:90px; text-align:center;">Ordem <span class="fa fa-sort"
+                  style="font-size:9px;color:#999;"></span></th>
+              <th>Nome</th>
+              <th style="width:200px;">Perspectiva</th>
+              <th style="width:160px;">Responsável</th>
+              <th style="width:70px; text-align:center;">Peso</th>
+              <th class="col-acoes">Ações</th>
+            </tr>
+            <!-- Linha de filtros -->
+            <tr style="background:#F5F5F5;">
+              <td style="text-align:center;"><input type="text" class="filter-input" style="width:56px;" /></td>
+              <td><input type="text" class="filter-input" /></td>
+              <td>
+                <select class="filter-select">
+                  <option>Todos</option>
+                  <option>Aprendizado e Crescimento</option>
+                  <option>Financeira</option>
+                  <option>Clientes</option>
+                  <option>Processos Internos</option>
+                </select>
+              </td>
+              <td><input type="text" class="filter-input" /></td>
+              <td><input type="text" class="filter-input" style="width:50px;" /></td>
+              <td style="text-align:center;">
+                <button class="btn-section" style="font-size:10px;padding:1px 6px;">Limpar</button>
+                <button class="btn-section btn-primary-action" style="font-size:10px;padding:1px 6px;">Filtrar</button>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Linha 1 — Aumentar a Receita -->
+            <tr>
+              <td class="col-order" style="text-align:center;">
+                <select class="order-select">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </td>
+              <td>Aumentar a Receita</td>
+              <td>Aprendizado e Crescimento</td>
+              <td>Elkar Almeida</td>
+              <td style="text-align:center;">1,00</td>
+              <td class="col-acoes">
+                <div class="action-icons">
+                  <!-- 1: Mais opções (submenu DS) -->
+                  <div class="legacy-action-submenu-wrapper">
+                    <span class="action-icon" style="cursor:pointer" title="Mais opções">
+                      <img src="../vendor/ds-channel/src/assets/img/ico_menuContexto.gif" alt="Mais opções" />
+                    </span>
+                    <div class="legacy-action-submenu">
+                      <a class="legacy-action-submenu-item" onclick="alert('Indicadores'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico_indicador_tendencia.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Indicadores
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Causa e Efeito'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico_causaEfeito.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Causa e Efeito
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Associar atividades'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico-componentes.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Associar atividades
+                      </a>
+                      <div class="legacy-action-submenu-separator"></div>
+                      <a class="legacy-action-submenu-item"
+                        onclick="openDrawer('Aumentar a Receita', 1); closeAllMenus();">
+                        <i class="fa fa-key" style="margin-right:4px;font-size:12px;width:14px;text-align:center;"></i>
+                        Gerenciar KRs
+                        <span class="badge-new" style="margin-left:4px;">novo</span>
+                      </a>
+                    </div>
+                  </div>
+                  <!-- 2: Habilitar/Desabilitar -->
+                  <span class="action-icon" title="Habilitar / Desabilitar Objetivo" onclick="openModalConfirmacao()"
+                    style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico_ligado.gif" alt="Habilitar/Desabilitar" />
+                  </span>
+                  <!-- 3: Gerenciar KRs -->
+                  <button class="icon-kr" title="Gerenciar Key Results (KRs)"
+                    onclick="openDrawer('Aumentar a Receita', 1)">KR</button>
+                  <!-- 4: Editar -->
+                  <span class="action-icon" title="Editar objetivo" onclick="openModalEditarObjetivo()"
+                    style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico-lupa.gif" alt="Editar" />
+                  </span>
+                  <!-- 5: Remover -->
+                  <span class="action-icon" title="Remover objetivo" onclick="openModalRemover()"
+                    style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico-remover-novo.gif" alt="Remover" />
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Linha 2 — Melhorar Retenção de Clientes -->
+            <tr>
+              <td class="col-order" style="text-align:center;">
+                <select class="order-select">
+                  <option>1</option>
+                  <option selected>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                </select>
+              </td>
+              <td>Melhorar Retenção de Clientes</td>
+              <td>Clientes</td>
+              <td>Ana Paula Ferreira</td>
+              <td style="text-align:center;">1,00</td>
+              <td class="col-acoes">
+                <div class="action-icons">
+                  <div class="legacy-action-submenu-wrapper">
+                    <span class="action-icon" style="cursor:pointer" title="Mais opções">
+                      <img src="../vendor/ds-channel/src/assets/img/ico_menuContexto.gif" alt="Mais opções" />
+                    </span>
+                    <div class="legacy-action-submenu">
+                      <a class="legacy-action-submenu-item" onclick="alert('Indicadores'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico_indicador_tendencia.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Indicadores
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Causa e Efeito'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico_causaEfeito.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Causa e Efeito
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Associar atividades'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico-componentes.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Associar atividades
+                      </a>
+                      <div class="legacy-action-submenu-separator"></div>
+                      <a class="legacy-action-submenu-item"
+                        onclick="openDrawer('Melhorar Retenção de Clientes', 2); closeAllMenus();">
+                        <i class="fa fa-key" style="margin-right:4px;font-size:12px;width:14px;text-align:center;"></i>
+                        Gerenciar KRs
+                        <span class="badge-new" style="margin-left:4px;">novo</span>
+                      </a>
+                    </div>
+                  </div>
+                  <span class="action-icon" title="Habilitar / Desabilitar Objetivo" style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico_ligado.gif" alt="Habilitar/Desabilitar" />
+                  </span>
+                  <button class="icon-kr" title="Gerenciar Key Results (KRs)"
+                    onclick="openDrawer('Melhorar Retenção de Clientes', 2)">KR</button>
+                  <span class="action-icon" title="Editar objetivo" style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico-lupa.gif" alt="Editar" />
+                  </span>
+                  <span class="action-icon" title="Remover objetivo" style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico-remover-novo.gif" alt="Remover" />
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Linha 3 — Reduzir Custos Operacionais -->
+            <tr>
+              <td class="col-order" style="text-align:center;">
+                <select class="order-select">
+                  <option>1</option>
+                  <option>2</option>
+                  <option selected>3</option>
+                  <option>4</option>
+                </select>
+              </td>
+              <td>Reduzir Custos Operacionais</td>
+              <td>Processos Internos</td>
+              <td>Carlos Lima</td>
+              <td style="text-align:center;">1,50</td>
+              <td class="col-acoes">
+                <div class="action-icons">
+                  <div class="legacy-action-submenu-wrapper">
+                    <span class="action-icon" style="cursor:pointer" title="Mais opções">
+                      <img src="../vendor/ds-channel/src/assets/img/ico_menuContexto.gif" alt="Mais opções" />
+                    </span>
+                    <div class="legacy-action-submenu">
+                      <a class="legacy-action-submenu-item" onclick="alert('Indicadores'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico_indicador_tendencia.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Indicadores
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Causa e Efeito'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico_causaEfeito.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Causa e Efeito
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Associar atividades'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico-componentes.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Associar atividades
+                      </a>
+                      <div class="legacy-action-submenu-separator"></div>
+                      <a class="legacy-action-submenu-item"
+                        onclick="openDrawer('Reduzir Custos Operacionais', 3); closeAllMenus();">
+                        <i class="fa fa-key" style="margin-right:4px;font-size:12px;width:14px;text-align:center;"></i>
+                        Gerenciar KRs
+                        <span class="badge-new" style="margin-left:4px;">novo</span>
+                      </a>
+                    </div>
+                  </div>
+                  <span class="action-icon" title="Habilitar / Desabilitar Objetivo" style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico_ligado.gif" alt="Habilitar/Desabilitar" />
+                  </span>
+                  <button class="icon-kr" title="Gerenciar Key Results (KRs)"
+                    onclick="openDrawer('Reduzir Custos Operacionais', 3)">KR</button>
+                  <span class="action-icon" title="Editar objetivo" style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico-lupa.gif" alt="Editar" />
+                  </span>
+                  <span class="action-icon" title="Remover objetivo" style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico-remover-novo.gif" alt="Remover" />
+                  </span>
+                </div>
+              </td>
+            </tr>
+
+            <!-- Linha 4 — Expandir Presença Digital (empty state) -->
+            <tr style="background:#FFFDF5;">
+              <td class="col-order" style="text-align:center;">
+                <select class="order-select">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option selected>4</option>
+                </select>
+              </td>
+              <td>Expandir Presença Digital</td>
+              <td>Clientes</td>
+              <td>João Mendes</td>
+              <td style="text-align:center;">1,00</td>
+              <td class="col-acoes">
+                <div class="action-icons">
+                  <div class="legacy-action-submenu-wrapper">
+                    <span class="action-icon" style="cursor:pointer" title="Mais opções">
+                      <img src="../vendor/ds-channel/src/assets/img/ico_menuContexto.gif" alt="Mais opções" />
+                    </span>
+                    <div class="legacy-action-submenu">
+                      <a class="legacy-action-submenu-item" onclick="alert('Indicadores'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico_indicador_tendencia.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Indicadores
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Causa e Efeito'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico_causaEfeito.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Causa e Efeito
+                      </a>
+                      <a class="legacy-action-submenu-item" onclick="alert('Associar atividades'); closeAllMenus();">
+                        <img src="../vendor/ds-channel/src/assets/img/ico-componentes.gif"
+                          style="width:14px; margin-right:4px; vertical-align:middle;" />
+                        Associar atividades
+                      </a>
+                      <div class="legacy-action-submenu-separator"></div>
+                      <a class="legacy-action-submenu-item"
+                        onclick="openDrawer('Expandir Presença Digital', 4); closeAllMenus();">
+                        <i class="fa fa-key" style="margin-right:4px;font-size:12px;width:14px;text-align:center;"></i>
+                        Gerenciar KRs
+                        <span class="badge-new" style="margin-left:4px;">novo</span>
+                      </a>
+                    </div>
+                  </div>
+                  <span class="action-icon" title="Habilitar / Desabilitar Objetivo" style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico_ligado.gif" alt="Habilitar/Desabilitar" />
+                  </span>
+                  <button class="icon-kr" title="Gerenciar Key Results (KRs) — sem KRs cadastrados"
+                    onclick="openDrawer('Expandir Presença Digital', 4)">KR</button>
+                  <span class="action-icon" title="Editar objetivo" style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico-lupa.gif" alt="Editar" />
+                  </span>
+                  <span class="action-icon" title="Remover objetivo" style="cursor:pointer;">
+                    <img src="../vendor/ds-channel/src/assets/img/ico-remover-novo.gif" alt="Remover" />
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginação -->
+      <div class="legacy-pagination">
+        <span>Página 1 de 1</span>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <select class="pagination-select">
+            <option>10 itens por página</option>
+            <option>25 itens por página</option>
+            <option>50 itens por página</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Legenda -->
+      <div class="page-legend">
+        <span class="legend-label">Legenda:</span>
+        <div class="legend-item-row">
+          <img src="../../../../ds-channel\src\assets\img\ico_indicador_tendencia.gif" alt="" />
+          <span>Indicadores</span>
+        </div>
+        <div class="legend-item-row">
+          <img src="../vendor/ds-channel/src/assets/img/ico_causaEfeito.gif" alt="" />
+          <span>Causa e Efeito</span>
+        </div>
+        <div class="legend-item-row">
+          <img src="../vendor/ds-channel/src/assets/img/ico-componentes.gif" alt="" />
+          <span>Associar Atividades</span>
+        </div>
+        <div class="legend-item-row">
+          <span class="icon-kr" style="width:20px;height:20px;font-size:10px;cursor:default;">KR</span>
+          <span>Gerenciar KRs</span>
+        </div>
+        <div class="legend-item-row">
+          <img src="../vendor/ds-channel/src/assets/img/ico_ligado.gif" alt="" />
+          <span>Habilitar / Desabilitar Objetivo</span>
+        </div>
+        <div class="legend-item-row">
+          <img src="../vendor/ds-channel/src/assets/img/ico-lupa.gif" alt="" />
+          <span>Editar</span>
+        </div>
+        <div class="legend-item-row">
+          <img src="../vendor/ds-channel/src/assets/img/ico-remover-novo.gif" alt="" />
+          <span>Remover</span>
+        </div>
+      </div>
+
+    </div><!-- /page-content -->
+  </div><!-- /page-shell -->
+
+
+  <!-- ══════════════════════════════════════════
+     DRAWER — Gerenciar KRs
+══════════════════════════════════════════ -->
+  <div class="drawer-overlay" id="drawer-overlay" onclick="closeDrawer()"></div>
+
+  <div class="drawer-panel" id="drawer-panel">
+    <div class="drawer-title">
+      <div class="drawer-title-info">
+        <span id="drawer-heading">Gerenciar Key Results (KRs)</span>
+        <span class="drawer-title-objective">
+          <span
+            style="font-weight:normal; color:#888; font-size:9px; text-transform:uppercase; letter-spacing:0.4px;">Objetivo
+            estratégico:</span>
+          <span id="drawer-objective-name" style="color:#ccc; font-size:10px;"></span>
+        </span>
+      </div>
+      <button class="drawer-close" onclick="closeDrawer()" title="Fechar">✕</button>
+    </div>
+
+    <div class="drawer-toolbar">
+      <button class="btn-section btn-primary-action" onclick="openModalKR()">
+        <i class="fa fa-plus"></i> Incluir KR
+      </button>
+      <button class="btn-section" onclick="alert('Importar KRs via Excel')">
+        <img src="../vendor/ds-channel/src/assets/img/ico_file_xls.gif" alt=""
+          style="width:12px;vertical-align:middle;" />
+        Importar do Excel
+      </button>
+      <button class="btn-section" onclick="toggleArquivados()" id="btn-arquivados">
+        <i class="fa fa-archive"></i> Mostrar arquivados (<span id="count-arquivados">0</span>)
+      </button>
+    </div>
+
+    <!-- Busca e filtro por tipo -->
+    <div class="drawer-search-bar">
+      <i class="fa fa-search" style="color:#888; font-size:11px;"></i>
+      <input type="text" class="drawer-search-input" id="kr-search-input" placeholder="Buscar KR pelo nome..."
+        oninput="applyKRFilter()" />
+      <button class="kr-filter-btn active" id="filter-todos" onclick="setKRFilter('todos')">Todos</button>
+      <button class="kr-filter-btn" id="filter-quantitativo"
+        onclick="setKRFilter('quantitativo')">Quantitativos</button>
+      <button class="kr-filter-btn" id="filter-qualitativo" onclick="setKRFilter('qualitativo')">Qualitativos</button>
+      <button class="kr-filter-btn" id="filter-atrasados" onclick="setKRFilter('atrasados')">Sem marcação > 30
+        dias</button>
+    </div>
+
+    <div class="drawer-body" id="drawer-body">
+      <!-- Conteúdo dinâmico injetado por JS -->
+    </div>
+
+    <!-- Rodapé do Drawer: Legenda de Status -->
+    <div
+      style="border-top: 1px solid #D5D5D5; background: #F8F8F8; padding: 6px 14px; display:flex; align-items:center; gap:16px; font-size:10px; font-family: Tahoma, Arial, sans-serif; flex-shrink:0;">
+      <span style="color:#666; font-weight:bold;">Legenda:</span>
+      <span style="display:flex; align-items:center; gap:4px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:#4CAF50;display:inline-block;"></span>
+        Meta atingida (≥95%)
+      </span>
+      <span style="display:flex; align-items:center; gap:4px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:#E6B800;display:inline-block;"></span>
+        Atenção (70–95%)
+      </span>
+      <span style="display:flex; align-items:center; gap:4px;">
+        <span style="width:10px;height:10px;border-radius:50%;background:#CC3333;display:inline-block;"></span>
+        Abaixo da meta (&lt;70%)
+      </span>
+      <span style="display:flex; align-items:center; gap:4px;">
+        <svg viewBox="0 0 16 14" width="12" height="11">
+          <polygon points="8,1 15,13 1,13" fill="#E6B800" stroke="#C8960A" stroke-width="0.5" /><text x="8" y="11.5"
+            text-anchor="middle" font-size="8" font-weight="bold" fill="#fff">!</text>
+        </svg>
+        Sem medição &gt;30 dias
+      </span>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+     MODAL — Cadastro de KR
+══════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-kr-overlay">
+    <div class="modal-box">
+      <div class="modal-title">
+        <span id="modal-kr-title">Incluir Key Result</span>
+        <button class="modal-close" onclick="closeModalKR()">✕</button>
+      </div>
+      <div class="modal-body">
+
+        <!-- Abas de tipo -->
+        <div class="kr-type-tabs">
+          <div class="kr-type-tab active" data-tab="quantitativo" onclick="switchKRTab('quantitativo')">
+            Quantitativo
+          </div>
+          <div class="kr-type-tab" data-tab="qualitativo" onclick="switchKRTab('qualitativo')">
+            Qualitativo
+          </div>
+        </div>
+
+        <!-- Painel Quantitativo -->
+        <div class="kr-type-panel active" id="panel-quantitativo">
+          <div class="modal-field">
+            <label>Nome *</label>
+            <input type="text" placeholder="Ex.: Taxa de crescimento de receita" />
+          </div>
+          <div class="modal-row">
+            <div class="modal-field">
+              <label>Unidade de Medida *</label>
+              <select>
+                <option>%</option>
+                <option>R$</option>
+                <option>Unidades</option>
+                <option>Pontos</option>
+                <option>Horas</option>
+              </select>
+            </div>
+            <div class="modal-field">
+              <label>Polaridade *</label>
+              <select>
+                <option>Maior é melhor</option>
+                <option>Menor é melhor</option>
+                <option>Igual à meta</option>
+              </select>
+            </div>
+            <div class="modal-field">
+              <label>Peso</label>
+              <input type="number" value="1" min="0" step="0.01" />
+            </div>
+          </div>
+          <div class="modal-row">
+            <div class="modal-field">
+              <label>Baseline</label>
+              <input type="number" value="0" step="0.01" />
+            </div>
+            <div class="modal-field">
+              <label>Meta *</label>
+              <input type="number" placeholder="Valor alvo" step="0.01" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Painel Qualitativo -->
+        <div class="kr-type-panel" id="panel-qualitativo">
+          <div class="modal-field">
+            <label>Nome *</label>
+            <input type="text" placeholder="Ex.: Implantação do processo de onboarding" />
+          </div>
+          <div class="modal-field">
+            <label>Situação Atual</label>
+            <textarea placeholder="Descreva a situação atual..."></textarea>
+          </div>
+          <div class="modal-field">
+            <label>Situação Desejada</label>
+            <textarea placeholder="Descreva a situação desejada..."></textarea>
+          </div>
+          <div class="modal-field">
+            <label>Status de Atingimento</label>
+            <select>
+              <option value="0">Não alcançado (0%)</option>
+              <option value="100">Alcançado (100%)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-section" onclick="closeModalKR()">Cancelar</button>
+          <button class="btn-section btn-primary-action" onclick="salvarKR()">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+     MODAL — Registro de Medição
+══════════════════════════════════════════ -->
+  <div class="modal-overlay" id="modal-medicao-overlay">
+    <div class="modal-box" style="width:420px;">
+      <div class="modal-title">
+        <span>Registrar Medição</span>
+        <button class="modal-close" onclick="closeModalMedicao()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-field">
+          <label>KR: <span id="medicao-kr-name" style="font-weight:normal;"></span></label>
+        </div>
+        <div class="modal-row">
+          <div class="modal-field">
+            <label>Data *</label>
+            <input type="text" id="medicao-data" value="30/03/2026" />
+          </div>
+          <div class="modal-field">
+            <label>Valor *</label>
+            <input type="number" id="medicao-valor" placeholder="Ex.: 75" step="0.01" />
+          </div>
+        </div>
+        <div class="modal-field">
+          <label>Comentário</label>
+          <textarea id="medicao-comentario" placeholder="Comentário opcional..."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-section" onclick="closeModalMedicao()">Cancelar</button>
+          <button class="btn-section btn-primary-action" onclick="salvarMedicao()">Salvar Medição</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Editar Objetivo Estratégico -->
+  <div class="modal-overlay" id="modal-editar-objetivo-overlay">
+    <div class="legacy-modal modal-box" style="width:450px;">
+      <div class="legacy-modal-title">
+        <span>Editar Objetivo Estratégico</span>
+        <span onclick="closeModalEditarObjetivo()">✖</span>
+      </div>
+      <div class="legacy-modal-body">
+        <div class="legacy-modal-subtitle">
+          Campos marcados com * são obrigatórios
+        </div>
+
+        <div style="margin-bottom: var(--chn-margin-sm);">
+          <label style="font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">Nome *</label>
+          <input type="text" value="Aumentar a Receita"
+            style="width:100%; border:1px solid var(--chn-color-black); border-radius: 2px; height:20px; padding:0 4px; background:var(--chn-color-white); font-size:11px;">
+          <div style="font-size: 10px; color:#666; margin-top: 2px;">(máximo 512 caracteres)</div>
+        </div>
+
+        <div style="margin-bottom: var(--chn-margin-sm);">
+          <label style="font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">Responsável:</label>
+          <div style="position:relative;">
+            <input type="search" value="Elkar Almeida"
+              style="width:100%; border:1px solid var(--chn-color-gray-500); border-radius: 2px; height:20px; padding:0 24px 0 4px; background:var(--chn-color-white); font-size:11px;">
+            <i class="fa fa-search"
+              style="position:absolute; right:6px; top:4px; color:var(--chn-color-gray-600); font-size:12px;"></i>
+          </div>
+          <div style="font-size: 10px; color:#666; margin-top: 2px;">(Aperte seta para baixo ou digite 3 caracteres para
+            iniciar pesquisa)</div>
+        </div>
+
+        <div style="margin-bottom: var(--chn-margin-sm);">
+          <label style="font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">Peso:</label>
+          <input type="text" value="1,00"
+            style="width:80px; border:1px solid var(--chn-color-gray-500); border-radius: 2px; height:20px; padding:0 4px; background:var(--chn-color-white); font-size:11px;">
+        </div>
+
+        <div style="margin-bottom: var(--chn-margin-sm);">
+          <label style="font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">Perspectiva:</label>
+          <select
+            style="width:100%; border:1px solid var(--chn-color-gray-500); border-radius: 2px; height:20px; background:var(--chn-color-white); font-size:11px;">
+            <option>Aprendizado e Crescimento</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom: var(--chn-margin-sm);">
+          <label style="font-size: 11px; font-weight: bold; display: block; margin-bottom: 4px;">Descrição:</label>
+          <div
+            style="border:1px solid var(--chn-color-gray-300); background:var(--chn-color-white); border-radius:2px;">
+            <div
+              style="background:#F1F1F1; border-bottom:1px solid var(--chn-color-gray-300); padding: 6px; display:flex; gap:12px; color:#333; align-items:center;">
+              <span style="display:flex; gap:8px;">
+                <i class="fa fa-bold" style="cursor:pointer; font-weight:900; color:#000;"></i>
+                <i class="fa fa-italic" style="cursor:pointer;"></i>
+                <i class="fa fa-underline" style="cursor:pointer;"></i>
+              </span>
+              <span style="border-left:1px solid #D5D5D5; padding-left:12px; display:flex; gap:8px;">
+                <i class="fa fa-align-left" style="cursor:pointer;"></i>
+                <i class="fa fa-align-center" style="cursor:pointer;"></i>
+                <i class="fa fa-align-right" style="cursor:pointer;"></i>
+                <i class="fa fa-align-justify" style="cursor:pointer;"></i>
+              </span>
+              <span style="border-left:1px solid #D5D5D5; padding-left:12px; display:flex; gap:8px;">
+                <i class="fa fa-list-ul" style="cursor:pointer;"></i>
+                <i class="fa fa-list-ol" style="cursor:pointer;"></i>
+              </span>
+              <span style="border-left:1px solid #D5D5D5; padding-left:12px; display:flex; gap:8px; color:#CCC;">
+                <i class="fa fa-link" style="cursor:pointer;"></i>
+                <i class="fa fa-chain-broken" style="cursor:pointer;"></i>
+              </span>
+            </div>
+            <div style="padding: 8px; font-family: var(--chn-font-family); min-height: 80px; font-size:13px;">
+              teste
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="legacy-modal-footer">
+        <button type="button" class="chn-btn chn-btn-secondary" onclick="closeModalEditarObjetivo()">Cancelar</button>
+        <button type="button" class="chn-btn chn-btn-primary" onclick="closeModalEditarObjetivo()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Confirmação (Lâmpada) -->
+  <div class="modal-overlay" id="modal-confirmacao-overlay">
+    <div class="legacy-modal modal-box" style="width:500px;">
+      <div class="legacy-modal-title">
+        <span>Desabilitar Objetivo Estratégico</span>
+        <span onclick="closeModalConfirmacao()">✖</span>
+      </div>
+      <div class="legacy-modal-body">
+        <div class="legacy-modal-content" style="color:#333;">
+          Deseja desabilitar o item <em>'Aumentar a Receita'</em>?
+        </div>
+      </div>
+      <div class="legacy-modal-footer">
+        <button type="button" class="chn-btn chn-btn-secondary" onclick="closeModalConfirmacao()">Não</button>
+        <button type="button" class="chn-btn chn-btn-primary" onclick="closeModalConfirmacao()">Sim</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Remover -->
+  <div class="modal-overlay" id="modal-remover-overlay">
+    <div class="legacy-modal modal-box" style="width:500px;">
+      <div class="legacy-modal-title">
+        <span>Confirmação de Remoção</span>
+        <span onclick="closeModalRemover()">✖</span>
+      </div>
+      <div class="legacy-modal-body">
+        <div class="legacy-modal-content" style="color:#333;">
+          Deseja remover o item <em>'Aumentar a Receita'</em>?
+        </div>
+      </div>
+      <div class="legacy-modal-footer">
+        <button type="button" class="chn-btn chn-btn-secondary" onclick="closeModalRemover()">Não</button>
+        <button type="button" class="chn-btn chn-btn-primary" onclick="closeModalRemover()">Sim</button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+  <script src="../src/components/kr-interactions.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Isto faz os menus de contexto (os 3 pontinhos) abrirem e fecharem
+      document.querySelectorAll('.btn-more-options').forEach(function (btn) {
+        btn.addEventListener('click', function (e) {
+          const menu = btn.parentElement.querySelector('.context-menu');
+          if (menu) menu.classList.toggle('is-open');
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

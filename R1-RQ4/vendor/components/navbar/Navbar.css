@@ -1,0 +1,307 @@
+/**
+ * Navbar.css
+ * Legacy Navbar fiel ao sistema em produção
+ */
+
+/* ─── Barra principal ─────────────────────────────────────── */
+.legacy-navbar {
+  background-color: var(--chn-color-navbar);
+  /* #2F313E */
+  height: 40px;
+  /*40px */
+  display: flex;
+  align-items: stretch;
+  font-family: var(--chn-font-family-menu);
+  /* Tahoma */
+  font-size: var(--chn-font-size-base);
+  /* 14px */
+  position: relative;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* ─── Botão Home ──────────────────────────────────────────── */
+.navbar-home {
+  display: flex;
+  font-size: 18px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+  color: #ccc;
+  cursor: pointer;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.15s, color 0.15s;
+}
+
+.navbar-home:hover,
+.navbar-home.is-active {
+  background: #F4F5F6;
+  color: #2F313E;
+}
+
+/* ─── Item de menu (wrapper relativo para o dropdown) ─────── */
+.navbar-item {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+}
+
+/* ─── Trigger (área clicável do item) ─────────────────────── */
+.navbar-item-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 12px;
+  color: #ccc;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  border-bottom: 2px solid transparent;
+}
+
+.navbar-item-trigger:hover {
+  background: #F4F5F6;
+  color: #2F313E;
+}
+
+/* Estado open */
+.navbar-item.is-open>.navbar-item-trigger {
+  background: #F4F5F6;
+  color: #2F313E;
+  border-bottom: 2px solid #F4F5F6;
+}
+
+/* Estado active-page (padrão transparente, texto laranja) */
+.navbar-item.is-active-page>.navbar-item-trigger {
+  background: transparent;
+  color: #F97316 !important;
+  border-bottom: none;
+}
+.navbar-item.is-active-page>.navbar-item-trigger .fa {
+  color: #F97316 !important;
+}
+
+/* Estado active-page em hover ou aberto (dropdown expandido) */
+.navbar-item.is-active-page:hover>.navbar-item-trigger,
+.navbar-item.is-active-page.is-open>.navbar-item-trigger {
+  background: #F4F5F6;
+  border-bottom: 2px solid #F4F5F6;
+}
+
+.navbar-item-trigger .fa {
+  font-size: 13px;
+}
+
+/* Ícones SVG dos módulos na navbar */
+.navbar-item-trigger .navbar-module-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: brightness(0) invert(0.8);
+  /* cinza claro no fundo escuro */
+  flex-shrink: 0;
+}
+
+.navbar-item.is-open>.navbar-item-trigger .navbar-module-icon {
+  filter: brightness(0);
+  /* preto quando tab está aberta (fundo branco) */
+}
+
+.navbar-item-trigger:hover .navbar-module-icon {
+  filter: brightness(0);
+  /* escuro no hover (fundo claro) */
+}
+
+/* ─── Itens sem dropdown (? e info) ──────────────────────── */
+.navbar-item-plain {
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  color: #ccc;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navbar-item-plain:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.navbar-item-plain .fa-info-circle {
+  color: #5C9FD6;
+  font-size: 16px;
+}
+
+/* ─── Painel dropdown ─────────────────────────────────────── */
+.navbar-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #F4F5F6;
+  border: 1px solid #ccc;
+  border-top: none;
+  box-shadow: var(--chn-shadow-md);
+  z-index: 1000;
+  padding: 14px 16px;
+  min-width: 420px;
+  gap: 24px;
+}
+
+.navbar-item.is-open>.navbar-dropdown {
+  display: flex;
+}
+
+/* Dropdown de coluna única (Administração) */
+.navbar-dropdown.is-single-col {
+  min-width: 280px;
+  flex-direction: column;
+  gap: 0;
+  padding: 8px 0;
+}
+
+/* ─── Coluna dentro do dropdown ───────────────────────────── */
+.navbar-dropdown-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 160px;
+}
+
+.navbar-dropdown-col.col-wide {
+  min-width: 220px;
+}
+
+/* ─── Seção dentro de uma coluna ──────────────────────────── */
+.navbar-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ─── Título de seção (com ícone) ─────────────────────────── */
+.navbar-section-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+  font-size: 12px;
+  color: #333;
+  margin-bottom: 4px;
+  cursor: default;
+}
+
+.navbar-section-title .fa {
+  font-size: 13px;
+  color: #444;
+  width: 14px;
+  text-align: center;
+}
+
+/* ─── Lista de sub-itens ──────────────────────────────────── */
+.navbar-section-items {
+  list-style: disc;
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.navbar-section-items li {
+  line-height: 1.7;
+}
+
+.navbar-section-items li a,
+.navbar-section-items li span {
+  font-size: 11px;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.12s;
+}
+
+.navbar-section-items li a:hover,
+.navbar-section-items li span:hover {
+  color: var(--chn-color-menu-hover);
+  /* #006476 */
+  text-decoration: underline;
+}
+
+/* "Ver mais" em azul */
+.navbar-section-items li a.link-more,
+.navbar-section-items li span.link-more {
+  color: #267DD3;
+}
+
+.navbar-section-items li a.link-more:hover,
+.navbar-section-items li span.link-more:hover {
+  color: #1a5fa0;
+}
+
+/* ─── Links diretos (sem sub-lista): Estratégia, Desempenho ── */
+.navbar-direct-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  padding: 3px 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.12s;
+}
+
+.navbar-direct-link .fa {
+  font-size: 13px;
+  color: #444;
+  width: 14px;
+  text-align: center;
+}
+
+.navbar-direct-link:hover {
+  color: var(--chn-color-menu-hover);
+}
+
+.navbar-direct-link:hover .fa {
+  color: var(--chn-color-menu-hover);
+}
+
+/* ─── Itens de coluna única (Administração) ───────────────── */
+.navbar-admin-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+}
+
+.navbar-admin-item .fa {
+  font-size: 13px;
+  color: #444;
+  width: 14px;
+  text-align: center;
+}
+
+.navbar-admin-item:hover {
+  background: #f0f0f0;
+  color: var(--chn-color-menu-hover);
+}
+
+.navbar-admin-item:hover .fa {
+  color: var(--chn-color-menu-hover);
+}
+
+/* ─── Separador vertical entre colunas ───────────────────── */
+.navbar-col-divider {
+  width: 1px;
+  background: #e0e0e0;
+  align-self: stretch;
+  margin: 0 4px;
+}

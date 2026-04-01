@@ -1,0 +1,245 @@
+/**
+ * Header.css
+ * High-fidelity styles for the Legacy Header
+ */
+
+.legacy-header {
+  height: 68px;
+  background: linear-gradient(to bottom, #FDFDFD 0%, #ECECEC 100%);
+  border-bottom: 2px solid var(--chn-color-primary-navbar);
+  display: flex;
+  align-items: center;
+  padding: 0 var(--chn-padding-default);
+  box-sizing: border-box;
+  font-family: var(--chn-font-family);
+}
+
+.legacy-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Logos */
+.legacy-header-logos {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.logo-jexperts {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo-j-svg {
+  height: 30px;
+}
+
+.logo-divider {
+  width: 1px;
+  height: 18px;
+  background-color: #CCC;
+  margin: 0 12px;
+}
+
+.logo-channel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo-channel-img {
+  height: 22px;
+}
+
+/* Actions */
+.legacy-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  /* Maior espaçamento conforme referência */
+}
+
+/* Forçar renderização de ícones (.fa) garantindo que nenhum override global os quebre */
+.legacy-header-actions .fa {
+  font-family: 'FontAwesome' !important;
+  font-style: normal;
+  display: inline-block;
+}
+
+.release-notes-trigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: opacity 0.2s;
+}
+
+.release-notes-trigger:hover {
+  opacity: 0.7;
+}
+
+.release-text {
+  font-size: 14px;
+  font-weight: bold;
+  color: #000;
+}
+
+.grid-icon {
+  font-family: 'FontAwesome' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: #000;
+  display: inline-block;
+}
+
+.notification-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+}
+
+.bell-icon {
+  font-family: 'FontAwesome' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  color: #000;
+  display: inline-block;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #E7000B;
+  color: white;
+  border-radius: 50%;
+  font-size: 9px;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border: 1px solid white;
+}
+
+.dropdown-caret {
+  font-family: 'FontAwesome' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  color: #666;
+  display: inline-block;
+}
+
+/* Profile */
+.profile-dropdown {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.profile-avatar {
+  background: #8A92D2;
+  /* Cor azul suave do print */
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.profile-name {
+  font-weight: bold;
+  font-size: 11px;
+  color: #000;
+}
+
+.profile-role {
+  font-weight: normal;
+  color: #888;
+  font-size: 10px;
+}
+
+/* Submenu Dropdown logic (simplificado para Storybook) */
+.release-notes-dropdown {
+  position: relative;
+}
+
+.release-submenu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--chn-color-white);
+  border: 1px solid var(--chn-color-gray-400);
+  border-radius: var(--chn-border-radius-4);
+  box-shadow: var(--chn-shadow-md);
+  display: none;
+  padding: var(--chn-padding-default);
+  gap: var(--chn-margin-md);
+  z-index: 1000;
+  margin-top: var(--chn-margin-xs);
+}
+
+.release-notes-dropdown:hover .release-submenu {
+  display: flex;
+  /* Exibe ao passar o mouse */
+}
+
+.submenu-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  min-width: 60px;
+}
+
+.submenu-icon-box {
+  width: 50px;
+  height: 50px;
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #666;
+}
+
+/* Backgrounds específicos se necessário no futuro */
+.channel-bg,
+.agile-bg,
+.analytics-bg {
+  background-color: #f2f2f2;
+}
+
+.submenu-label {
+  font-size: 11px;
+  font-weight: bold;
+  color: #000;
+}
+
+.submenu-item:hover .submenu-label {
+  color: #006476;
+}

@@ -1,0 +1,63 @@
+/**
+ * foundations/tokens/spacing.css
+ * Standardized spacings and heights for the Channel Design System
+ */
+
+:root {
+  /* Global Tokens (Base Scale) */
+  --chn-size-xxs: 4px;
+  --chn-size-xs: 8px;
+  --chn-size-sm: 12px;
+  --chn-size-default: 16px;
+  --chn-size-md: 20px;
+  --chn-size-lg: 24px;
+  --chn-size-xl: 32px;
+  --chn-size-xxl: 48px;
+
+  /* Margin (Alias Tokens) */
+  --chn-margin-xxs: var(--chn-size-xxs);
+  --chn-margin-xs: var(--chn-size-xs);
+  --chn-margin-sm: var(--chn-size-sm);
+  --chn-margin-default: var(--chn-size-default);
+  --chn-margin-md: var(--chn-size-md);
+  --chn-margin-lg: var(--chn-size-lg);
+  --chn-margin-xl: var(--chn-size-xl);
+  --chn-margin-xxl: var(--chn-size-xxl);
+
+  /* Padding (Alias Tokens) */
+  --chn-padding-xxs: var(--chn-size-xxs);
+  --chn-padding-xs: var(--chn-size-xs);
+  --chn-padding-sm: var(--chn-size-sm);
+  --chn-padding-default: var(--chn-size-default);
+  --chn-padding-md: var(--chn-size-md);
+  --chn-padding-lg: var(--chn-size-lg);
+  --chn-padding-xl: var(--chn-size-xl);
+
+  /* Content Padding (Alias Tokens for tight layouts) */
+  --chn-padding-content-vertical-sm: 8px;
+  --chn-padding-content-vertical: 12px;
+  --chn-padding-content-vertical-lg: 16px;
+  --chn-padding-content-horizontal-sm: 12px;
+  --chn-padding-content-horizontal: 16px;
+  --chn-padding-content-horizontal-lg: 24px;
+
+  /* Control Heights */
+  --chn-control-height-xs: 16px;
+  --chn-control-height-sm: 24px;
+  --chn-control-height-default: 32px;
+  --chn-control-height-lg: 40px;
+
+  /* Raw Scale (Compatibility - Mapping names to sizes) */
+  --chn-spacing-1: var(--chn-size-xxs);
+  --chn-spacing-2: var(--chn-size-xs);
+  --chn-spacing-3: var(--chn-size-sm);
+  --chn-spacing-4: var(--chn-size-default);
+  --chn-spacing-5: var(--chn-size-md);
+  --chn-spacing-6: var(--chn-size-lg);
+  --chn-spacing-8: var(--chn-size-xl);
+  
+  /* Legacy Layout Specifics (Constants from production) */
+  --chn-height-header-top: 55px;
+  --chn-height-menu-bar: 31px;
+  --chn-height-row-standard: 27px;
+}
