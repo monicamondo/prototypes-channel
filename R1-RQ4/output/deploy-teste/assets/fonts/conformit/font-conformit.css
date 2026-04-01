@@ -1,0 +1,160 @@
+@font-face {
+    font-family: 'icomoon';
+    src:    url('icomoon.eot?719c4w');
+    src:    url('icomoon.eot?719c4w#iefix') format('embedded-opentype'),
+        url('icomoon.ttf?719c4w') format('truetype'),
+        url('icomoon.woff?719c4w') format('woff'),
+        url('icomoon.svg?719c4w#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.icon-conformit-ico-pa-standby:before {
+    content: "\e92a";
+}
+.icon-conformit-ico-pa-done:before {
+    content: "\e926";
+}
+.icon-conformit-ico-pa-running:before {
+    content: "\e927";
+
+}
+.icon-conformit-ico-pa-cancelled:before {
+    content: "\e928";
+}
+.icon-conformit-ico-pa-delayed:before {
+    content: "\e929";
+}
+.icon-conformit-ico-mod-actionplan:before {
+    content: "\e925";
+}
+.icon-conformit-ico-jur-generic:before {
+    content: "\e921";
+}
+.icon-conformit-ico-jur-decisaojud:before {
+    content: "\e922";
+}
+.icon-conformit-ico-jur-registromulta:before {
+    content: "\e923";
+}
+.icon-conformit-ico-jur-solintjud:before {
+    content: "\e924";
+}
+.icon-conformit-ico-total-constat:before {
+    content: "\e920";
+}
+.icon-conformit-ico-total-det:before {
+    content: "\e916";
+}
+.icon-conformit-ico-total-nc:before {
+    content: "\e917";
+}
+.icon-conformit-ico-total-rec:before {
+    content: "\e918";
+}
+.icon-conformit-ico-etapa-doc:before {
+    content: "\e91d";
+}
+.icon-conformit-ico-etapa-solicit:before {
+    content: "\e91e";
+}
+.icon-conformit-ico-etapa-tramit:before {
+    content: "\e91f";
+}
+.icon-conformit-ico-sys-sair:before {
+    content: "\e91b";
+}
+
+
+
+.icon-conformit-ico-mod-indicadores:before {
+    content: "\e91c";
+}
+.icon-conformit-ico-cad-anexo:before {
+    content: "\e900";
+}
+.icon-conformit-ico-cad-autoinfracao:before {
+    content: "\e901";
+}
+.icon-conformit-ico-cad-dsp:before {
+    content: "\e902";
+}
+.icon-conformit-ico-cad-enviodoc:before {
+    content: "\e903";
+}
+.icon-conformit-ico-cad-fiscalizacao:before {
+    content: "\e904";
+}
+.icon-conformit-ico-cad-manifestacao:before {
+    content: "\e905";
+}
+.icon-conformit-ico-cad-notatecnica:before {
+    content: "\e906";
+}
+.icon-conformit-ico-cad-raf:before {
+    content: "\e907";
+}
+.icon-conformit-ico-cad-registroavulso:before {
+    content: "\e908";
+}
+.icon-conformit-ico-cad-reqdoc:before {
+    content: "\e909";
+}
+.icon-conformit-ico-cad-tac:before {
+    content: "\e90a";
+}
+.icon-conformit-ico-cad-termoarq:before {
+    content: "\e90b";
+}
+.icon-conformit-ico-cad-termoencerra:before {
+    content: "\e90c";
+}
+.icon-conformit-ico-cad-termointimacao:before {
+    content: "\e90d";
+}
+.icon-conformit-ico-cad-tn:before {
+    content: "\e90e";
+}
+.icon-conformit-ico-mod-config:before {
+    content: "\e90f";
+}
+.icon-conformit-ico-mod-conformit:before {
+    content: "\e910";
+}
+.icon-conformit-ico-mod-demandas:before {
+    content: "\e911";
+}
+.icon-conformit-ico-mod-fiscalizacao:before {
+    content: "\e912";
+}
+.icon-conformit-ico-mod-grupostrab:before {
+    content: "\e913";
+}
+.icon-conformit-ico-mod-mudancasreg:before {
+    content: "\e914";
+}
+.icon-conformit-ico-mod-obrigsetoriais:before {
+    content: "\e915";
+}
+.icon-conformit-ico-tramit-in:before {
+    content: "\e919";
+}
+.icon-conformit-ico-tramit-out:before {
+    content: "\e91a";
+}
+
+

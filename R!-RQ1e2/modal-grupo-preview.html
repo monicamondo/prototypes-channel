@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview - Modal Criar/Editar Grupo</title>
+  <link rel="stylesheet" href="./modal-grupo-preview.css" />
+</head>
+<body>
+  <div class="preview-stage">
+    <div class="legacy-modal">
+      <div class="legacy-modal-title">
+        <span>Editar Grupo de Ações</span>
+        <span class="legacy-modal-close">×</span>
+      </div>
+
+      <div class="legacy-modal-body">
+        <div class="objective-panel">
+          <div class="objective-kicker">Editando associação ao objetivo estratégico</div>
+          <div class="objective-name">TESTE 1</div>
+          <div class="objective-help">Campos marcados com * são obrigatórios</div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label>Nome do Grupo *</label>
+            <input type="text" value="Grupo Financeiro Corporativo com Nome Longo" />
+            <div class="hint">(máximo 256 caracteres)</div>
+          </div>
+          <div class="field">
+            <label>Responsável</label>
+            <input type="text" value="Mônica Mondo" readonly />
+            <div class="hint">Preenchido automaticamente com o usuário logado.</div>
+          </div>
+        </div>
+
+        <div class="plans-header">
+          <div class="plans-title">Planos de Ação (6 itens) (2 associados)</div>
+          <label class="legacy-toggle">
+            <input type="checkbox" />
+            <span>Mostrar somente associados</span>
+          </label>
+        </div>
+
+        <table class="legacy-table">
+          <thead>
+            <tr>
+              <th class="center">Associar</th>
+              <th>Nome do Plano</th>
+              <th class="responsavel-col">Responsável</th>
+              <th class="date-col">Data Início</th>
+              <th class="date-col">Data Fim</th>
+              <th class="qtd-col center">Qtd. ações</th>
+              <th class="valor-col right">Valor Planejado</th>
+              <th class="valor-col right">Valor Realizado</th>
+              <th class="acoes-col center">Ações</th>
+            </tr>
+            <tr class="filters">
+              <td class="center"><input class="checkbox-col" type="checkbox" /></td>
+              <td><input class="filter-input" type="text" /></td>
+              <td><input class="filter-input" type="text" /></td>
+              <td><input class="filter-input" type="text" /></td>
+              <td><input class="filter-input" type="text" /></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td class="center filter-actions">
+                <button class="legacy-button">Limpar</button>
+                <button class="legacy-button">Filtrar</button>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="plan-row selected">
+              <td class="center"><input type="checkbox" checked /></td>
+              <td>
+                <div class="plan-name">
+                  <span>Plano Alpha com descrição longa para validar aproveitamento da coluna de nome</span>
+                </div>
+              </td>
+              <td>João Silva</td>
+              <td>01/05/2026</td>
+              <td>15/05/2026</td>
+              <td class="center">12</td>
+              <td class="right">R$ 150.000,00</td>
+              <td class="right">R$ 98.500,00</td>
+              <td></td>
+            </tr>
+            <tr class="plan-row direct">
+              <td class="center"><input type="checkbox" disabled /></td>
+              <td>
+                <div class="plan-name">
+                  <span class="plan-alert" title="Plano associado diretamente a este objetivo estratégico.">!</span>
+                  <span>Plano Beta associado diretamente ao objetivo</span>
+                </div>
+              </td>
+              <td>Maria Souza</td>
+              <td>01/04/2026</td>
+              <td>30/04/2026</td>
+              <td class="center">8</td>
+              <td class="right">R$ 85.000,00</td>
+              <td class="right">R$ 85.000,00</td>
+              <td></td>
+            </tr>
+            <tr class="plan-row other-group">
+              <td class="center"><input type="checkbox" disabled /></td>
+              <td>
+                <div class="plan-name">
+                  <span class="plan-alert" title="Plano já associado a outro grupo de ações neste objetivo estratégico">!</span>
+                  <span>Plano Gamma já vinculado a outro grupo</span>
+                </div>
+              </td>
+              <td>Carlos Lima</td>
+              <td>03/06/2026</td>
+              <td>20/06/2026</td>
+              <td class="center">15</td>
+              <td class="right">R$ 220.000,00</td>
+              <td class="right">R$ 45.200,00</td>
+              <td></td>
+            </tr>
+            <tr class="plan-row selected">
+              <td class="center"><input type="checkbox" checked /></td>
+              <td>
+                <div class="plan-name">
+                  <span>Plano Delta</span>
+                </div>
+              </td>
+              <td>Ana Costa</td>
+              <td>10/06/2026</td>
+              <td>10/07/2026</td>
+              <td class="center">10</td>
+              <td class="right">R$ 124.000,00</td>
+              <td class="right">R$ 41.000,00</td>
+              <td></td>
+            </tr>
+            <tr class="plan-row other-group">
+              <td class="center"><input type="checkbox" disabled /></td>
+              <td>
+                <div class="plan-name">
+                  <span class="plan-alert" title="Plano já associado a outro grupo de ações neste objetivo estratégico">!</span>
+                  <span>Plano Epsilon já vinculado a outro grupo</span>
+                </div>
+              </td>
+              <td>Bruno Rocha</td>
+              <td>20/07/2026</td>
+              <td>05/08/2026</td>
+              <td class="center">9</td>
+              <td class="right">R$ 96.000,00</td>
+              <td class="right">R$ 18.000,00</td>
+              <td></td>
+            </tr>
+            <tr class="plan-row available">
+              <td class="center"><input type="checkbox" /></td>
+              <td>
+                <div class="plan-name">
+                  <span>Plano Zeta com nome extenso para validar o espaço remanescente da coluna principal</span>
+                </div>
+              </td>
+              <td>Fernanda Lima</td>
+              <td>01/09/2026</td>
+              <td>18/09/2026</td>
+              <td class="center">6</td>
+              <td class="right">R$ 62.000,00</td>
+              <td class="right">R$ 12.800,00</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="pagination">
+          <tr>
+            <td>Página 1 de 1</td>
+            <td class="right">
+              <select>
+                <option>10 itens por páginas</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+
+        <div class="legend">
+          <div class="legend-item">
+            <span class="legend-swatch selected"></span>
+            <span>Plano associado a este grupo</span>
+          </div>
+          <div class="legend-item">
+            <span class="plan-alert">!</span>
+            <span class="legend-swatch direct"></span>
+            <span>Plano associado diretamente ao objetivo estratégico</span>
+          </div>
+          <div class="legend-item">
+            <span class="plan-alert">!</span>
+            <span class="legend-swatch other-group"></span>
+            <span>Plano já associado a outro grupo de ações neste objetivo estratégico</span>
+          </div>
+        </div>
+
+        <div class="field" style="margin-top: 12px;">
+          <label>Justificativa *</label>
+          <textarea rows="3"></textarea>
+          <div class="hint">(máximo 500 caracteres)</div>
+        </div>
+
+        <div class="footer-actions">
+          <button class="legacy-button">Cancelar</button>
+          <button class="legacy-button">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

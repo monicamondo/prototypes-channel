@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Preview - Grupos de Ações Legado</title>
+  <style>
+    body { margin: 0; padding: 24px; background: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 11px; }
+    .wrap { max-width: 1280px; margin: 0 auto; }
+    .title { border-bottom: 2px solid #000; padding-bottom: 4px; margin-bottom: 8px; font-size: 14px; font-weight: bold; }
+    table.outer, table.inner, table.pagination { width: 100%; border: 0; border-collapse: separate; border-spacing: 0; }
+    table.outer thead tr { background: #f5f5f5; }
+    table.outer thead th, table.outer tbody td { padding: 4px; text-align: left; }
+    table.outer thead th { font-size: 12px; border-bottom: 1px solid #d0d0d0; }
+    table.outer tbody tr.group { background: #e5e5e5; cursor: pointer; }
+    table.outer tbody tr.group.active { background: #dbeece; }
+    table.outer tbody tr.group td, table.outer tbody tr.expanded td { border-top: 1px solid #efefef; border-bottom: 1px solid #d0d0d0; }
+    table.outer tbody tr.expanded td { background: #e5e9f0; padding: 8px 10px; }
+    table.inner thead tr { background: #d8dee8; }
+    table.inner thead th, table.inner tbody td { padding: 4px; border-bottom: 1px solid #c7cfda; }
+    table.inner tbody tr { background: #e5e9f0; }
+    .center { text-align: center; }
+    .right { text-align: right; }
+    .toggle { text-decoration: none; color: #555; font-weight: bold; }
+    .nested-title { font-size: 10px; font-weight: bold; margin-bottom: 6px; color: #334a62; }
+    table.pagination tr { background: #d9d9d9; }
+    table.pagination td { padding: 4px; }
+    table.pagination td:last-child { text-align: right; width: 140px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="title">Grupos de Ações</div>
+    <table class="outer">
+      <thead>
+        <tr>
+          <th style="width:18px;"></th>
+          <th class="center" style="width:78px;">Ativar grupo</th>
+          <th>Nome do Grupo</th>
+          <th style="width:220px;">Responsável</th>
+          <th class="center" style="width:120px;">Qtd. de planos</th>
+          <th class="center" style="width:90px;">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="group active" data-id="1">
+          <td class="center"><a class="toggle" id="seta_1" href="javascript:void(0)">▼</a></td>
+          <td class="center"><input type="checkbox" checked></td>
+          <td>Grupo Financeiro</td>
+          <td>Maria Souza</td>
+          <td class="center">2</td>
+          <td class="center">Editar | Excluir</td>
+        </tr>
+        <tr class="expanded" id="detalhe_1">
+          <td colspan="6">
+            <div class="nested-title">Planos vinculados ao grupo</div>
+            <table class="inner">
+              <thead>
+                <tr>
+                  <th>Nome do Plano</th>
+                  <th style="width:190px;">Responsável</th>
+                  <th style="width:100px;">Data Início</th>
+                  <th style="width:100px;">Data Fim</th>
+                  <th style="width:90px;" class="center">Qtd. ações</th>
+                  <th style="width:140px;" class="right">Valor Planejado</th>
+                  <th style="width:140px;" class="right">Valor Realizado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Plano Alpha</td><td>João Silva</td><td>01/05/2026</td><td>15/05/2026</td><td class="center">12</td><td class="right">R$ 150.000,00</td><td class="right">R$ 98.500,00</td></tr>
+                <tr><td>Plano Delta</td><td>Ana Costa</td><td>10/06/2026</td><td>10/07/2026</td><td class="center">10</td><td class="right">R$ 124.000,00</td><td class="right">R$ 41.000,00</td></tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr class="group" data-id="2">
+          <td class="center"><a class="toggle" id="seta_2" href="javascript:void(0)">▶</a></td>
+          <td class="center"><input type="checkbox"></td>
+          <td>Grupo Operações</td>
+          <td>Carlos Lima</td>
+          <td class="center">2</td>
+          <td class="center">Editar | Excluir</td>
+        </tr>
+        <tr class="expanded" id="detalhe_2" hidden>
+          <td colspan="6">
+            <div class="nested-title">Planos vinculados ao grupo</div>
+            <table class="inner">
+              <thead>
+                <tr>
+                  <th>Nome do Plano</th>
+                  <th style="width:190px;">Responsável</th>
+                  <th style="width:100px;">Data Início</th>
+                  <th style="width:100px;">Data Fim</th>
+                  <th style="width:90px;" class="center">Qtd. ações</th>
+                  <th style="width:140px;" class="right">Valor Planejado</th>
+                  <th style="width:140px;" class="right">Valor Realizado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Plano Gamma</td><td>Carlos Lima</td><td>03/06/2026</td><td>20/06/2026</td><td class="center">15</td><td class="right">R$ 220.000,00</td><td class="right">R$ 45.200,00</td></tr>
+                <tr><td>Plano Epsilon</td><td>Bruno Rocha</td><td>20/07/2026</td><td>05/08/2026</td><td class="center">9</td><td class="right">R$ 96.000,00</td><td class="right">R$ 18.000,00</td></tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="pagination">
+      <tr><td>Página 1 de 1</td><td><select><option>10 itens por páginas</option></select></td></tr>
+    </table>
+  </div>
+  <script>
+    document.querySelectorAll('tr.group').forEach(function(row) {
+      row.addEventListener('click', function(event) {
+        if (event.target.tagName === 'INPUT') return;
+        var id = row.getAttribute('data-id');
+        var detail = document.getElementById('detalhe_' + id);
+        var arrow = document.getElementById('seta_' + id);
+        var open = !detail.hasAttribute('hidden');
+        if (open) {
+          detail.setAttribute('hidden', '');
+          row.classList.remove('active');
+          arrow.textContent = '▶';
+        } else {
+          detail.removeAttribute('hidden');
+          row.classList.add('active');
+          arrow.textContent = '▼';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

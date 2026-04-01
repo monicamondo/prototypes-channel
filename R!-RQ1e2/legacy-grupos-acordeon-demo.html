@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo Legado - Grupos de Ações com Acordeon</title>
+  <style>
+    :root {
+      --legacy-header-bg: #f5f5f5;
+      --legacy-body-bg: #e5e5e5;
+      --legacy-pagination-bg: #d9d9d9;
+      --legacy-row-border-bottom: #d0d0d0;
+      --legacy-row-border-top: #efefef;
+      --legacy-expanded-bg: #ddd8c5;
+      --legacy-success-bg: #dbeece;
+      --legacy-text: #000;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 24px;
+      background: #fff;
+      color: var(--legacy-text);
+      font-family: Arial, Helvetica, "Lucida Sans", FreeSans, sans-serif;
+      font-size: 11px;
+    }
+
+    .demo-shell {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .subtitle-block {
+      border-bottom: 2px solid #000;
+      line-height: 28px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      padding-bottom: 1px;
+    }
+
+    .subtitle {
+      float: left;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .table-listagem {
+      width: 100%;
+      border: 0;
+      border-collapse: separate;
+      border-spacing: 0;
+    }
+
+    .table-listagem thead tr {
+      background: var(--legacy-header-bg);
+    }
+
+    .table-listagem thead th,
+    .table-listagem thead td,
+    .table-listagem tbody td {
+      padding: 4px;
+      vertical-align: top;
+    }
+
+    .table-listagem thead th {
+      font-size: 12px;
+      font-weight: bold;
+      text-align: left;
+      border-bottom: 1px solid var(--legacy-row-border-bottom);
+    }
+
+    .table-listagem thead th.center,
+    .table-listagem tbody td.center {
+      text-align: center;
+    }
+
+    .table-listagem thead th.right,
+    .table-listagem tbody td.right {
+      text-align: right;
+    }
+
+    .table-listagem tbody tr.data-row {
+      background: var(--legacy-body-bg);
+      cursor: pointer;
+    }
+
+    .table-listagem tbody tr.data-row.active {
+      background: var(--legacy-success-bg);
+    }
+
+    .table-listagem tbody tr.data-row td,
+    .table-listagem tbody tr.expanded-row td {
+      border-top: 1px solid var(--legacy-row-border-top);
+      border-bottom: 1px solid var(--legacy-row-border-bottom);
+    }
+
+    .table-listagem tbody tr.expanded-row td {
+      background: var(--legacy-expanded-bg);
+      padding: 8px 10px;
+    }
+
+    .table-listagem .toggle-cell {
+      width: 28px;
+      white-space: nowrap;
+    }
+
+    .table-listagem .checkbox-cell {
+      width: 72px;
+      text-align: center;
+    }
+
+    .table-listagem .name-cell {
+      width: auto;
+    }
+
+    .table-listagem .actions-cell {
+      width: 90px;
+      text-align: center;
+    }
+
+    .toggle-button {
+      appearance: none;
+      border: 0;
+      background: transparent;
+      color: #444;
+      cursor: pointer;
+      font-size: 12px;
+      line-height: 1;
+      padding: 0;
+      width: 16px;
+      height: 16px;
+    }
+
+    .row-name {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 16px;
+    }
+
+    .nested-panel-title {
+      font-size: 10px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .nested-table {
+      width: 100%;
+      border: 0;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #ece9dc;
+    }
+
+    .nested-table thead tr {
+      background: #f5f5f5;
+    }
+
+    .nested-table thead th,
+    .nested-table tbody td {
+      padding: 4px;
+      border-bottom: 1px solid var(--legacy-row-border-bottom);
+      font-size: 11px;
+      text-align: left;
+    }
+
+    .nested-table tbody tr {
+      background: #e6e5d3;
+    }
+
+    .nested-table .right {
+      text-align: right;
+    }
+
+    .nested-table .center {
+      text-align: center;
+    }
+
+    .pagination {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0;
+      font-size: 11px;
+    }
+
+    .pagination tr {
+      background: var(--legacy-pagination-bg);
+    }
+
+    .pagination td {
+      padding: 4px;
+    }
+
+    .pagination .combo {
+      width: 150px;
+      text-align: right;
+    }
+
+    .pagination select {
+      width: 122px;
+      height: 22px;
+      font-size: 11px;
+      font-family: inherit;
+    }
+
+    .toolbar {
+      margin-top: 8px;
+      color: #555;
+      font-size: 10px;
+    }
+
+    .note {
+      margin-top: 12px;
+      color: #444;
+      font-size: 11px;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="demo-shell">
+    <div class="subtitle-block">
+      <div class="subtitle">Grupos de Ações</div>
+    </div>
+
+    <table class="table-listagem" aria-label="Tabela de grupos de ações">
+      <thead>
+        <tr>
+          <th class="toggle-cell"></th>
+          <th class="checkbox-cell center">Ativar grupo</th>
+          <th class="name-cell">Nome do Grupo</th>
+          <th style="width: 220px;">Responsável</th>
+          <th style="width: 140px;" class="center">Qtd. de planos</th>
+          <th class="actions-cell center">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="data-row active" data-target="plans-1">
+          <td class="toggle-cell center">
+            <button class="toggle-button" aria-expanded="true" aria-controls="plans-1">▼</button>
+          </td>
+          <td class="checkbox-cell center"><input type="checkbox" checked /></td>
+          <td class="name-cell">
+            <div class="row-name">Grupo Financeiro</div>
+          </td>
+          <td>Maria Souza</td>
+          <td class="center">2</td>
+          <td class="actions-cell">Editar | Excluir</td>
+        </tr>
+        <tr class="expanded-row" id="plans-1">
+          <td colspan="6">
+            <div class="nested-panel-title">Planos vinculados ao grupo</div>
+            <table class="nested-table" aria-label="Planos do grupo financeiro">
+              <thead>
+                <tr>
+                  <th>Nome do Plano</th>
+                  <th style="width: 190px;">Responsável</th>
+                  <th style="width: 110px;">Data Início</th>
+                  <th style="width: 110px;">Data Fim</th>
+                  <th style="width: 90px;" class="center">Qtd. ações</th>
+                  <th style="width: 140px;" class="right">Valor Planejado</th>
+                  <th style="width: 140px;" class="right">Valor Realizado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Plano Alpha</td>
+                  <td>João Silva</td>
+                  <td>01/05/2026</td>
+                  <td>15/05/2026</td>
+                  <td class="center">12</td>
+                  <td class="right">R$ 150.000,00</td>
+                  <td class="right">R$ 98.500,00</td>
+                </tr>
+                <tr>
+                  <td>Plano Delta</td>
+                  <td>Ana Costa</td>
+                  <td>10/06/2026</td>
+                  <td>10/07/2026</td>
+                  <td class="center">10</td>
+                  <td class="right">R$ 124.000,00</td>
+                  <td class="right">R$ 41.000,00</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <tr class="data-row" data-target="plans-2">
+          <td class="toggle-cell center">
+            <button class="toggle-button" aria-expanded="false" aria-controls="plans-2">▶</button>
+          </td>
+          <td class="checkbox-cell center"><input type="checkbox" /></td>
+          <td class="name-cell">
+            <div class="row-name">Grupo Operações</div>
+          </td>
+          <td>Carlos Lima</td>
+          <td class="center">2</td>
+          <td class="actions-cell">Editar | Excluir</td>
+        </tr>
+        <tr class="expanded-row" id="plans-2" hidden>
+          <td colspan="6">
+            <div class="nested-panel-title">Planos vinculados ao grupo</div>
+            <table class="nested-table" aria-label="Planos do grupo operações">
+              <thead>
+                <tr>
+                  <th>Nome do Plano</th>
+                  <th style="width: 190px;">Responsável</th>
+                  <th style="width: 110px;">Data Início</th>
+                  <th style="width: 110px;">Data Fim</th>
+                  <th style="width: 90px;" class="center">Qtd. ações</th>
+                  <th style="width: 140px;" class="right">Valor Planejado</th>
+                  <th style="width: 140px;" class="right">Valor Realizado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Plano Gamma</td>
+                  <td>Carlos Lima</td>
+                  <td>03/06/2026</td>
+                  <td>20/06/2026</td>
+                  <td class="center">15</td>
+                  <td class="right">R$ 220.000,00</td>
+                  <td class="right">R$ 45.200,00</td>
+                </tr>
+                <tr>
+                  <td>Plano Epsilon</td>
+                  <td>Bruno Rocha</td>
+                  <td>20/07/2026</td>
+                  <td>05/08/2026</td>
+                  <td class="center">9</td>
+                  <td class="right">R$ 96.000,00</td>
+                  <td class="right">R$ 18.000,00</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+
+        <tr class="data-row" data-target="plans-3">
+          <td class="toggle-cell center">
+            <button class="toggle-button" aria-expanded="false" aria-controls="plans-3">▶</button>
+          </td>
+          <td class="checkbox-cell center"><input type="checkbox" /></td>
+          <td class="name-cell">
+            <div class="row-name">Grupo TI</div>
+          </td>
+          <td>Ana Costa</td>
+          <td class="center">0</td>
+          <td class="actions-cell">Editar | Excluir</td>
+        </tr>
+        <tr class="expanded-row" id="plans-3" hidden>
+          <td colspan="6">
+            <div class="nested-panel-title">Planos vinculados ao grupo</div>
+            <div class="toolbar">Nenhum plano vinculado a este grupo.</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="pagination" aria-label="Paginação">
+      <tr>
+        <td>Página 1 de 1</td>
+        <td class="combo">
+          <select>
+            <option>10 itens por páginas</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <div class="note">
+      Referência visual calibrada com base no legado em `css/listagem.css`:
+      cabeçalho `#f5f5f5`, corpo `#E5E5E5`, paginação `#d9d9d9` e separação predominantemente horizontal.
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.data-row').forEach(function (row) {
+      row.addEventListener('click', function (event) {
+        if (event.target instanceof HTMLInputElement) {
+          return;
+        }
+
+        var targetId = row.getAttribute('data-target');
+        var expanded = document.getElementById(targetId);
+        var button = row.querySelector('.toggle-button');
+        var isOpen = !expanded.hasAttribute('hidden');
+
+        expanded.toggleAttribute('hidden');
+        row.classList.toggle('active', !isOpen);
+        button.textContent = isOpen ? '▶' : '▼';
+        button.setAttribute('aria-expanded', String(!isOpen));
+      });
+    });
+  </script>
+</body>
+
+</html>
