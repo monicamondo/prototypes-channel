@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Objetivo Estratégico - Channel</title>
+    
+    <!-- Design System Foundations -->
+    <link rel="stylesheet" href="../../ds-channel/src/assets/fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../ds-channel/src/assets/fonts/conformit/font-conformit.css">
+    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/colors.css">
+    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/typography.css">
+    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/spacing.css">
+    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/borders.css">
+    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/shadows.css">
+    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/globals.css">
+    
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../../ds-channel/src/components/header/Header.css">
+    <link rel="stylesheet" href="../../ds-channel/src/components/navbar/Navbar.css">
+    <link rel="stylesheet" href="../../ds-channel/src/components/legenda/Legenda.css">
+
+    <style>
+        /* Ajustes para garantir que a página ocupe toda a altura */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #fff;
+        }
+
+        .legacy-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .legacy-footer {
+            padding: 10px 20px;
+            border-top: 1px solid #d0d0d0;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body class="legacy-page">
+
+    <!-- Header Principal -->
+    <header class="legacy-header">
+        <div class="legacy-header-container">
+            <div class="legacy-header-logos">
+                <div class="logo-jexperts">
+                    <img src="../../ds-channel/src/assets/img/logo J.svg" alt="Logo J" class="logo-j-svg">
+                </div>
+                <div class="logo-divider"></div>
+                <div class="logo-channel">
+                    <img src="../../ds-channel/src/assets/img/logo-channel_.png" alt="Channel Logo" class="logo-channel-img">
+                </div>
+            </div>
+
+            <div class="legacy-header-actions">
+                <div class="release-notes-dropdown">
+                    <div class="release-notes-trigger">
+                        <span class="release-text">Release Notes</span>
+                        <i class="fa fa-th grid-icon"></i>
+                        <div class="notification-container">
+                            <i class="fa fa-bell bell-icon"></i>
+                            <span class="notification-badge">0</span>
+                        </div>
+                        <i class="fa fa-caret-down dropdown-caret"></i>
+                    </div>
+                    
+                    <div class="release-submenu">
+                        <div class="submenu-item">
+                            <div class="submenu-icon-box channel-bg">
+                                <img src="../../ds-channel/src/assets/img/logo-channel_.png" alt="C" style="width: 20px; filter: grayscale(1) brightness(2);">
+                            </div>
+                            <span class="submenu-label">Channel</span>
+                        </div>
+                        <div class="submenu-item">
+                            <div class="submenu-icon-box agile-bg">
+                                <i class="fa fa-refresh"></i>
+                            </div>
+                            <span class="submenu-label">Agile</span>
+                        </div>
+                        <div class="submenu-item">
+                            <div class="submenu-icon-box analytics-bg">
+                                <i class="fa fa-bar-chart"></i>
+                            </div>
+                            <span class="submenu-label">Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-dropdown">
+                    <div class="profile-avatar">MM</div>
+                    <div class="profile-info">
+                        <span class="profile-name">Mônica Mondo</span>
+                        <span class="profile-role">Gestor</span>
+                    </div>
+                    <i class="fa fa-caret-down dropdown-caret"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navbar Principal -->
+    <nav class="legacy-navbar" id="legacy-navbar">
+        <div class="navbar-home">
+            <i class="fa fa-home"></i>
+        </div>
+        
+        <!-- Plano Estratégico (Ativo por contexto) -->
+        <div class="navbar-item is-active-page" data-menu="plano-estrategico">
+            <div class="navbar-item-trigger">
+                <i class="fa fa-puzzle-piece" style="color:#F97316;"></i>
+                Plano estratégico
+            </div>
+            <div class="navbar-dropdown">
+                <div class="navbar-dropdown-col">
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-flag"></i> Objetivos</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-puzzle-piece"></i> Diretrizes</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-puzzle-piece"></i> Mapa estratégico</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-bar-chart"></i> Reuniões</a>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-adjust"></i> Desempenho</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Planejamento de metas</a></li>
+                            <li><a href="#">Medições de indicadores</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-section" style="margin-top: 12px;">
+                        <div class="navbar-section-title"><i class="fa fa-cog"></i> Configurações</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Revisões</a></li>
+                            <li><a href="#">Perspectivas</a></li>
+                            <li><a href="#">Temas Estratégicos</a></li>
+                            <li><a href="#" class="link-more">Ver mais</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-list"></i> Relatórios</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Acompanhamento de desempenho estratégico</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Módulos Padrão -->
+        <div class="navbar-item" data-menu="meu-channel">
+            <div class="navbar-item-trigger">
+                <img src="../../ds-channel/src/assets/img/meu_channel_menul.svg" alt="Meu Channel" class="navbar-module-icon" />
+                Meu Channel
+            </div>
+        </div>
+        <div class="navbar-item" data-menu="estrategia">
+            <div class="navbar-item-trigger">
+                <img src="../../ds-channel/src/assets/img/estrategia_menu.svg" alt="Estratégia" class="navbar-module-icon" />
+                Estratégia
+            </div>
+        </div>
+        <div class="navbar-item" data-menu="desempenho">
+            <div class="navbar-item-trigger">
+                <img src="../../ds-channel/src/assets/img/desempenho_menu.svg" alt="Desempenho" class="navbar-module-icon" />
+                Desempenho
+            </div>
+        </div>
+        <div class="navbar-item" data-menu="projetos-demandas">
+            <div class="navbar-item-trigger">
+                <img src="../../ds-channel/src/assets/img/projetos_demandas_menu.svg" alt="Projetos e demandas" class="navbar-module-icon" />
+                Projetos e demandas
+            </div>
+        </div>
+        <div class="navbar-item" data-menu="administracao">
+            <div class="navbar-item-trigger">
+                <img src="../../ds-channel/src/assets/img/administracao_meni.svg" alt="Administração" class="navbar-module-icon" />
+                Administração
+            </div>
+        </div>
+
+        <div class="navbar-item-plain" style="margin-left: auto;">
+            <span style="font-size:13px; color:#ccc; font-weight:bold;">?</span>
+        </div>
+        <div class="navbar-item-plain">
+            <i class="fa fa-info-circle"></i>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal (Vazio por enquanto) -->
+    <main class="legacy-content">
+        <!-- O conteúdo será adicionado aqui posteriormente -->
+    </main>
+
+    <!-- Rodapé com Legenda -->
+    <footer class="legacy-footer">
+        <div class="page-legend">
+            <span class="legend-label">Legenda:</span>
+            <div class="legend-item-row">
+                <img src="../../ds-channel/src/assets/img/ico_indicador_tendencia.gif" alt="" />
+                <span>Indicadores</span>
+            </div>
+            <div class="legend-item-row">
+                <img src="../../ds-channel/src/assets/img/ico_causaEfeito.gif" alt="" />
+                <span>Causa e Efeito</span>
+            </div>
+            <div class="legend-item-row">
+                <img src="../../ds-channel/src/assets/img/ico-componentes.gif" alt="" />
+                <span>Associar Atividades</span>
+            </div>
+            <div class="legend-item-row">
+                <span class="icon-kr" style="display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;background:#5C7CFA;color:#fff;font-size:8px;font-weight:bold;border-radius:2px;font-family:Tahoma, Arial, sans-serif;letter-spacing:-0.5px;">KR</span>
+                <span>Gerenciar KRs</span>
+            </div>
+            <div class="legend-item-row">
+                <img src="../../ds-channel/src/assets/img/ico_ligado.gif" alt="" />
+                <span>Habilitar / Desabilitar Objetivo</span>
+            </div>
+            <div class="legend-item-row">
+                <img src="../../ds-channel/src/assets/img/ico-lupa.gif" alt="" />
+                <span>Editar</span>
+            </div>
+            <div class="legend-item-row">
+                <img src="../../ds-channel/src/assets/img/ico-remover-novo.gif" alt="" />
+                <span>Remover</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts de Interatividade -->
+    <script>
+        (function () {
+            var navbar = document.getElementById('legacy-navbar');
+            if (!navbar) return;
+
+            var items = navbar.querySelectorAll('.navbar-item');
+
+            items.forEach(function (item) {
+                var trigger = item.querySelector('.navbar-item-trigger');
+                if (!trigger) return;
+
+                trigger.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var isOpen = item.classList.contains('is-open');
+                    // Fecha todos
+                    items.forEach(function (i) { i.classList.remove('is-open'); });
+                    // Abre este se estava fechado e se tem dropdown
+                    if (!isOpen && item.querySelector('.navbar-dropdown')) {
+                        item.classList.add('is-open');
+                    }
+                });
+            });
+
+            // Clique fora fecha tudo
+            document.addEventListener('click', function () {
+                items.forEach(function (i) { i.classList.remove('is-open'); });
+            });
+
+            // Evita fechar ao clicar dentro do dropdown
+            navbar.querySelectorAll('.navbar-dropdown').forEach(function (dd) {
+                dd.addEventListener('click', function (e) { e.stopPropagation(); });
+            });
+        })();
+    </script>
+</body>
+</html>
