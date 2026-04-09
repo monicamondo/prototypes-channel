@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JExperts | Protótipos Projeto Channel</title>
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero__brand">
+        <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo%20J.svg"
+          alt="Logo JExperts" class="hero__logo" />
+      </div>
+      <div>
+        <h1>Protótipos Channel</h1>
+      </div>
+
+      <p class="hero__description">
+        Acesse aqui os protótipos navegáveis para validação de interfaces gráficas do projeto Channel.
+      </p>
+    </header>
+
+    <main class="content">
+      <section class="catalog-card" aria-labelledby="catalog-title">
+        <div class="catalog-card__header">
+          <div>
+            <span class="catalog-card__eyebrow">Biblioteca de acessos</span>
+            <h2 id="catalog-title">Demandas prototipadas</h2>
+          </div>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="catalog-table">
+            <colgroup>
+              <col class="col-status" />
+              <col class="col-name" />
+              <col class="col-documentation" />
+              <col class="col-repository" />
+              <col class="col-prototype" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th>Status</th>
+                <th>Nome</th>
+                <th>Documentação Requisito</th>
+                <th>Repositório GitHub (html/css)</th>
+                <th>Protótipo navegável</th>
+              </tr>
+            </thead>
+            <tbody id="prototype-table-body"></tbody>
+          </table>
+        </div>
+
+        <div class="status-legend" aria-label="Legenda de status">
+          <span class="status-legend__item">
+            <span class="status-dot status-dot--radar" aria-hidden="true"></span>
+            No radar
+          </span>
+          <span class="status-legend__item">
+            <span class="status-dot status-dot--progress" aria-hidden="true"></span>
+            Em andamento
+          </span>
+          <span class="status-legend__item">
+            <span class="status-dot status-dot--approval" aria-hidden="true"></span>
+            Aguardando aprovação
+          </span>
+          <span class="status-legend__item">
+            <span class="status-dot status-dot--done" aria-hidden="true"></span>
+            Concluído
+          </span>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const prototypeEntryTemplate = {
+      status: "Preencher",
+      name: "Preencher",
+      documentation: "Preencher",
+      documentationUrl: "",
+      prototypeRepoPath: "demanda/prototipo",
+      prototypePagePath: "demanda/prototipo/index.html"
+    };
+
+    const prototypeEntries = [
+      {
+        status: "Concluído",
+        name: "Planos e Grupo de Ações",
+        documentation: "Preencher",
+        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4073881612",
+        prototypeRepoPath: "planos-grupos-acoes",
+        prototypePagePath: "https://www.figma.com/make/Q69aQLZGMWQVEv47PgeTCE/Vincular-Planos-de-A%C3%A7%C3%A3o-ao-Objetivo-estat%C3%A9gico--Copy-?fullscreen=1&t=Z0RMq3OgVgSb21D6-1"
+      },
+      {
+        status: "Concluído",
+        name: "KRs - v1",
+        documentation: "Preencher",
+        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4084957192/RQ004+-+Criar+o+conceito+de+resultados+chave",
+        prototypeRepoPath: "gerenciar-krs-v1/output/deploy-teste",
+        prototypePagePath: "gerenciar-krs-v1/output/deploy-teste/index.html"
+      },
+      {
+        status: "Aguardando aprovação",
+        name: "KRs - v2",
+        documentation: "Preencher",
+        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4084957192/RQ004+-+Criar+o+conceito+de+resultados+chave",
+        prototypeRepoPath: "gerenciar-krs-v2",
+        prototypePagePath: "gerenciar-krs-v2/gerenciar-kr-v2.html"
+      },
+      {
+        status: "Em andamento",
+        name: "Parametrização de Pesos de KRs e Indicadores",
+        documentation: "Preencher",
+        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4084957192/RQ004+-+Criar+o+conceito+de+resultados+chave",
+        prototypeRepoPath: "parametrizar-pesos",
+        prototypePagePath: "parametrizar-pesos/parametrizar-pesos.html"
+      },
+      {
+        status: "No radar",
+        name: "Rastreabilidade entre planos de ação",
+        documentation: "Preencher",
+        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4081614853/RQ005+-+Permitir+Rastreabilidade+entre+Planos+de+A+o",
+        prototypeRepoPath: "rastrear-planos",
+        prototypePagePath: "rastrear-planos.html"
+      }
+    ];
+
+    const pagesBaseUrl = "https://monicamondo.github.io/prototypes-channel/";
+    const repositoryBaseUrl = "https://github.com/monicamondo/prototypes-channel/tree/main/";
+    const tableBody = document.getElementById("prototype-table-body");
+    const statusClassMap = {
+      "no radar": "status-dot--radar",
+      "em andamento": "status-dot--progress",
+      "aguardando aprovação": "status-dot--approval",
+      "aguardando aprovacao": "status-dot--approval",
+      "concluído": "status-dot--done",
+      "concluido": "status-dot--done"
+    };
+
+    const renderLinkCell = (label, url, extraClass = "") => {
+      if (!url) {
+        return `<span class="catalog-placeholder">${label}</span>`;
+      }
+
+      const className = ["catalog-link", extraClass].filter(Boolean).join(" ");
+
+      return `
+        <a class="${className}" href="${url}" target="_blank" rel="noreferrer">
+          ${label}
+        </a>
+      `;
+    };
+
+    const renderStatusDot = (status) => {
+      const normalizedStatus = (status || "").trim().toLowerCase();
+      const statusClass = statusClassMap[normalizedStatus] || "status-dot--placeholder";
+      const statusLabel = status && status !== "Preencher" ? status : "Status pendente";
+
+      return `<span class="status-dot ${statusClass}" title="${statusLabel}" aria-label="${statusLabel}"></span>`;
+    };
+
+    prototypeEntries.forEach((entry) => {
+      const repositoryUrl = new URL(entry.prototypeRepoPath, repositoryBaseUrl).toString();
+      const prototypeUrl = new URL(entry.prototypePagePath, pagesBaseUrl).toString();
+      const documentationCell = renderLinkCell("Acessar documentação", entry.documentationUrl);
+      const repositoryCell = renderLinkCell("Ver repositório", repositoryUrl);
+      const prototypeCell = renderLinkCell("Acessar", prototypeUrl, "catalog-button catalog-button--subtle");
+      const row = document.createElement("tr");
+
+      row.innerHTML = `
+        <td data-label="Status">${renderStatusDot(entry.status)}</td>
+        <td data-label="Nome">${entry.name}</td>
+        <td data-label="Documentação Requisito">${documentationCell}</td>
+        <td data-label="Repositório GitHub (html/css)">${repositoryCell}</td>
+        <td data-label="Protótipo navegável">${prototypeCell}</td>
+      `;
+
+      tableBody.appendChild(row);
+    });
+  </script>
+</body>
+
+</html>
