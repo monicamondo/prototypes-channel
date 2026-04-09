@@ -30,11 +30,10 @@
       </div>
       <div>
         <h1>Protótipos Channel</h1>
+        <p class="hero__description">
+          Protótipos navegáveis para validação de interfaces gráficas do projeto Channel.
+        </p>
       </div>
-
-      <p class="hero__description">
-        Acesse aqui os protótipos navegáveis para validação de interfaces gráficas do projeto Channel.
-      </p>
     </header>
 
     <main class="content">
@@ -44,6 +43,9 @@
             <span class="catalog-card__eyebrow">Biblioteca de acessos</span>
             <h2 id="catalog-title">Demandas prototipadas</h2>
           </div>
+          <p class="catalog-card__support">
+            A linha principal representa a demanda. Quando houver entregas por sprint, use a seta no nome para expandir.
+          </p>
         </div>
 
         <div class="table-wrapper">
@@ -91,61 +93,69 @@
   </div>
 
   <script>
-    const prototypeEntryTemplate = {
+    const demandEntryTemplate = {
       status: "Preencher",
       name: "Preencher",
-      documentation: "Preencher",
       documentationUrl: "",
-      prototypeRepoPath: "demanda/prototipo",
-      prototypePagePath: "demanda/prototipo/index.html"
+      prototypeRepoPath: "demanda",
+      prototypePagePath: "demanda/index.html",
+      sprintDeliveries: [
+        {
+          status: "Preencher",
+          functionality: "Preencher",
+          requirement: "Preencher",
+          prototypeRepoPath: "demanda/sprint-1",
+          prototypePagePath: "demanda/sprint-1/index.html"
+        }
+      ]
     };
 
-    const prototypeEntries = [
+    // Atualize este array conforme os diretórios reais de cada demanda e sprint.
+    const demandEntries = [
       {
         status: "Concluído",
         name: "Planos e Grupo de Ações",
-        documentation: "Preencher",
         documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4073881612",
-        prototypeRepoPath: "planos-grupos-acoes",
-        prototypePagePath: "https://www.figma.com/make/Q69aQLZGMWQVEv47PgeTCE/Vincular-Planos-de-A%C3%A7%C3%A3o-ao-Objetivo-estat%C3%A9gico--Copy-?fullscreen=1&t=Z0RMq3OgVgSb21D6-1"
-      },
-      {
-        status: "Concluído",
-        name: "KRs - v1",
-        documentation: "Preencher",
-        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4084957192/RQ004+-+Criar+o+conceito+de+resultados+chave",
-        prototypeRepoPath: "gerenciar-krs-v1/output/deploy-teste",
-        prototypePagePath: "gerenciar-krs-v1/output/deploy-teste/index.html"
-      },
-      {
-        status: "Aguardando aprovação",
-        name: "KRs - v2",
-        documentation: "Preencher",
-        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4084957192/RQ004+-+Criar+o+conceito+de+resultados+chave",
-        prototypeRepoPath: "gerenciar-krs-v2",
-        prototypePagePath: "gerenciar-krs-v2/gerenciar-kr-v2.html"
+        prototypeRepoPath: "planos-grupos-acoes/prototype",
+        prototypePagePath: "https://www.figma.com/make/Q69aQLZGMWQVEv47PgeTCE/Vincular-Planos-de-A%C3%A7%C3%A3o-ao-Objetivo-estat%C3%A9gico--Copy-?fullscreen=1&t=PiPrwA1oAzQMv7GZ-1",
+        sprintDeliveries: []
       },
       {
         status: "Em andamento",
-        name: "Parametrização de Pesos de KRs e Indicadores",
-        documentation: "Preencher",
+        name: "Key Results",
         documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4084957192/RQ004+-+Criar+o+conceito+de+resultados+chave",
-        prototypeRepoPath: "parametrizar-pesos",
-        prototypePagePath: "parametrizar-pesos/parametrizar-pesos.html"
+        prototypeRepoPath: "key-results",
+        sprintDeliveries: [
+          {
+            status: "Concluído",
+            functionality: "Gerenciar KRs",
+            requirement: "RQ004",
+            prototypeRepoPath: "key-results/gerenciar-krs",
+            prototypePagePath: "key-results/gerenciar-krs/prototype/gerenciar-kr.html"
+          },
+          {
+            status: "Em andamento",
+            functionality: "Parametrizar pesos",
+            requirement: "RQ004",
+            prototypeRepoPath: "key-results/parametrizar-pesos",
+            prototypePagePath: "key-results/parametrizar-pesos/prototype/parametrizar-pesos.html"
+          }
+        ]
       },
       {
         status: "No radar",
         name: "Rastreabilidade entre planos de ação",
-        documentation: "Preencher",
-        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4081614853/RQ005+-+Permitir+Rastreabilidade+entre+Planos+de+A+o",
-        prototypeRepoPath: "rastrear-planos",
-        prototypePagePath: "rastrear-planos.html"
+        documentationUrl: "",
+        prototypeRepoPath: "rastreabilidade-planos",
+        prototypePagePath: "rastreabilidade-planos/prototype/rastrear-plano.html",
+        sprintDeliveries: []
       }
     ];
 
     const pagesBaseUrl = "https://monicamondo.github.io/prototypes-channel/";
     const repositoryBaseUrl = "https://github.com/monicamondo/prototypes-channel/tree/main/";
     const tableBody = document.getElementById("prototype-table-body");
+
     const statusClassMap = {
       "no radar": "status-dot--radar",
       "em andamento": "status-dot--progress",
@@ -153,6 +163,12 @@
       "aguardando aprovacao": "status-dot--approval",
       "concluído": "status-dot--done",
       "concluido": "status-dot--done"
+    };
+
+    const resolveUrl = (path, baseUrl) => {
+      if (!path) return "";
+      if (/^https?:\/\//i.test(path)) return path;
+      return new URL(path, baseUrl).toString();
     };
 
     const renderLinkCell = (label, url, extraClass = "") => {
@@ -177,23 +193,108 @@
       return `<span class="status-dot ${statusClass}" title="${statusLabel}" aria-label="${statusLabel}"></span>`;
     };
 
-    prototypeEntries.forEach((entry) => {
-      const repositoryUrl = new URL(entry.prototypeRepoPath, repositoryBaseUrl).toString();
-      const prototypeUrl = new URL(entry.prototypePagePath, pagesBaseUrl).toString();
+    const renderSprintDeliveries = (sprintDeliveries) => {
+      if (!Array.isArray(sprintDeliveries) || sprintDeliveries.length === 0) {
+        return "";
+      }
+
+      const rows = sprintDeliveries.map((delivery) => {
+        const repoUrl = resolveUrl(delivery.prototypeRepoPath, repositoryBaseUrl);
+        const prototypeUrl = resolveUrl(delivery.prototypePagePath, pagesBaseUrl);
+
+        return `
+          <tr>
+            <td data-label="Status">${renderStatusDot(delivery.status)}</td>
+            <td data-label="Funcionalidade">${delivery.functionality}</td>
+            <td data-label="Requisito">${delivery.requirement}</td>
+            <td data-label="Repositório">${renderLinkCell("Ver repositório", repoUrl)}</td>
+            <td data-label="Protótipo">${renderLinkCell("Acessar", prototypeUrl, "catalog-button catalog-button--subtle")}</td>
+          </tr>
+        `;
+      }).join("");
+
+      return `
+        <tr class="catalog-subrow">
+          <td colspan="5">
+            <div class="delivery-block">
+              <div class="delivery-block__title">Entregas por sprint</div>
+              <table class="delivery-table">
+                <thead>
+                  <tr>
+                    <th>Status</th>
+                    <th>Funcionalidade</th>
+                    <th>Requisito</th>
+                    <th>Repositório</th>
+                    <th>Protótipo</th>
+                  </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+              </table>
+            </div>
+          </td>
+        </tr>
+      `;
+    };
+
+    const renderMainRow = (entry, demandId) => {
+      const repositoryUrl = resolveUrl(entry.prototypeRepoPath, repositoryBaseUrl);
+      const prototypeUrl = resolveUrl(entry.prototypePagePath, pagesBaseUrl);
       const documentationCell = renderLinkCell("Acessar documentação", entry.documentationUrl);
       const repositoryCell = renderLinkCell("Ver repositório", repositoryUrl);
       const prototypeCell = renderLinkCell("Acessar", prototypeUrl, "catalog-button catalog-button--subtle");
-      const row = document.createElement("tr");
+      const hasSprintDeliveries = Array.isArray(entry.sprintDeliveries) && entry.sprintDeliveries.length > 0;
 
-      row.innerHTML = `
-        <td data-label="Status">${renderStatusDot(entry.status)}</td>
-        <td data-label="Nome">${entry.name}</td>
-        <td data-label="Documentação Requisito">${documentationCell}</td>
-        <td data-label="Repositório GitHub (html/css)">${repositoryCell}</td>
-        <td data-label="Protótipo navegável">${prototypeCell}</td>
+      return `
+        <tr class="catalog-row">
+          <td data-label="Status">${renderStatusDot(entry.status)}</td>
+          <td data-label="Nome">
+            <div class="catalog-name-cell">
+              ${hasSprintDeliveries ? `
+                <button
+                  class="catalog-accordion-toggle"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="${demandId}"
+                  data-target="${demandId}">
+                  <span class="catalog-accordion-toggle__icon" aria-hidden="true"></span>
+                  <span class="catalog-accordion-toggle__label">${entry.name}</span>
+                </button>
+              ` : `
+                <span class="catalog-name-label">${entry.name}</span>
+              `}
+            </div>
+          </td>
+          <td data-label="Documentação Requisito">${documentationCell}</td>
+          <td data-label="Repositório GitHub (html/css)">${repositoryCell}</td>
+          <td data-label="Protótipo navegável">${prototypeCell}</td>
+        </tr>
       `;
+    };
 
-      tableBody.appendChild(row);
+    demandEntries.forEach((entry) => {
+      const demandId = `demand-${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+      tableBody.insertAdjacentHTML("beforeend", renderMainRow(entry, demandId));
+
+      const sprintMarkup = renderSprintDeliveries(entry.sprintDeliveries);
+      if (sprintMarkup) {
+        tableBody.insertAdjacentHTML(
+          "beforeend",
+          sprintMarkup.replace('class="catalog-subrow"', `class="catalog-subrow is-collapsed" id="${demandId}" hidden`)
+        );
+      }
+    });
+
+    document.querySelectorAll(".catalog-accordion-toggle").forEach((button) => {
+      button.addEventListener("click", () => {
+        const targetId = button.getAttribute("data-target");
+        const targetRow = document.getElementById(targetId);
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+
+        button.setAttribute("aria-expanded", String(!isExpanded));
+        targetRow.hidden = isExpanded;
+        targetRow.classList.toggle("is-collapsed", isExpanded);
+        targetRow.classList.toggle("is-expanded", !isExpanded);
+      });
     });
   </script>
 </body>
