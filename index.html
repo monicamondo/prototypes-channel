@@ -31,7 +31,7 @@
       <div>
         <h1>Protótipos Channel</h1>
         <p class="hero__description">
-          Protótipos navegáveis para validação de interfaces gráficas do projeto Channel.
+          Protótipos navegáveis para validação de interfaces gráficas.
         </p>
       </div>
     </header>
@@ -44,7 +44,8 @@
             <h2 id="catalog-title">Demandas prototipadas</h2>
           </div>
           <p class="catalog-card__support">
-            A linha principal representa a demanda. Quando houver entregas por sprint, use a seta no nome para expandir.
+            <button class="catalog-help-link" type="button" data-open-dev-help>Saiba mais</button> como o
+            repositório no GitHub está organizado.
           </p>
         </div>
 
@@ -92,6 +93,51 @@
     </main>
   </div>
 
+  <div class="dev-help-modal" id="dev-help-modal" hidden>
+    <div class="dev-help-modal__backdrop" data-close-dev-help></div>
+    <div class="dev-help-modal__panel" role="dialog" aria-modal="true" aria-labelledby="dev-help-title" tabindex="-1">
+      <div class="dev-help-modal__header">
+        <h3 id="dev-help-title">Como usar o repositório como referência</h3>
+        <button class="dev-help-modal__close" type="button" aria-label="Fechar" data-close-dev-help>×</button>
+      </div>
+      <div class="dev-help-modal__body">
+        <p>
+          Aqui você encontra o link para protótipo navegável <b>E</b> o código HTML/CSS, que pode auxiliar na
+          implementação.
+        </p>
+
+        <ol class="dev-help-modal__steps">
+          <li>
+            Na tabela, clique em <code>Ver repositório</code> da demanda (ou sprint). Isso abre o diretório no GitHub.
+          </li>
+          <li>
+            Dentro da pasta da demanda, procure o diretório <code>prototype/</code>. Ali está o
+            <code>código fonte</code> do protótipo.
+          </li>
+          <li>
+            O protótipo possui um <b>componente novo</b>? Você pode inspecioná-lo no StoryBook do Design System, lá
+            projetamos os status e comportamento desejados para esse componente.
+          </li>
+        </ol>
+
+        <div class="dev-help-modal__codeblock" aria-label="Exemplos de caminhos">
+          <div class="dev-help-modal__codeblock-title">Design System Channel</div>
+          <pre>
+<a href="https://monicamondo.github.io/ds-channel/?path=/docs/componentes-modal--docs"
+              target="_blank">https://monicamondo.github.io/ds-channel/?path=/docs/componentes-modal--docs</a>
+          </pre>
+        </div>
+
+        <p class="dev-help-modal__hint">
+          Dica: a pasta <code>docs/</code> que você encontra no mesmo repositório, contém apenas resumo das nossas
+          reuniões e outros documentos gerados pelo núcleo de design durante o andamento do projeto. Esses documentos
+          não
+          são necessários para o handoff.
+        </p>
+      </div>
+    </div>
+  </div>
+
   <footer class="page-footer" aria-label="Rodapé">
     <span>Núcleo de Design Jexperts - <span id="footer-year"></span></span>
   </footer>
@@ -135,14 +181,14 @@
             functionality: "Gerenciar KRs",
             requirement: "RQ004",
             prototypeRepoPath: "key-results/gerenciar-krs",
-            prototypePagePath: "key-results/gerenciar-krs/prototype/gerenciar-kr.html"
+            prototypePagePath: "key-results/prototype/gerenciar-krs/gerenciar-kr.html"
           },
           {
             status: "Em andamento",
             functionality: "Parametrizar pesos",
             requirement: "RQ004",
             prototypeRepoPath: "key-results/parametrizar-pesos",
-            prototypePagePath: "key-results/parametrizar-pesos/prototype/parametrizar-pesos.html"
+            prototypePagePath: "key-results/prototype/parametrizar-pesos/parametrizar-pesos.html"
           }
         ]
       },
@@ -175,6 +221,13 @@
       return new URL(path, baseUrl).toString();
     };
 
+    const normalizeStatus = (status) => (status || "").trim().toLowerCase();
+
+    const isPrototypeDisabledForStatus = (status) => {
+      const normalized = normalizeStatus(status);
+      return normalized === "em andamento" || normalized === "no radar";
+    };
+
     const renderLinkCell = (label, url, extraClass = "") => {
       if (!url) {
         return `<span class="catalog-placeholder">${label}</span>`;
@@ -189,22 +242,19 @@
       `;
     };
 
-    const renderActionButton = (label, url, extraClass = "") => {
-      if (!url) {
-        return `<span class="catalog-placeholder">${label}</span>`;
-      }
-
+    const renderActionButton = (label, url, extraClass = "", disabled = false, disabledTitle = "") => {
       const className = ["catalog-link", "catalog-button", extraClass].filter(Boolean).join(" ");
 
-      return `
-        <a class="${className}" href="${url}" target="_blank" rel="noreferrer">
-          ${label}
-        </a>
-      `;
+      if (!url || disabled) {
+        const title = disabledTitle || (disabled ? "Indisponível para este status" : "");
+        return `<span class="${className} catalog-button--disabled" aria-disabled="true" ${title ? `title="${title}"` : ""}>${label}</span>`;
+      }
+
+      return `<a class="${className}" href="${url}" target="_blank" rel="noreferrer">${label}</a>`;
     };
 
     const renderStatusDot = (status) => {
-      const normalizedStatus = (status || "").trim().toLowerCase();
+      const normalizedStatus = normalizeStatus(status);
       const statusClass = statusClassMap[normalizedStatus] || "status-dot--placeholder";
       const statusLabel = status && status !== "Preencher" ? status : "Status pendente";
 
@@ -219,6 +269,7 @@
       return sprintDeliveries.map((delivery, index) => {
         const repoUrl = resolveUrl(delivery.prototypeRepoPath, repositoryBaseUrl);
         const prototypeUrl = resolveUrl(delivery.prototypePagePath, pagesBaseUrl);
+        const isDisabled = isPrototypeDisabledForStatus(delivery.status);
 
         return `
           <tr class="catalog-row catalog-row--sub" data-parent="${demandId}" ${index === 0 ? `id="${demandId}"` : ""} hidden>
@@ -231,7 +282,7 @@
             </td>
             <td data-label="Documentação Requisito">${delivery.requirement}</td>
             <td data-label="Repositório GitHub (html/css)">${renderLinkCell("Ver repositório", repoUrl)}</td>
-            <td data-label="Protótipo navegável">${renderActionButton("Acessar", prototypeUrl, "catalog-button--subtle")}</td>
+            <td data-label="Protótipo navegável">${renderActionButton("Acessar", prototypeUrl, "catalog-button--subtle", isDisabled)}</td>
           </tr>
         `;
       }).join("");
@@ -243,6 +294,7 @@
       const documentationCell = renderLinkCell("Acessar documentação", entry.documentationUrl);
       const repositoryCell = renderLinkCell("Ver repositório", repositoryUrl);
       const hasSprintDeliveries = Array.isArray(entry.sprintDeliveries) && entry.sprintDeliveries.length > 0;
+      const isDisabled = isPrototypeDisabledForStatus(entry.status);
 
       const prototypeCell = hasSprintDeliveries
         ? `
@@ -255,7 +307,7 @@
             Ver sprints
           </button>
         `
-        : renderActionButton("Acessar", prototypeUrl, "catalog-button--subtle");
+        : renderActionButton("Acessar", prototypeUrl, "catalog-button--subtle", isDisabled);
 
       return `
         <tr class="catalog-row ${hasSprintDeliveries ? "catalog-row--expandable" : ""}" data-demand-id="${demandId}">
@@ -319,6 +371,35 @@
     });
 
     document.getElementById("footer-year").textContent = String(new Date().getFullYear());
+
+    const devHelpModal = document.getElementById("dev-help-modal");
+    if (devHelpModal) {
+      const openDevHelp = () => {
+        devHelpModal.hidden = false;
+        document.body.style.overflow = "hidden";
+        const closeButton = devHelpModal.querySelector(".dev-help-modal__close");
+        if (closeButton) closeButton.focus();
+      };
+
+      const closeDevHelp = () => {
+        devHelpModal.hidden = true;
+        document.body.style.overflow = "";
+      };
+
+      document.querySelectorAll("[data-open-dev-help]").forEach((button) => {
+        button.addEventListener("click", openDevHelp);
+      });
+
+      devHelpModal.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+        if (target.matches("[data-close-dev-help]")) closeDevHelp();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !devHelpModal.hidden) closeDevHelp();
+      });
+    }
   </script>
 </body>
 
