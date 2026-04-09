@@ -92,6 +92,10 @@
     </main>
   </div>
 
+  <footer class="page-footer" aria-label="Rodapé">
+    <span>Núcleo de Design Jexperts - <span id="footer-year"></span></span>
+  </footer>
+
   <script>
     const demandEntryTemplate = {
       status: "Preencher",
@@ -185,6 +189,20 @@
       `;
     };
 
+    const renderActionButton = (label, url, extraClass = "") => {
+      if (!url) {
+        return `<span class="catalog-placeholder">${label}</span>`;
+      }
+
+      const className = ["catalog-link", "catalog-button", extraClass].filter(Boolean).join(" ");
+
+      return `
+        <a class="${className}" href="${url}" target="_blank" rel="noreferrer">
+          ${label}
+        </a>
+      `;
+    };
+
     const renderStatusDot = (status) => {
       const normalizedStatus = (status || "").trim().toLowerCase();
       const statusClass = statusClassMap[normalizedStatus] || "status-dot--placeholder";
@@ -193,47 +211,30 @@
       return `<span class="status-dot ${statusClass}" title="${statusLabel}" aria-label="${statusLabel}"></span>`;
     };
 
-    const renderSprintDeliveries = (sprintDeliveries) => {
+    const renderSprintDeliveries = (sprintDeliveries, demandId) => {
       if (!Array.isArray(sprintDeliveries) || sprintDeliveries.length === 0) {
         return "";
       }
 
-      const rows = sprintDeliveries.map((delivery) => {
+      return sprintDeliveries.map((delivery, index) => {
         const repoUrl = resolveUrl(delivery.prototypeRepoPath, repositoryBaseUrl);
         const prototypeUrl = resolveUrl(delivery.prototypePagePath, pagesBaseUrl);
 
         return `
-          <tr>
+          <tr class="catalog-row catalog-row--sub" data-parent="${demandId}" ${index === 0 ? `id="${demandId}"` : ""} hidden>
             <td data-label="Status">${renderStatusDot(delivery.status)}</td>
-            <td data-label="Funcionalidade">${delivery.functionality}</td>
-            <td data-label="Requisito">${delivery.requirement}</td>
-            <td data-label="Repositório">${renderLinkCell("Ver repositório", repoUrl)}</td>
-            <td data-label="Protótipo">${renderLinkCell("Acessar", prototypeUrl, "catalog-button catalog-button--subtle")}</td>
+            <td data-label="Nome">
+              <div class="catalog-subname">
+                <span class="catalog-subname__badge">Sprint</span>
+                <span class="catalog-subname__text">${delivery.functionality}</span>
+              </div>
+            </td>
+            <td data-label="Documentação Requisito">${delivery.requirement}</td>
+            <td data-label="Repositório GitHub (html/css)">${renderLinkCell("Ver repositório", repoUrl)}</td>
+            <td data-label="Protótipo navegável">${renderActionButton("Acessar", prototypeUrl, "catalog-button--subtle")}</td>
           </tr>
         `;
       }).join("");
-
-      return `
-        <tr class="catalog-subrow">
-          <td colspan="5">
-            <div class="delivery-block">
-              <div class="delivery-block__title">Entregas por sprint</div>
-              <table class="delivery-table">
-                <thead>
-                  <tr>
-                    <th>Status</th>
-                    <th>Funcionalidade</th>
-                    <th>Requisito</th>
-                    <th>Repositório</th>
-                    <th>Protótipo</th>
-                  </tr>
-                </thead>
-                <tbody>${rows}</tbody>
-              </table>
-            </div>
-          </td>
-        </tr>
-      `;
     };
 
     const renderMainRow = (entry, demandId) => {
@@ -241,11 +242,23 @@
       const prototypeUrl = resolveUrl(entry.prototypePagePath, pagesBaseUrl);
       const documentationCell = renderLinkCell("Acessar documentação", entry.documentationUrl);
       const repositoryCell = renderLinkCell("Ver repositório", repositoryUrl);
-      const prototypeCell = renderLinkCell("Acessar", prototypeUrl, "catalog-button catalog-button--subtle");
       const hasSprintDeliveries = Array.isArray(entry.sprintDeliveries) && entry.sprintDeliveries.length > 0;
 
+      const prototypeCell = hasSprintDeliveries
+        ? `
+          <button
+            class="catalog-button catalog-button--subtle catalog-expand-button"
+            type="button"
+            aria-expanded="false"
+            aria-controls="${demandId}"
+            data-target="${demandId}">
+            Ver sprints
+          </button>
+        `
+        : renderActionButton("Acessar", prototypeUrl, "catalog-button--subtle");
+
       return `
-        <tr class="catalog-row">
+        <tr class="catalog-row ${hasSprintDeliveries ? "catalog-row--expandable" : ""}" data-demand-id="${demandId}">
           <td data-label="Status">${renderStatusDot(entry.status)}</td>
           <td data-label="Nome">
             <div class="catalog-name-cell">
@@ -275,27 +288,37 @@
       const demandId = `demand-${entry.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
       tableBody.insertAdjacentHTML("beforeend", renderMainRow(entry, demandId));
 
-      const sprintMarkup = renderSprintDeliveries(entry.sprintDeliveries);
-      if (sprintMarkup) {
-        tableBody.insertAdjacentHTML(
-          "beforeend",
-          sprintMarkup.replace('class="catalog-subrow"', `class="catalog-subrow is-collapsed" id="${demandId}" hidden`)
-        );
-      }
+      const sprintMarkup = renderSprintDeliveries(entry.sprintDeliveries, demandId);
+      if (sprintMarkup) tableBody.insertAdjacentHTML("beforeend", sprintMarkup);
     });
 
-    document.querySelectorAll(".catalog-accordion-toggle").forEach((button) => {
-      button.addEventListener("click", () => {
-        const targetId = button.getAttribute("data-target");
-        const targetRow = document.getElementById(targetId);
-        const isExpanded = button.getAttribute("aria-expanded") === "true";
+    const setExpandedState = (demandId, expanded) => {
+      document
+        .querySelectorAll(`[data-target="${demandId}"]`)
+        .forEach((control) => control.setAttribute("aria-expanded", String(expanded)));
 
-        button.setAttribute("aria-expanded", String(!isExpanded));
-        targetRow.hidden = isExpanded;
-        targetRow.classList.toggle("is-collapsed", isExpanded);
-        targetRow.classList.toggle("is-expanded", !isExpanded);
+      document
+        .querySelectorAll(`tr[data-parent="${demandId}"]`)
+        .forEach((row) => (row.hidden = !expanded));
+
+      const mainRow = document.querySelector(`tr[data-demand-id="${demandId}"]`);
+      if (mainRow) mainRow.classList.toggle("is-expanded", expanded);
+    };
+
+    const toggleExpandedState = (demandId) => {
+      const anyVisible = Array.from(document.querySelectorAll(`tr[data-parent="${demandId}"]`))
+        .some((row) => !row.hidden);
+      setExpandedState(demandId, !anyVisible);
+    };
+
+    document.querySelectorAll("[data-target]").forEach((control) => {
+      control.addEventListener("click", () => {
+        const demandId = control.getAttribute("data-target");
+        toggleExpandedState(demandId);
       });
     });
+
+    document.getElementById("footer-year").textContent = String(new Date().getFullYear());
   </script>
 </body>
 
