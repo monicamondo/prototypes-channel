@@ -7,18 +7,27 @@
   <title> Key Results - RQ004</title>
 
   <!-- Design System Tokens -->
-  <link rel="stylesheet" href="../../../../ds-channel/src/assets/fonts/font-awesome/css/font-awesome.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/colors.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/typography.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/spacing.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/borders.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/shadows.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/globals.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/components/header/Header.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/components/navbar/Navbar.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/components/table/Table.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/components/modal/Modal.css" />
-  <link rel="stylesheet" href="../../../../ds-channel/src/components/button/Button.css" />
+  <script>
+    window.CHANNEL_DS_BASE = 'https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/';
+
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('img[src*="ds-channel/src/"]').forEach(function (img) {
+        img.src = img.getAttribute('src').replace(/^.*?ds-channel\/src\//, window.CHANNEL_DS_BASE);
+      });
+    });
+  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/fonts/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/table/Table.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/modal/Modal.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css" />
 
   <style>
     /* ─── Reset & Base ─────────────────────────── */

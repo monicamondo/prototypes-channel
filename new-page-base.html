@@ -6,19 +6,28 @@
     <title>Novo Objetivo Estratégico - Channel</title>
     
     <!-- Design System Foundations -->
-    <link rel="stylesheet" href="../../ds-channel/src/assets/fonts/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="../../ds-channel/src/assets/fonts/conformit/font-conformit.css">
-    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/colors.css">
-    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/typography.css">
-    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/spacing.css">
-    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/borders.css">
-    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/shadows.css">
-    <link rel="stylesheet" href="../../ds-channel/src/foundations/tokens/globals.css">
+    <script>
+        window.CHANNEL_DS_BASE = 'https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('img[src*="ds-channel/src/"]').forEach(function (img) {
+                img.src = img.getAttribute('src').replace(/^.*?ds-channel\/src\//, window.CHANNEL_DS_BASE);
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/fonts/conformit/font-conformit.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css">
     
     <!-- Component Styles -->
-    <link rel="stylesheet" href="../../ds-channel/src/components/header/Header.css">
-    <link rel="stylesheet" href="../../ds-channel/src/components/navbar/Navbar.css">
-    <link rel="stylesheet" href="../../ds-channel/src/components/legenda/Legenda.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/legenda/Legenda.css">
 
     <style>
         /* Ajustes para garantir que a página ocupe toda a altura */
