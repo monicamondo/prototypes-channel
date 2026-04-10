@@ -44,8 +44,8 @@
             <h2 id="catalog-title">Demandas prototipadas</h2>
           </div>
           <p class="catalog-card__support">
-            <button class="catalog-help-link" type="button" data-open-dev-help>Saiba mais</button> como o
-            repositório no GitHub está organizado.
+            <button class="catalog-help-link" type="button" data-open-dev-help>SAIBA MAIS</button><br> sobre
+            como organizamos as entregas do design.
           </p>
         </div>
 
@@ -62,9 +62,9 @@
               <tr>
                 <th>Status</th>
                 <th>Nome</th>
-                <th>Documentação Requisito</th>
-                <th>Repositório GitHub (html/css)</th>
-                <th>Protótipo navegável</th>
+                <th>Documentação</th>
+                <th>Repositório<br>GitHub</th>
+                <th>Protótipo</th>
               </tr>
             </thead>
             <tbody id="prototype-table-body"></tbody>
@@ -98,26 +98,24 @@
     <div class="dev-help-modal__backdrop" data-close-dev-help></div>
     <div class="dev-help-modal__panel" role="dialog" aria-modal="true" aria-labelledby="dev-help-title" tabindex="-1">
       <div class="dev-help-modal__header">
-        <h3 id="dev-help-title">Como usar o repositório como referência</h3>
+        <h3 id="dev-help-title">Como usar os repositórios</h3>
         <button class="dev-help-modal__close" type="button" aria-label="Fechar" data-close-dev-help>×</button>
       </div>
       <div class="dev-help-modal__body">
         <p>
-          Aqui você encontra o link para protótipo navegável <b>E</b> o código HTML/CSS, que pode auxiliar na
-          implementação.
+          Concentramos todos os acessos referente às entregas de design em um só lugar. Aqui você encontra o link para
+          protótipo navegável, e o código HTML/CSS, que pode auxiliar na
+          etapa de implementação.
         </p>
 
         <ol class="dev-help-modal__steps">
           <li>
-            Na tabela, clique em <code>Ver repositório</code> da demanda (ou sprint). Isso abre o diretório no GitHub.
-          </li>
-          <li>
-            Dentro da pasta da demanda, procure o diretório <code>prototype/</code>. Ali está o
-            <code>código fonte</code> do protótipo.
+            Na tabela, clique em <code>Ver repositório</code>, e acesse o diretório no GitHub com o código fonte das
+            interfaces projetadas.
           </li>
           <li>
             O protótipo possui um <b>componente novo</b>? Você pode inspecioná-lo no StoryBook do Design System, lá
-            projetamos os status e comportamento desejados para esse componente.
+            projetamos todos os status e comportamento desejados para esse componente.
           </li>
         </ol>
 
@@ -130,10 +128,9 @@
         </div>
 
         <p class="dev-help-modal__hint">
-          Dica: a pasta <code>docs/</code> que você encontra no mesmo repositório, contém apenas resumo das nossas
-          reuniões e outros documentos gerados pelo núcleo de design durante o andamento do projeto. Esses documentos
-          não
-          são necessários para o handoff.
+          Dica: a pasta <code>docs/</code> que você encontra nos diretórios da demanda, contém apenas resumo das nossas
+          reuniões e outros documentos gerados pelo núcleo de design durante o proceso criativo. Esses documentos
+          não são necessários para o <i>handoff</i>.
         </p>
       </div>
     </div>
@@ -331,9 +328,9 @@
               `}
             </div>
           </td>
-          <td data-label="Documentação Requisito">${documentationCell}</td>
-          <td data-label="Repositório GitHub (html/css)">${repositoryCell}</td>
-          <td data-label="Protótipo navegável">${prototypeCell}</td>
+          <td data-label="Documentação">${documentationCell}</td>
+          <td data-label="Repositório<br>GitHub">${repositoryCell}</td>
+          <td data-label="Protótipo Navegável">${prototypeCell}</td>
         </tr>
       `;
     };
