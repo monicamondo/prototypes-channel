@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurar Pesos — Channel</title>
+
+    <!-- Design System Foundations -->
+    <link rel="stylesheet" href="../../../../ds-channel/src/assets/fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/colors.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/typography.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/spacing.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/borders.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/shadows.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/foundations/tokens/globals.css">
+
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../../../../ds-channel/src/components/header/Header.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/components/navbar/Navbar.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/components/table/Table.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/components/button/Button.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/components/modal/Modal.css">
+
+    <style>
+        /* Custom overrides to match reference exactly */
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .legacy-content {
+            padding: 10px 15px;
+        }
+
+        .page-breadcrumb {
+            background: #F0F0F0;
+            border-bottom: 1px solid #D5D5D5;
+            padding: 8px 12px;
+            font-size: 11px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .page-breadcrumb span {
+            font-weight: bold;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px;
+            background: #F8F8F8;
+            border: 1px solid #D5D5D5;
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: #333;
+        }
+
+        .info-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 16px;
+            height: 16px;
+            background: #5C9FD6;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .legacy-table-group-actions {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+        }
+
+        .chn-btn-legacy-action {
+            height: 20px;
+            font-size: 10px;
+            padding: 0 8px;
+            background: #606970;
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .chn-btn-legacy-action:hover {
+            background: #4a5258;
+        }
+
+        .filter-row td {
+            background: #F5F5F5 !important;
+        }
+
+        .filter-row input,
+        .filter-row select {
+            height: 18px;
+            font-size: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            padding: 0 4px;
+        }
+
+        .peso-link {
+            color: #3a6ea8;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .action-icon {
+            cursor: pointer;
+            font-size: 14px;
+            margin: 0 4px;
+            color: #555;
+        }
+
+        .action-icon:hover {
+            color: #000;
+        }
+
+        .action-icon.remove {
+            color: #cc0000;
+        }
+
+        /* Modal Overlay logic remains local as it's not in ds-channel Modal.css */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-overlay.open {
+            display: flex;
+        }
+
+        /* Style for the inner item info within the modal body */
+        .modal-item-info {
+            background: #F9F9F9;
+            border: 1px solid #E0E0E0;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 12px;
+        }
+
+        .modal-item-info .item-name {
+            font-weight: bold;
+            color: #333;
+            font-size: 13px;
+            margin-bottom: 2px;
+        }
+
+        .modal-item-info .item-meta {
+            color: #777;
+            font-size: 11px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        .form-group input {
+            width: 100%;
+            height: 30px;
+            border: 1px solid #3a6ea8;
+            background: #fff;
+            padding: 0 8px;
+            font-size: 13px;
+            border-radius: 2px;
+            outline: none;
+        }
+
+        /* Buttons logic for modal - keeping consistent with ds-channel but ensured visible */
+        .chn-btn-cancel {
+            background: #D4D4D4;
+            color: #333;
+            border: 1px solid #B0B0B0;
+            border-radius: 2px;
+            padding: 4px 15px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .chn-btn-confirm {
+            background: #E87413;
+            color: #fff;
+            border: 1px solid #d16811;
+            border-radius: 2px;
+            padding: 4px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .chn-btn-confirm:hover {
+            background: #d16811;
+        }
+
+        .toast {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #73B56E;
+            color: white;
+            padding: 10px 20px;
+            font-size: 12px;
+            font-weight: bold;
+            border-radius: 2px;
+            z-index: 11000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .toast.show {
+            display: block;
+        }
+
+        .legend-bar {
+            background: #fff;
+            border-top: none;
+            padding: 8px 12px;
+            font-size: 10px;
+            display: flex;
+            justify-content: end;
+            gap: 15px;
+            color: #555;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Specific styles for the "Associados" column */
+        .assoc-checkbox {
+            cursor: default;
+            pointer-events: none;
+        }
+
+        /* Tipo Tags */
+        .tipo-tag {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #fff;
+            font-size: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .tipo-tag.kr {
+            background-color: #5C9FD6;
+        }
+
+        .tipo-tag.indicador {
+            background-color: #73B56E;
+        }
+
+        /* Progress Bar for Relative Weight */
+        .progress-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .progress-bar-bg {
+            flex-grow: 1;
+            height: 8px;
+            background: #EAEAEA;
+            border-radius: 2px;
+            overflow: hidden;
+            max-width: 100px;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: #5C9FD6;
+        }
+
+        .progress-value {
+            font-size: 11px;
+            color: #666;
+            min-width: 40px;
+        }
+
+        .total-row td {
+            background: #F8F8F8 !important;
+            font-weight: bold;
+            font-size: 12px;
+            border-top: 2px solid #D5D5D5;
+        }
+    </style>
+</head>
+
+<body class="legacy-page">
+
+    <!-- Header Principal -->
+    <header class="legacy-header">
+        <div class="legacy-header-container">
+            <div class="legacy-header-logos">
+                <div class="logo-jexperts">
+                    <img src="../../../../ds-channel/src/assets/img/logo J.svg" alt="Logo J" class="logo-j-svg">
+                </div>
+                <div class="logo-divider"></div>
+                <div class="logo-channel">
+                    <img src="../../../../ds-channel/src/assets/img/logo-channel_.png" alt="Channel Logo"
+                        class="logo-channel-img">
+                </div>
+            </div>
+
+            <div class="legacy-header-actions">
+                <div class="release-notes-dropdown">
+                    <div class="release-notes-trigger">
+                        <span class="release-text">Release Notes</span>
+                        <i class="fa fa-th grid-icon"></i>
+                        <div class="notification-container">
+                            <i class="fa fa-bell bell-icon"></i>
+                            <span class="notification-badge">0</span>
+                        </div>
+                        <i class="fa fa-caret-down dropdown-caret"></i>
+                    </div>
+                </div>
+
+                <div class="profile-dropdown">
+                    <div class="profile-avatar">MM</div>
+                    <div class="profile-info">
+                        <span class="profile-name">Mônica Mondo</span>
+                        <span class="profile-role">Gestor</span>
+                    </div>
+                    <i class="fa fa-caret-down dropdown-caret"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navbar Principal -->
+    <nav class="legacy-navbar">
+        <div class="navbar-home">
+            <i class="fa fa-home"></i>
+        </div>
+        <div class="navbar-item is-active-page">
+            <div class="navbar-item-trigger">
+                <i class="fa fa-puzzle-piece" style="color:#F97316;"></i>
+                Plano estratégico
+            </div>
+        </div>
+        <div class="navbar-item">
+            <div class="navbar-item-trigger">
+                <img src="../../../../ds-channel/src/assets/img/meu_channel_menul.svg" alt="Meu Channel"
+                    class="navbar-module-icon" />
+                Meu Channel
+            </div>
+        </div>
+        <div class="navbar-item">
+            <div class="navbar-item-trigger">
+                <img src="../../../../ds-channel/src/assets/img/estrategia_menu.svg" alt="Estratégia"
+                    class="navbar-module-icon" />
+                Estratégia
+            </div>
+        </div>
+        <div class="navbar-item">
+            <div class="navbar-item-trigger">
+                <img src="../../../../ds-channel/src/assets/img/desempenho_menu.svg" alt="Desempenho"
+                    class="navbar-module-icon" />
+                Desempenho
+            </div>
+        </div>
+        <div class="navbar-item">
+            <div class="navbar-item-trigger">
+                <img src="../../../../ds-channel/src/assets/img/projetos_demandas_menu.svg" alt="Projetos e demandas"
+                    class="navbar-module-icon" />
+                Projetos e demandas
+            </div>
+        </div>
+        <div class="navbar-item">
+            <div class="navbar-item-trigger">
+                <img src="../../../../ds-channel/src/assets/img/administracao_meni.svg" alt="Administração"
+                    class="navbar-module-icon" />
+                Administração
+            </div>
+        </div>
+
+        <div class="navbar-item-plain" style="margin-left: auto;">
+            <span style="font-size:13px; color:#ccc; font-weight:bold;">?</span>
+        </div>
+        <div class="navbar-item-plain">
+            <i class="fa fa-info-circle"></i>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb Bar -->
+    <div class="page-breadcrumb">
+        <span>Plano:</span> planoelkar21 &nbsp;&nbsp; <span>Ciclo:</span> 2025
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <main class="legacy-content">
+
+        <!-- Área de Seleção (Task Bar) -->
+        <div class="select-info" style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+            <label class="section-title">Revisões:</label>
+            <select class="chn-input" style="width: 120px;">
+                <option>2025</option>
+            </select>
+        </div>
+
+        <!-- Seção da Tabela -->
+        <div class="table-section">
+            <div class="section-header">
+                <div class="section-title">
+                    Objetivos <span style="font-weight:normal;">(<span id="total-count">0</span> itens)</span>
+                    <span class="info-btn" title="Objetivos do Ciclo">i</span>
+                </div>
+
+            </div>
+
+            <div class="chn-table-responsive">
+                <table class="legacy-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px; text-align: center;">Associados</th>
+                            <th style="width: 30%;">Nome</th>
+                            <th style="width: 100px; text-align: center;">Tipo</th>
+                            <th style="width: 20%;">Unidade / Polaridade</th>
+                            <th style="width: 60px; text-align: right;">Peso</th>
+                            <th style="width: 180px;">Peso relativo (?)</th>
+                            <th style="width: 80px; text-align: center;">Ações</th>
+                        </tr>
+                        <tr class="filter-row">
+                            <td style="text-align: center;"></td>
+                            <td><input type="text" placeholder=""></td>
+                            <td>
+                                <select>
+                                    <option>Todos</option>
+                                    <option>Indicador</option>
+                                    <option>KR</option>
+                                </select>
+                            </td>
+                            <td><input type="text" placeholder=""></td>
+                            <td></td>
+                            <td></td>
+                            <td style="text-align: center;">
+                                <div style="display:flex; gap: 4px; justify-content: center;">
+                                    <button class="chn-btn"
+                                        style="height: 18px; font-size: 9px; padding: 0 4px;">Limpar</button>
+                                    <button class="chn-btn"
+                                        style="height: 18px; font-size: 9px; padding: 0 4px;">Filtrar</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody id="items-tbody">
+                        <!-- Rendered by JS -->
+                    </tbody>
+                    <tfoot id="items-tfoot">
+                        <!-- Rendered by JS -->
+                    </tfoot>
+                </table>
+
+                <div class="legacy-pagination">
+                    <span>Página 1 de 1</span>
+                    <div class="pagination-pages">
+                        <div class="pagination-numbers">
+                            <span style="font-weight: bold;">1</span>
+                        </div>
+                    </div>
+                    <select class="pagination-select">
+                        <option>10 itens por página</option>
+                        <option>25 itens por página</option>
+                        <option>50 itens por página</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="legend-bar">
+                <div class="legend-item">
+                    <img src="../../../../ds-channel/src/assets/img/ico-lupa.gif" alt="Editar peso"> Editar peso
+                </div>
+            </div>
+
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; color: #777; font-size: 11px;">
+            Channel - Da estratégia à execução © JExperts Tecnologia 2026 - Direitos reservados
+        </div>
+
+    </main>
+
+    <!-- MODAL -->
+    <div class="modal-overlay" id="modal-peso">
+        <div class="legacy-modal" style="width: 380px;">
+            <div class="legacy-modal-title">
+                <span>Editar Peso</span>
+                <span onclick="fecharModal()">&times;</span>
+            </div>
+            <div class="legacy-modal-body">
+                <div class="modal-item-info">
+                    <div class="item-name" id="modal-item-nome">—</div>
+                    <div class="item-meta" id="modal-item-meta">—</div>
+                </div>
+                <div class="form-group">
+                    <label>Peso <span style="color:#c00;">*</span></label>
+                    <input type="number" id="modal-peso-input" min="0" step="1" value="1" />
+                    <div class="legacy-modal-subtitle">Valor numérico inteiro ≥ 0. Peso padrão: 1.</div>
+                </div>
+            </div>
+            <div class="legacy-modal-footer">
+                <button class="chn-btn-cancel" onclick="fecharModal()">Cancelar</button>
+                <button class="chn-btn-confirm" onclick="confirmarPeso()">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast">Operação realizada com sucesso!</div>
+
+    <script>
+        const items = [
+            { id: 1, nome: 'Taxa de conversão de novos clientes', tipo: 'KR', meta: '% / Maior é melhor', peso: 1 },
+            { id: 2, nome: 'Volume de vendas mensais', tipo: 'KR', meta: 'R$ / Maior é melhor', peso: 1 },
+            { id: 3, nome: 'Novos contratos fechados no trimestre', tipo: 'KR', meta: 'Unidades / Maior é melhor', peso: 2 },
+            { id: 4, nome: 'Market Share % (região Sul)', tipo: 'Indicador', meta: '% / Maior é melhor', peso: 1 },
+            { id: 5, nome: 'Índice de satisfação do cliente (NPS)', tipo: 'Indicador', meta: 'Pontos / Maior é melhor', peso: 3 },
+        ];
+
+        let editingId = null;
+
+        function renderRows() {
+            const tbody = document.getElementById('items-tbody');
+            const tfoot = document.getElementById('items-tfoot');
+            tbody.innerHTML = '';
+            tfoot.innerHTML = '';
+
+            const totalPeso = items.reduce((acc, item) => acc + item.peso, 0);
+
+            items.forEach((item) => {
+                const relativeWeight = (item.peso / (totalPeso || 1)) * 100;
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td style="text-align: center;">
+                        <input type="checkbox" checked readonly class="assoc-checkbox" onclick="return false;">
+                    </td>
+                    <td>${item.nome}</td>
+                    <td style="text-align: center;">
+                        <span class="tipo-tag ${item.tipo.toLowerCase()}">${item.tipo}</span>
+                    </td>
+                    <td>${item.meta}</td>
+                    <td style="text-align: right;">
+                        <span class="peso-link" onclick="abrirModal(${item.id})">${item.peso}</span>
+                    </td>
+                    <td>
+                        <div class="progress-container">
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: ${relativeWeight}%"></div>
+                            </div>
+                            <div class="progress-value">${relativeWeight.toFixed(1)}%</div>
+                        </div>
+                    </td>
+                    <td style="text-align: center;">
+                        <img src="../../../../ds-channel/src/assets/img/ico-lupa.gif" class="action-icon" title="Editar peso" style="width: 14px; cursor: pointer;" onclick="abrirModal(${item.id})">
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Summary Row
+            const trFoot = document.createElement('tr');
+            trFoot.className = 'total-row';
+            trFoot.innerHTML = `
+                <td colspan="4" style="text-align: right;">Total</td>
+                <td style="text-align: right;">${totalPeso}</td>
+                <td>100%</td>
+                <td></td>
+            `;
+            tfoot.appendChild(trFoot);
+
+            document.getElementById('total-count').textContent = items.length;
+        }
+
+        function abrirModal(id) {
+            const item = items.find(i => i.id === id);
+            if (!item) return;
+            editingId = id;
+            document.getElementById('modal-item-nome').textContent = item.nome;
+            document.getElementById('modal-item-meta').textContent = `Tipo: ${item.tipo} • ${item.meta}`;
+            document.getElementById('modal-peso-input').value = item.peso;
+            document.getElementById('modal-peso').classList.add('open');
+            setTimeout(() => document.getElementById('modal-peso-input').focus(), 80);
+        }
+
+        function fecharModal() {
+            document.getElementById('modal-peso').classList.remove('open');
+            editingId = null;
+        }
+
+        function confirmarPeso() {
+            if (editingId === null) return;
+            const val = parseFloat(document.getElementById('modal-peso-input').value);
+            if (isNaN(val) || val < 0) { alert('Informe um valor válido.'); return; }
+            items.find(i => i.id === editingId).peso = val;
+            fecharModal();
+            renderRows();
+            showToast('Peso atualizado com sucesso!');
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg; t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
+
+        renderRows();
+    </script>
+</body>
+
+</html>
