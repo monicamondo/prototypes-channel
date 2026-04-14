@@ -298,33 +298,7 @@
             background-color: #73B56E;
         }
 
-        /* Progress Bar for Relative Weight */
-        .progress-container {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-        }
 
-        .progress-bar-bg {
-            flex-grow: 1;
-            height: 8px;
-            background: #EAEAEA;
-            border-radius: 2px;
-            overflow: hidden;
-            max-width: 100px;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            background: #5C9FD6;
-        }
-
-        .progress-value {
-            font-size: 11px;
-            color: #666;
-            min-width: 40px;
-        }
 
         .total-row td {
             background: #F8F8F8 !important;
@@ -464,9 +438,7 @@
                             <th style="width: 40px; text-align: center;">Associados</th>
                             <th style="width: 30%;">Nome</th>
                             <th style="width: 100px; text-align: center;">Tipo</th>
-                            <th style="width: 20%;">Unidade / Polaridade</th>
                             <th style="width: 60px; text-align: right;">Peso</th>
-                            <th style="width: 180px;">Peso relativo (?)</th>
                             <th style="width: 80px; text-align: center;">Ações</th>
                         </tr>
                         <tr class="filter-row">
@@ -479,8 +451,6 @@
                                     <option>KR</option>
                                 </select>
                             </td>
-                            <td><input type="text" placeholder=""></td>
-                            <td></td>
                             <td></td>
                             <td style="text-align: center;">
                                 <div style="display:flex; gap: 4px; justify-content: center;">
@@ -576,7 +546,6 @@
             const totalPeso = items.reduce((acc, item) => acc + item.peso, 0);
 
             items.forEach((item) => {
-                const relativeWeight = (item.peso / (totalPeso || 1)) * 100;
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td style="text-align: center;">
@@ -586,17 +555,8 @@
                     <td style="text-align: center;">
                         <span class="tipo-tag ${item.tipo.toLowerCase()}">${item.tipo}</span>
                     </td>
-                    <td>${item.meta}</td>
                     <td style="text-align: right;">
                         <span class="peso-link" onclick="abrirModal(${item.id})">${item.peso}</span>
-                    </td>
-                    <td>
-                        <div class="progress-container">
-                            <div class="progress-bar-bg">
-                                <div class="progress-bar-fill" style="width: ${relativeWeight}%"></div>
-                            </div>
-                            <div class="progress-value">${relativeWeight.toFixed(1)}%</div>
-                        </div>
                     </td>
                     <td style="text-align: center;">
                         <img src="../../../../ds-channel/src/assets/img/ico-lupa.gif" class="action-icon" title="Editar peso" style="width: 14px; cursor: pointer;" onclick="abrirModal(${item.id})">
@@ -609,9 +569,8 @@
             const trFoot = document.createElement('tr');
             trFoot.className = 'total-row';
             trFoot.innerHTML = `
-                <td colspan="4" style="text-align: right;">Total</td>
+                <td colspan="3" style="text-align: right;">Total</td>
                 <td style="text-align: right;">${totalPeso}</td>
-                <td>100%</td>
                 <td></td>
             `;
             tfoot.appendChild(trFoot);
@@ -624,7 +583,7 @@
             if (!item) return;
             editingId = id;
             document.getElementById('modal-item-nome').textContent = item.nome;
-            document.getElementById('modal-item-meta').textContent = `Tipo: ${item.tipo} • ${item.meta}`;
+            document.getElementById('modal-item-meta').textContent = `Tipo: ${item.tipo}`;
             document.getElementById('modal-peso-input').value = item.peso;
             document.getElementById('modal-peso').classList.add('open');
             setTimeout(() => document.getElementById('modal-peso-input').focus(), 80);
