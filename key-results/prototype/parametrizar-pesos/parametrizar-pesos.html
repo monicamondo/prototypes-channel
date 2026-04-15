@@ -21,20 +21,32 @@
             });
         });
     </script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/fonts/font-awesome/css/font-awesome.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/fonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css">
 
     <!-- Component Styles -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/table/Table.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/modal/Modal.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/table/Table.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/modal/Modal.css">
 
     <style>
         /* Custom overrides to match reference exactly */
@@ -306,6 +318,23 @@
             font-size: 12px;
             border-top: 2px solid #D5D5D5;
         }
+
+        /* Estilo para edição inline do peso */
+        .peso-input-inline {
+            width: 60px;
+            height: 22px;
+            text-align: right;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            padding: 0 5px;
+            font-size: 12px;
+            font-family: inherit;
+        }
+
+        .peso-input-inline:focus {
+            border-color: #3a6ea8;
+            outline: none;
+        }
     </style>
 </head>
 
@@ -471,17 +500,20 @@
                 </table>
 
                 <div class="legacy-pagination">
-                    <span>Página 1 de 1</span>
                     <div class="pagination-pages">
+                        <span>Página 1 de 1</span>
                         <div class="pagination-numbers">
-                            <span style="font-weight: bold;">1</span>
+                            <span style="font-weight: bold; color: var(--chn-color-primary);">1</span>
+                            <span>►</span>
                         </div>
                     </div>
-                    <select class="pagination-select">
-                        <option>10 itens por página</option>
-                        <option>25 itens por página</option>
-                        <option>50 itens por página</option>
-                    </select>
+                    <div style="display:flex; align-items:center; gap:8px">
+                        <select class="pagination-select">
+                            <option>10 itens por página</option>
+                            <option>25 itens por página</option>
+                            <option>50 itens por página</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -539,11 +571,7 @@
 
         function renderRows() {
             const tbody = document.getElementById('items-tbody');
-            const tfoot = document.getElementById('items-tfoot');
             tbody.innerHTML = '';
-            tfoot.innerHTML = '';
-
-            const totalPeso = items.reduce((acc, item) => acc + item.peso, 0);
 
             items.forEach((item) => {
                 const tr = document.createElement('tr');
@@ -556,7 +584,9 @@
                         <span class="tipo-tag ${item.tipo.toLowerCase()}">${item.tipo}</span>
                     </td>
                     <td style="text-align: right;">
-                        <span class="peso-link" onclick="abrirModal(${item.id})">${item.peso}</span>
+                        <input type="number" class="peso-input-inline" value="${item.peso}" min="0" step="1" 
+                            onchange="atualizarPesoInline(${item.id}, this.value)" 
+                            oninput="atualizarPesoInline(${item.id}, this.value)">
                     </td>
                     <td style="text-align: center;">
                         <img src="../../../../ds-channel/src/assets/img/ico-lupa.gif" class="action-icon" title="Editar peso" style="width: 14px; cursor: pointer;" onclick="abrirModal(${item.id})">
@@ -565,17 +595,37 @@
                 tbody.appendChild(tr);
             });
 
-            // Summary Row
+            renderFooter();
+            document.getElementById('total-count').textContent = items.length;
+        }
+
+        function renderFooter() {
+            const tfoot = document.getElementById('items-tfoot');
+            tfoot.innerHTML = '';
+            const totalPeso = items.reduce((acc, item) => acc + item.peso, 0);
+
             const trFoot = document.createElement('tr');
             trFoot.className = 'total-row';
             trFoot.innerHTML = `
                 <td colspan="3" style="text-align: right;">Total</td>
-                <td style="text-align: right;">${totalPeso}</td>
+                <td style="text-align: right;" id="total-peso-sum">${totalPeso}</td>
                 <td></td>
             `;
             tfoot.appendChild(trFoot);
+        }
 
-            document.getElementById('total-count').textContent = items.length;
+        function atualizarPesoInline(id, value) {
+            const val = parseFloat(value);
+            if (isNaN(val) || val < 0) return;
+
+            const item = items.find(i => i.id === id);
+            if (item) {
+                item.peso = val;
+                // Atualiza o total sem re-renderizar a tabela para não perder o foco
+                const totalPeso = items.reduce((acc, item) => acc + item.peso, 0);
+                const sumEl = document.getElementById('total-peso-sum');
+                if (sumEl) sumEl.textContent = totalPeso;
+            }
         }
 
         function abrirModal(id) {
