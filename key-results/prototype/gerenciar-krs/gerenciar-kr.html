@@ -16,25 +16,37 @@
       });
     });
   </script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/fonts/font-awesome/css/font-awesome.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/fonts/conformit/font-conformit.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/fonts/font-awesome/css/font-awesome.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/fonts/conformit/font-conformit.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css">
 
   <!-- Component Styles -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/table/Table.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/legenda/Legenda.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/legenda/Legenda.css">
+  <link rel="stylesheet" href="../../../../ds-channel/src/components/breadcrumb/Breadcrumb.css">
+  <link rel="stylesheet" href="../../../../ds-channel/src/components/page-title/PageTitle.css">
 
   <style>
-    /* Ajustes para garantir que a pÃ¡gina ocupe toda a altura */
-    /* Reset e Base */
     body {
       margin: 0;
       padding: 0;
@@ -128,21 +140,7 @@
     }
 
     /* â”€â”€â”€ Breadcrumb â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
-    .page-breadcrumb {
-      background: #F0F0F0;
-      border-bottom: 1px solid #D5D5D5;
-      padding: 8px 12px;
-      font-size: 11px;
-      color: #333;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: var(--chn-font-family);
-    }
-
-    .page-breadcrumb span {
-      font-weight: bold;
-    }
+    /* Standardized Breadcrumb and PageTitle - Styles now in ds-channel */
 
     /* â”€â”€â”€ Override - Remove Accordion Header Border â”€â”€â”€â”€â”€ */
     .legacy-table-group-header {
@@ -678,7 +676,8 @@
     <!-- Módulos Padrão -->
     <div class="navbar-item" data-menu="meu-channel">
       <div class="navbar-item-trigger">
-        <img src="../../../ds-channel/src/assets/img/meu_channel_menul.svg" alt="Meu Channel" class="navbar-module-icon" />
+        <img src="../../../ds-channel/src/assets/img/meu_channel_menul.svg" alt="Meu Channel"
+          class="navbar-module-icon" />
         Meu Channel
       </div>
     </div>
@@ -717,8 +716,8 @@
     </div>
   </nav>
 
-  <!-- Breadcrumb (Task 1) -->
-  <div class="page-breadcrumb">
+  <!-- Breadcrumb (Standardized) -->
+  <div class="chn-breadcrumb">
     <span>Plano:</span> planoelkar21 &nbsp;&nbsp; <span>Ciclo:</span> 2025
   </div>
 
@@ -727,11 +726,10 @@
     <!-- Título da Página -->
     <div class="legacy-filter-block">
 
-      <!-- Seleção de Objetivo Estratégico (Task Request) -->
-      <div class="select-info">
-        <label class="section-title"> Objetivo estratégico:</label>
-        <select class="chn-input"
-          style="width: 380px; border: 1px solid #CCCCCC; height: 22px; font-size: 11px; padding: 2px 4px; outline: none; background-color: #fff;">
+      <!-- Seleção de Objetivo Estratégico (Standardized) -->
+      <div class="chn-page-title-bar">
+        <label class="chn-title"> Objetivo estratégico:</label>
+        <select class="chn-input" style="width: 380px;">
           <option>Aumentar Market Share em 15% até o fim do semestre</option>
           <option>Reduzir custos operacionais em 10% através de automação</option>
           <option>Melhorar o NPS (Net Promoter Score) de 65 para 80</option>
@@ -741,10 +739,11 @@
 
     <!-- Seção KR's (Versão Tabela Reconstruída a partir da Drawer) -->
     <div class="table-section" style="margin-top: 10px;">
-      <div class="section-header">
-        <div class="section-title"> Key Results <span style="font-weight:normal;">(<span id="total-krs-count">0</span>
+      <div class="chn-section-header">
+        <div class="chn-section-title"> Key Results <span style="font-weight:normal;">(<span
+              id="total-krs-count">0</span>
             itens)</span>
-          <span class="info-btn" title="Key Results do Objetivo">i</span>
+          <span class="chn-info-btn" title="Key Results do Objetivo">i</span>
         </div>
         <div class="legacy-table-group-actions">
           <button class="chn-btn chn-btn-primary" style="height: 20px; font-size: 10px; padding: 0 8px; gap: 4px;"
@@ -757,7 +756,8 @@
           </button>
           <button class="chn-btn chn-btn-primary" style="height: 20px; font-size: 10px; padding: 0 8px; gap: 4px;"
             onclick="event.stopPropagation(); alert('Importando do Excel...')">
-            <img src="../../../ds-channel/src/assets/img/ico_file_xls.gif" style="width:13px; height:13px" /> Importar do
+            <img src="../../../ds-channel/src/assets/img/ico_file_xls.gif" style="width:13px; height:13px" /> Importar
+            do
             Excel
           </button>
         </div>
@@ -1102,10 +1102,10 @@
               status: 'green',
               responsavel: 'Elkar Almeida',
               arquivado: false,
-              ultimaMedicao: '2026-03-30',
+              ultimaMedicao: '30-03-2026',
               medicoes: [
-                { data: '2026-03-15', valor: 800000, comentario: 'Início do projeto' },
-                { data: '2026-03-30', valor: 2000000, comentario: 'Fechamento contrato Alpha' }
+                { data: '15-03-2026', valor: 800000, comentario: 'Início do projeto' },
+                { data: '30-03-2026', valor: 2000000, comentario: 'Fechamento contrato Alpha' }
               ]
             },
             {
@@ -1122,10 +1122,10 @@
               status: 'red',
               responsavel: 'Ana Paula Ferreira',
               arquivado: false,
-              ultimaMedicao: '2026-01-20',
+              ultimaMedicao: '20-01-2026',
               medicoes: [
-                { data: '2026-01-10', valor: 7.2, comentario: 'Treinamento equipe' },
-                { data: '2026-01-20', valor: 5.6, comentario: 'Novos processos' }
+                { data: '10-01-2026', valor: 7.2, comentario: 'Treinamento equipe' },
+                { data: '20-01-2026', valor: 5.6, comentario: 'Novos processos' }
               ]
             },
             {
@@ -1142,8 +1142,8 @@
               status: 'yellow',
               responsavel: 'Marcos Souza',
               arquivado: false,
-              ultimaMedicao: '2026-04-01',
-              medicoes: [{ data: '2026-04-01', valor: 3.5, comentario: 'Primeira fase concluída' }]
+              ultimaMedicao: '01-04-2026',
+              medicoes: [{ data: '01-04-2026', valor: 3.5, comentario: 'Primeira fase concluída' }]
             },
             {
               id: 4,
@@ -1173,8 +1173,8 @@
               status: 'blue',
               responsavel: 'Mônica Mondo',
               arquivado: false,
-              ultimaMedicao: '2026-04-05',
-              medicoes: [{ data: '2026-04-05', valor: 92, comentario: 'Pesquisa satisfação Q1' }]
+              ultimaMedicao: '05-04-2026',
+              medicoes: [{ data: '05-04-2026', valor: 92, comentario: 'Pesquisa satisfação Q1' }]
             },
             {
               id: 6,
@@ -1204,8 +1204,8 @@
               status: 'green',
               responsavel: 'Carlos Lima',
               arquivado: false,
-              ultimaMedicao: '2026-04-07',
-              medicoes: [{ data: '2026-04-07', valor: 100, comentario: 'Migração concluída com sucesso' }]
+              ultimaMedicao: '07-04-2026',
+              medicoes: [{ data: '07-04-2026', valor: 100, comentario: 'Migração concluída com sucesso' }]
             }
           ];
 

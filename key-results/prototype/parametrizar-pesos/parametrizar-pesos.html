@@ -1,18 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" ng-app="ConfigurarPesosApp">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Configurar Pesos — Channel</title>
 
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Design System Foundations -->
     <script>
-        // GitHub Pages compatibility: Use CDN for ds-channel assets when published
         window.CHANNEL_DS_BASE = 'https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/';
-
         document.addEventListener('DOMContentLoaded', function () {
-            // Update images that reference ds-channel locally to use CDN if they fail or contextually
             document.querySelectorAll('img[src*="ds-channel/src/"]').forEach(function (img) {
                 const currentSrc = img.getAttribute('src');
                 if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
@@ -47,88 +47,26 @@
         href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/modal/Modal.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/components/breadcrumb/Breadcrumb.css">
+    <link rel="stylesheet" href="../../../../ds-channel/src/components/page-title/PageTitle.css">
 
     <style>
         /* Custom overrides to match reference exactly */
         body {
             background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            font-family: var(--chn-font-family);
         }
 
         .legacy-content {
-            padding: 10px 15px;
+            padding: 20px;
+            /* Standardized with gerenciar-kr.html */
         }
 
-        .page-breadcrumb {
-            background: #F0F0F0;
-            border-bottom: 1px solid #D5D5D5;
-            padding: 8px 12px;
-            font-size: 11px;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        /* Standardized Breadcrumb and PageTitle - Styles now in ds-channel */
 
-        .page-breadcrumb span {
-            font-weight: bold;
-        }
-
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 10px;
-            background: #F8F8F8;
-            border: 1px solid #D5D5D5;
-            border-bottom: none;
-        }
-
-        .section-title {
-            font-size: 12px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            color: #333;
-        }
-
-        .info-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 16px;
-            height: 16px;
-            background: #5C9FD6;
-            color: #fff;
-            border-radius: 50%;
-            font-size: 10px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .legacy-table-group-actions {
-            display: flex;
-            gap: 5px;
-            align-items: center;
-        }
-
-        .chn-btn-legacy-action {
-            height: 20px;
-            font-size: 10px;
-            padding: 0 8px;
-            background: #606970;
-            color: #fff;
-            border: none;
-            border-radius: 2px;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .chn-btn-legacy-action:hover {
-            background: #4a5258;
-        }
+        /* Standardized PageTitle - Styles now in ds-channel */
 
         .filter-row td {
             background: #F5F5F5 !important;
@@ -136,160 +74,13 @@
 
         .filter-row input,
         .filter-row select {
-            height: 18px;
+            height: 20px;
             font-size: 10px;
             width: 100%;
             border: 1px solid #ccc;
             padding: 0 4px;
         }
 
-        .peso-link {
-            color: #3a6ea8;
-            text-decoration: underline;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .action-icon {
-            cursor: pointer;
-            font-size: 14px;
-            margin: 0 4px;
-            color: #555;
-        }
-
-        .action-icon:hover {
-            color: #000;
-        }
-
-        .action-icon.remove {
-            color: #cc0000;
-        }
-
-        /* Modal Overlay logic remains local as it's not in ds-channel Modal.css */
-        .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-overlay.open {
-            display: flex;
-        }
-
-        /* Style for the inner item info within the modal body */
-        .modal-item-info {
-            background: #F9F9F9;
-            border: 1px solid #E0E0E0;
-            padding: 10px;
-            margin-bottom: 15px;
-            font-size: 12px;
-        }
-
-        .modal-item-info .item-name {
-            font-weight: bold;
-            color: #333;
-            font-size: 13px;
-            margin-bottom: 2px;
-        }
-
-        .modal-item-info .item-meta {
-            color: #777;
-            font-size: 11px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 6px;
-            color: #333;
-        }
-
-        .form-group input {
-            width: 100%;
-            height: 30px;
-            border: 1px solid #3a6ea8;
-            background: #fff;
-            padding: 0 8px;
-            font-size: 13px;
-            border-radius: 2px;
-            outline: none;
-        }
-
-        /* Buttons logic for modal - keeping consistent with ds-channel but ensured visible */
-        .chn-btn-cancel {
-            background: #D4D4D4;
-            color: #333;
-            border: 1px solid #B0B0B0;
-            border-radius: 2px;
-            padding: 4px 15px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .chn-btn-confirm {
-            background: #E87413;
-            color: #fff;
-            border: 1px solid #d16811;
-            border-radius: 2px;
-            padding: 4px 20px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .chn-btn-confirm:hover {
-            background: #d16811;
-        }
-
-        .toast {
-            display: none;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #73B56E;
-            color: white;
-            padding: 10px 20px;
-            font-size: 12px;
-            font-weight: bold;
-            border-radius: 2px;
-            z-index: 11000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .toast.show {
-            display: block;
-        }
-
-        .legend-bar {
-            background: #fff;
-            border-top: none;
-            padding: 8px 12px;
-            font-size: 10px;
-            display: flex;
-            justify-content: end;
-            gap: 15px;
-            color: #555;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        /* Specific styles for the "Associados" column */
-        .assoc-checkbox {
-            cursor: default;
-            pointer-events: none;
-        }
-
-        /* Tipo Tags */
         .tipo-tag {
             display: inline-block;
             padding: 2px 6px;
@@ -310,8 +101,6 @@
             background-color: #73B56E;
         }
 
-
-
         .total-row td {
             background: #F8F8F8 !important;
             font-weight: bold;
@@ -319,7 +108,6 @@
             border-top: 2px solid #D5D5D5;
         }
 
-        /* Estilo para edição inline do peso */
         .peso-input-inline {
             width: 60px;
             height: 22px;
@@ -331,14 +119,85 @@
             font-family: inherit;
         }
 
-        .peso-input-inline:focus {
-            border-color: #3a6ea8;
+        /* Progress Bar styles move to ds-channel component if needed, but keeping for now */
+
+        .calendar-filter-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4px;
+            background: #fff;
+            border: 1px solid #ccc;
+            padding: 0 4px;
+            height: 18px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .calendar-filter-wrapper input[type="date"] {
+            border: none;
             outline: none;
+            background: transparent;
+            font-size: 10px;
+            width: calc(100% - 16px);
+            font-family: inherit;
+            order: 1;
+        }
+
+        .calendar-filter-wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+            display: none;
+            -webkit-appearance: none;
+        }
+
+        .calendar-icon-trigger {
+            width: 12px;
+            height: 12px;
+            cursor: pointer;
+            order: 2;
+            flex-shrink: 0;
+        }
+
+        /* 100% Width Footers */
+        .legacy-footer {
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            color: #777;
+            font-size: 11px;
+            border-top: 1px solid #D5D5D5;
+            width: 100%;
+        }
+
+        /* Grid Adjustments */
+        .chn-table-responsive {
+            margin-top: 10px;
+            background: #fff;
+        }
+
+        /* Ensure Header and Navbar are 100% and don't shrink */
+        .legacy-header,
+        .legacy-navbar {
+            width: 100%;
+            min-width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .legacy-header-actions {
+                gap: 15px;
+            }
+
+            .profile-info {
+                display: none;
+            }
+
+            .page-breadcrumb {
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
 
-<body class="legacy-page">
+<body class="legacy-page" ng-controller="ConfigurarPesosCtrl">
 
     <!-- Header Principal -->
     <header class="legacy-header">
@@ -390,43 +249,29 @@
                 Plano estratégico
             </div>
         </div>
-        <div class="navbar-item">
+        <div class="navbar-item d-none d-md-flex">
             <div class="navbar-item-trigger">
                 <img src="../../../../ds-channel/src/assets/img/meu_channel_menul.svg" alt="Meu Channel"
                     class="navbar-module-icon" />
                 Meu Channel
             </div>
         </div>
-        <div class="navbar-item">
+        <div class="navbar-item d-none d-lg-flex">
             <div class="navbar-item-trigger">
                 <img src="../../../../ds-channel/src/assets/img/estrategia_menu.svg" alt="Estratégia"
                     class="navbar-module-icon" />
                 Estratégia
             </div>
         </div>
-        <div class="navbar-item">
+        <div class="navbar-item d-none d-xl-flex">
             <div class="navbar-item-trigger">
                 <img src="../../../../ds-channel/src/assets/img/desempenho_menu.svg" alt="Desempenho"
                     class="navbar-module-icon" />
                 Desempenho
             </div>
         </div>
-        <div class="navbar-item">
-            <div class="navbar-item-trigger">
-                <img src="../../../../ds-channel/src/assets/img/projetos_demandas_menu.svg" alt="Projetos e demandas"
-                    class="navbar-module-icon" />
-                Projetos e demandas
-            </div>
-        </div>
-        <div class="navbar-item">
-            <div class="navbar-item-trigger">
-                <img src="../../../../ds-channel/src/assets/img/administracao_meni.svg" alt="Administração"
-                    class="navbar-module-icon" />
-                Administração
-            </div>
-        </div>
 
-        <div class="navbar-item-plain" style="margin-left: auto;">
+        <div class="navbar-item-plain ms-auto">
             <span style="font-size:13px; color:#ccc; font-weight:bold;">?</span>
         </div>
         <div class="navbar-item-plain">
@@ -434,235 +279,177 @@
         </div>
     </nav>
 
-    <!-- Breadcrumb Bar -->
-    <div class="page-breadcrumb">
+    <!-- Breadcrumb Bar (Standardized) -->
+    <div class="chn-breadcrumb">
         <span>Plano:</span> planoelkar21 &nbsp;&nbsp; <span>Ciclo:</span> 2025
     </div>
 
     <!-- Conteúdo Principal -->
-    <main class="legacy-content">
+    <main class="container-fluid legacy-content">
 
-        <!-- Área de Seleção (Task Bar) -->
-        <div class="select-info" style="margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
-            <label class="section-title">Revisões:</label>
-            <select class="chn-input" style="width: 120px;">
+        <!-- Seleção de Revisões (Standardized) -->
+        <div class="chn-page-title-bar mb-3">
+            <label class="chn-title">Revisões:</label>
+            <select class="chn-input">
                 <option>2025</option>
             </select>
         </div>
 
-        <!-- Seção da Tabela -->
-        <div class="table-section">
-            <div class="section-header">
-                <div class="section-title">
-                    Objetivos <span style="font-weight:normal;">(<span id="total-count">0</span> itens)</span>
-                    <span class="info-btn" title="Objetivos do Ciclo">i</span>
-                </div>
-
-            </div>
-
-            <div class="chn-table-responsive">
-                <table class="legacy-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 40px; text-align: center;">Associados</th>
-                            <th style="width: 30%;">Nome</th>
-                            <th style="width: 100px; text-align: center;">Tipo</th>
-                            <th style="width: 60px; text-align: right;">Peso</th>
-                            <th style="width: 80px; text-align: center;">Ações</th>
-                        </tr>
-                        <tr class="filter-row">
-                            <td style="text-align: center;"></td>
-                            <td><input type="text" placeholder=""></td>
-                            <td>
-                                <select>
-                                    <option>Todos</option>
-                                    <option>Indicador</option>
-                                    <option>KR</option>
-                                </select>
-                            </td>
-                            <td></td>
-                            <td style="text-align: center;">
-                                <div style="display:flex; gap: 4px; justify-content: center;">
-                                    <button class="chn-btn"
-                                        style="height: 18px; font-size: 9px; padding: 0 4px;">Limpar</button>
-                                    <button class="chn-btn"
-                                        style="height: 18px; font-size: 9px; padding: 0 4px;">Filtrar</button>
-                                </div>
-                            </td>
-                        </tr>
-                    </thead>
-                    <tbody id="items-tbody">
-                        <!-- Rendered by JS -->
-                    </tbody>
-                    <tfoot id="items-tfoot">
-                        <!-- Rendered by JS -->
-                    </tfoot>
-                </table>
-
-                <div class="legacy-pagination">
-                    <div class="pagination-pages">
-                        <span>Página 1 de 1</span>
-                        <div class="pagination-numbers">
-                            <span style="font-weight: bold; color: var(--chn-color-primary);">1</span>
-                            <span>►</span>
+        <div class="row">
+            <div class="col-12">
+                <!-- Seção da Tabela (Standardized) -->
+                <div class="table-section shadow-sm bg-white">
+                    <div class="chn-section-header">
+                        <div class="chn-section-title">
+                            Objetivos <span style="font-weight:normal;">({{items.length}} itens)</span>
+                            <span class="chn-info-btn" title="Objetivos do Ciclo">i</span>
                         </div>
                     </div>
-                    <div style="display:flex; align-items:center; gap:8px">
-                        <select class="pagination-select">
-                            <option>10 itens por página</option>
-                            <option>25 itens por página</option>
-                            <option>50 itens por página</option>
-                        </select>
+
+                    <div class="chn-table-responsive table-responsive">
+                        <table class="legacy-table table m-0">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40px; text-align: center;">Associados</th>
+                                    <th>Nome</th>
+                                    <th style="width: 100px; text-align: center;">Tipo</th>
+                                    <th style="width: 100px; text-align: right;">Meta</th>
+                                    <th style="width: 120px; text-align: left;">Última medição</th>
+                                    <th style="width: 120px; text-align: left;">Status do progresso</th>
+                                    <th style="width: 100px; text-align: right;">Peso</th>
+                                </tr>
+                                <tr class="filter-row">
+                                    <td style="text-align: center;"></td>
+                                    <td><input type="text" placeholder="" ng-model="filterNome"
+                                            class="form-control form-control-sm"></td>
+                                    <td>
+                                        <select ng-model="filterTipo" class="form-select form-select-sm">
+                                            <option value="">Todos</option>
+                                            <option value="Indicador">Indicador</option>
+                                            <option value="KR">KR</option>
+                                        </select>
+                                    </td>
+                                    <td></td>
+                                    <td style="text-align: center;">
+                                        <div class="calendar-filter-wrapper" title="Filtrar por data">
+                                            <input type="date" id="date-filter">
+                                            <img src="../../../../ds-channel/src/assets/img/calendar.gif"
+                                                class="calendar-icon-trigger"
+                                                onclick="this.previousElementSibling.showPicker();">
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                    <td style="text-align: right;">
+                                        <div class="d-flex gap-1 justify-content-center">
+                                            <button class="chn-btn py-0 px-2" style="height: 18px; font-size: 9px;"
+                                                ng-click="filterNome=''; filterTipo='';">Limpar</button>
+                                            <button class="chn-btn py-0 px-2"
+                                                style="height: 18px; font-size: 9px;">Filtrar</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in items | filter:{nome: filterNome, tipo: filterTipo}">
+                                    <td class="text-center">
+                                        <input type="checkbox" checked disabled class="form-check-input m-0"
+                                            style="width:13px; height:13px;">
+                                    </td>
+                                    <td>{{item.nome}}</td>
+                                    <td class="text-center">
+                                        <span class="tipo-tag" ng-class="item.tipo.toLowerCase()">{{item.tipo}}</span>
+                                    </td>
+                                    <td class="text-end">{{fmtVal(item.meta, item.unidade)}}</td>
+                                    <td class="text-start" style="font-size: 10px;">{{item.ultimaMedicao || '—'}}</td>
+                                    <td class="text-start">
+                                        <div class="kr-progress-bar-bg">
+                                            <div class="kr-progress-bar-fill"
+                                                ng-style="{'width': getPct(item) + '%', 'background-color': getBarColor(item)}">
+                                            </div>
+                                        </div>
+                                        <div class="kr-progress-pct">{{getPct(item)}}%</div>
+                                    </td>
+                                    <td class="text-end">
+                                        <input type="number" class="peso-input-inline" ng-model="item.peso" min="0"
+                                            step="1">
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr class="total-row">
+                                    <td colspan="6" class="text-end">Total</td>
+                                    <td class="text-end fw-bold">{{getTotalPeso()}}</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+
+                        <div
+                            class="legacy-pagination d-flex justify-content-between align-items-center px-3 py-2 bg-white border-top">
+                            <div class="pagination-pages fs-smaller">
+                                <span>Página 1 de 1</span>
+                                <div class="pagination-numbers d-inline-flex gap-1 ms-2">
+                                    <span class="fw-bold" style="color: var(--chn-color-primary);">1</span>
+                                    <span>►</span>
+                                </div>
+                            </div>
+                            <div>
+                                <select class="pagination-select form-select form-select-sm"
+                                    style="font-size: 10px; width: auto;">
+                                    <option>10 itens por página</option>
+                                    <option>25 itens por página</option>
+                                    <option>50 itens por página</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-            <div class="legend-bar">
-                <div class="legend-item">
-                    <img src="../../../../ds-channel/src/assets/img/ico-lupa.gif" alt="Editar peso"> Editar peso
-                </div>
-            </div>
-
         </div>
-
-        <div style="text-align: center; margin-top: 40px; color: #777; font-size: 11px;">
-            Channel - Da estratégia à execução © JExperts Tecnologia 2026 - Direitos reservados
-        </div>
-
     </main>
 
-    <!-- MODAL -->
-    <div class="modal-overlay" id="modal-peso">
-        <div class="legacy-modal" style="width: 380px;">
-            <div class="legacy-modal-title">
-                <span>Editar Peso</span>
-                <span onclick="fecharModal()">&times;</span>
-            </div>
-            <div class="legacy-modal-body">
-                <div class="modal-item-info">
-                    <div class="item-name" id="modal-item-nome">—</div>
-                    <div class="item-meta" id="modal-item-meta">—</div>
-                </div>
-                <div class="form-group">
-                    <label>Peso <span style="color:#c00;">*</span></label>
-                    <input type="number" id="modal-peso-input" min="0" step="1" value="1" />
-                    <div class="legacy-modal-subtitle">Valor numérico inteiro ≥ 0. Peso padrão: 1.</div>
-                </div>
-            </div>
-            <div class="legacy-modal-footer">
-                <button class="chn-btn-cancel" onclick="fecharModal()">Cancelar</button>
-                <button class="chn-btn-confirm" onclick="confirmarPeso()">Confirmar</button>
-            </div>
-        </div>
-    </div>
+    <footer class="legacy-footer">
+        Channel - Da estratégia à execução © JExperts Tecnologia 2026 - Direitos reservados
+    </footer>
 
     <div class="toast" id="toast">Operação realizada com sucesso!</div>
 
+    <!-- AngularJS 1.4 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular.min.js"></script>
     <script>
-        const items = [
-            { id: 1, nome: 'Taxa de conversão de novos clientes', tipo: 'KR', meta: '% / Maior é melhor', peso: 1 },
-            { id: 2, nome: 'Volume de vendas mensais', tipo: 'KR', meta: 'R$ / Maior é melhor', peso: 1 },
-            { id: 3, nome: 'Novos contratos fechados no trimestre', tipo: 'KR', meta: 'Unidades / Maior é melhor', peso: 2 },
-            { id: 4, nome: 'Market Share % (região Sul)', tipo: 'Indicador', meta: '% / Maior é melhor', peso: 1 },
-            { id: 5, nome: 'Índice de satisfação do cliente (NPS)', tipo: 'Indicador', meta: 'Pontos / Maior é melhor', peso: 3 },
-        ];
+        angular.module('ConfigurarPesosApp', [])
+            .controller('ConfigurarPesosCtrl', ['$scope', function ($scope) {
+                $scope.items = [
+                    { id: 1, nome: 'Taxa de conversão de novos clientes', tipo: 'KR', meta: 15, baseline: 5, valorAtual: 12, unidade: '%', ultimaMedicao: '10-04-2026', peso: 1 },
+                    { id: 2, nome: 'Volume de vendas mensais', tipo: 'KR', meta: 100000, baseline: 50000, valorAtual: 75000, unidade: 'R$', ultimaMedicao: '05-04-2026', peso: 1 },
+                    { id: 3, nome: 'Novos contratos fechados no trimestre', tipo: 'KR', meta: 20, baseline: 0, valorAtual: 8, unidade: 'un', ultimaMedicao: '25-03-2026', peso: 2 },
+                    { id: 4, nome: 'Market Share % (região Sul)', tipo: 'Indicador', meta: 12, baseline: 8, valorAtual: 10.5, unidade: '%', ultimaMedicao: '12-04-2026', peso: 1 },
+                    { id: 5, nome: 'Índice de satisfação do cliente (NPS)', tipo: 'Indicador', meta: 80, baseline: 60, valorAtual: 78, unidade: 'pts', ultimaMedicao: '08-04-2026', peso: 3 },
+                ];
 
-        let editingId = null;
+                $scope.fmtVal = function (value, unidade) {
+                    if (value === undefined || value === null) return '—';
+                    if (unidade === 'R$') {
+                        return 'R$ ' + Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+                    }
+                    return value + (unidade ? ' ' + unidade : '');
+                };
 
-        function renderRows() {
-            const tbody = document.getElementById('items-tbody');
-            tbody.innerHTML = '';
+                $scope.getPct = function (item) {
+                    if (item.meta === item.baseline) return 0;
+                    return Math.round(((item.valorAtual - item.baseline) / (item.meta - item.baseline)) * 100);
+                };
 
-            items.forEach((item) => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td style="text-align: center;">
-                        <input type="checkbox" checked readonly class="assoc-checkbox" onclick="return false;">
-                    </td>
-                    <td>${item.nome}</td>
-                    <td style="text-align: center;">
-                        <span class="tipo-tag ${item.tipo.toLowerCase()}">${item.tipo}</span>
-                    </td>
-                    <td style="text-align: right;">
-                        <input type="number" class="peso-input-inline" value="${item.peso}" min="0" step="1" 
-                            onchange="atualizarPesoInline(${item.id}, this.value)" 
-                            oninput="atualizarPesoInline(${item.id}, this.value)">
-                    </td>
-                    <td style="text-align: center;">
-                        <img src="../../../../ds-channel/src/assets/img/ico-lupa.gif" class="action-icon" title="Editar peso" style="width: 14px; cursor: pointer;" onclick="abrirModal(${item.id})">
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
+                $scope.getBarColor = function (item) {
+                    const pct = $scope.getPct(item);
+                    if (pct < 70) return '#CC3333';
+                    if (pct < 95) return '#E6B800';
+                    return '#4CAF50';
+                };
 
-            renderFooter();
-            document.getElementById('total-count').textContent = items.length;
-        }
-
-        function renderFooter() {
-            const tfoot = document.getElementById('items-tfoot');
-            tfoot.innerHTML = '';
-            const totalPeso = items.reduce((acc, item) => acc + item.peso, 0);
-
-            const trFoot = document.createElement('tr');
-            trFoot.className = 'total-row';
-            trFoot.innerHTML = `
-                <td colspan="3" style="text-align: right;">Total</td>
-                <td style="text-align: right;" id="total-peso-sum">${totalPeso}</td>
-                <td></td>
-            `;
-            tfoot.appendChild(trFoot);
-        }
-
-        function atualizarPesoInline(id, value) {
-            const val = parseFloat(value);
-            if (isNaN(val) || val < 0) return;
-
-            const item = items.find(i => i.id === id);
-            if (item) {
-                item.peso = val;
-                // Atualiza o total sem re-renderizar a tabela para não perder o foco
-                const totalPeso = items.reduce((acc, item) => acc + item.peso, 0);
-                const sumEl = document.getElementById('total-peso-sum');
-                if (sumEl) sumEl.textContent = totalPeso;
-            }
-        }
-
-        function abrirModal(id) {
-            const item = items.find(i => i.id === id);
-            if (!item) return;
-            editingId = id;
-            document.getElementById('modal-item-nome').textContent = item.nome;
-            document.getElementById('modal-item-meta').textContent = `Tipo: ${item.tipo}`;
-            document.getElementById('modal-peso-input').value = item.peso;
-            document.getElementById('modal-peso').classList.add('open');
-            setTimeout(() => document.getElementById('modal-peso-input').focus(), 80);
-        }
-
-        function fecharModal() {
-            document.getElementById('modal-peso').classList.remove('open');
-            editingId = null;
-        }
-
-        function confirmarPeso() {
-            if (editingId === null) return;
-            const val = parseFloat(document.getElementById('modal-peso-input').value);
-            if (isNaN(val) || val < 0) { alert('Informe um valor válido.'); return; }
-            items.find(i => i.id === editingId).peso = val;
-            fecharModal();
-            renderRows();
-            showToast('Peso atualizado com sucesso!');
-        }
-
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.textContent = msg; t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 3000);
-        }
-
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharModal(); });
-
-        renderRows();
+                $scope.getTotalPeso = function () {
+                    return $scope.items.reduce((acc, item) => acc + (item.peso || 0), 0);
+                };
+            }]);
     </script>
 </body>
 

@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JExperts Channel - Planos Correlacionados</title>
+
+    <!-- Font Awesome 4.7.0 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Design System - Foundations -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css">
+
+    <!-- Design System - Components -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/table/Table.css">
+
+    <style>
+        body {
+            background-color: var(--chn-color-white);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            font-family: var(--chn-font-family);
+        }
+
+        .legacy-content { flex: 1; padding: 20px; }
+        @media (max-width: 1280px) { .legacy-content { padding: 10px; } }
+        .table-section { margin-top: 10px; }
+
+        /* ── SECTION HEADER (garante layout independente do CDN) ── */
+        .chn-section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+            margin-bottom: 1px;
+            border-bottom: 1px solid #D5D5D5;
+            background: #F8F8F8;
+        }
+        .chn-section-title {
+            font-size: 11px;
+            font-weight: bold;
+            color: #333;
+            padding-left: 4px;
+        }
+        .legacy-table-group-actions {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            padding-right: 4px;
+        }
+
+        /* ── BREADCRUMB ── */
+        .chn-breadcrumb {
+            background-color: #ddd;
+            border-bottom: 1px solid #D5D5D5;
+            padding: 6px 16px;
+            font-size: 11px;
+            color: #333;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-height: 16px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .chn-breadcrumb span { font-weight: bold; }
+
+        /* ── PAGE NAV ── */
+        .page-nav-area {
+            padding: 10px 20px;
+            background: #fff;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-back { color: #666; font-size: 18px; text-decoration: none; line-height: 1; }
+        .plan-nav-title { font-size: 14px; font-weight: 500; color: #444; }
+        .nav-separator { color: #ccc; font-size: 13px; }
+        .page-section-title { font-size: 14px; font-weight: bold; color: #267DD3; }
+
+        /* ── STATUS BADGES ── */
+        .status-badge {
+            padding: 2px 8px; border-radius: 3px;
+            font-size: 11px; font-weight: bold;
+            white-space: nowrap; display: inline-block;
+        }
+        .st-rascunho     { background: #606970; color: #fff; }
+        .st-andamento    { background: #0074D9; color: #fff; }
+        .st-finalizado   { background: #00A859; color: #fff; }
+        .st-cancelado    { background: #A0A0A0; color: #fff; }
+        .st-nao-iniciado { background: #96C9F4; color: #333; }
+
+        /* ── PLAN LINK / CODE ── */
+        .plan-name-link {
+            font-size: 11px; font-weight: bold;
+            color: #1565C0; text-decoration: none; display: block;
+        }
+        .plan-name-link:hover { text-decoration: underline; }
+        .plan-code-tag {
+            font-size: 10px; color: #888;
+            border: 1px solid #D5D5D5; border-radius: 2px;
+            padding: 0 4px; display: inline-block; margin-top: 2px;
+        }
+
+        /* ── PROGRESS BAR ── */
+        .progress-cell { display: flex; align-items: center; gap: 6px; }
+        .progress-track { flex: 1; height: 8px; background: #E0E0E0; border-radius: 2px; overflow: hidden; display: flex; }
+        .seg     { height: 100%; }
+        .seg-ni  { background: #96C9F4; }
+        .seg-ea  { background: #0074D9; }
+        .seg-fin { background: #00A859; }
+        .seg-can { background: #A0A0A0; }
+        .progress-pct { font-size: 10px; color: #555; white-space: nowrap; min-width: 26px; }
+
+        /* ── ACTION BUTTONS ── */
+        .action-btns { display: flex; gap: 8px; align-items: center; justify-content: center; }
+        .btn-icon {
+            background: none; border: none; cursor: pointer;
+            color: #999; font-size: 13px; padding: 1px;
+            transition: color 0.15s; line-height: 1; text-decoration: none;
+            display: inline-flex; align-items: center;
+        }
+        .btn-icon:hover        { color: #555; }
+        .btn-icon.remove:hover { color: #E7000B; }
+
+        /* ── FILTER ROW INPUTS ── */
+        .filter-inline-input,
+        .filter-inline-select {
+            width: 100%; box-sizing: border-box;
+            border: 1px solid #C0C0C0; background: #F5F5F5;
+            padding: 1px 4px; font-size: 10px; height: 18px;
+            font-family: inherit; outline: none; color: #333;
+        }
+
+
+        /* ── EMPTY STATE ── */
+        .empty-state { text-align: center; padding: 40px 20px; color: #999; }
+        .empty-state i { font-size: 28px; display: block; margin-bottom: 10px; color: #ddd; }
+        .empty-state p { font-size: 12px; margin: 0; }
+
+        /* ── MODAL ASSOCIAR ── */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: none; align-items: center; justify-content: center;
+            z-index: 1000;
+        }
+        .modal-overlay.active { display: flex; }
+        .assoc-modal {
+            background: #fff;
+            width: 680px; max-width: 94%;
+            border-radius: 3px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column;
+            overflow: hidden; max-height: 92vh;
+        }
+        .modal-header {
+            background: var(--chn-color-navbar, #2c3e50);
+            color: #fff; padding: 10px 16px;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-shrink: 0;
+        }
+        .modal-header h3 { margin: 0; font-size: 14px; font-weight: bold; }
+        .btn-close-modal {
+            background: none; border: none;
+            color: #fff; cursor: pointer; font-size: 16px; line-height: 1;
+        }
+
+        /* Modal filters */
+        .modal-filters-area {
+            padding: 12px 16px 10px;
+            border-bottom: 1px solid #eee;
+            display: flex; flex-direction: column; gap: 7px;
+            flex-shrink: 0;
+        }
+        .filter-row { display: flex; gap: 8px; }
+        .filter-row input,
+        .filter-row select {
+            border: 1px solid #ccc; border-radius: 2px;
+            height: 28px; padding: 0 8px; font-size: 11px;
+            color: #333; flex: 1; outline: none;
+            background: #fff; box-sizing: border-box;
+        }
+        .filter-row input[type="date"] { color: #555; }
+
+        /* Modal list */
+        .modal-list {
+            flex: 1; overflow-y: auto;
+            min-height: 220px; max-height: 320px;
+        }
+        .modal-list::-webkit-scrollbar { width: 6px; }
+        .modal-list::-webkit-scrollbar-track { background: #f5f5f5; }
+        .modal-list::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+        .modal-item {
+            display: flex; align-items: flex-start; justify-content: space-between;
+            padding: 10px 16px; border-bottom: 1px solid #f0f0f0;
+        }
+        .modal-item:hover { background: #fafafa; }
+        .modal-item.is-linked { background: #EDF4FF; }
+        .modal-item.hidden-item { display: none; }
+
+        .item-info { flex: 1; min-width: 0; }
+        .item-title { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 3px; }
+        .item-meta  { font-size: 11px; color: #888; line-height: 1.7; }
+
+        /* Chain icon button */
+        .btn-chain {
+            background: none; border: none; cursor: pointer;
+            font-size: 17px; padding: 2px 0 0 14px;
+            flex-shrink: 0; transition: color 0.15s;
+        }
+        /* NOT linked: gray open chain */
+        .btn-chain[data-linked="false"]       { color: #bbb; }
+        .btn-chain[data-linked="false"]:hover { color: #267DD3; }
+        /* Linked: blue closed (broken displays as "connected" in context) */
+        .btn-chain[data-linked="true"]        { color: #267DD3; }
+        .btn-chain[data-linked="true"]:hover  { color: #E7000B; }
+
+        /* Modal pagination */
+        .modal-pagination {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 16px;
+            border-top: 1px solid #eee;
+            background: #fafafa;
+            flex-shrink: 0;
+        }
+        .modal-page-info { font-size: 11px; color: #888; }
+        .modal-page-btns { display: flex; gap: 4px; }
+        .btn-modal-page {
+            border: 1px solid #D1D1D1; background: #fff;
+            padding: 3px 8px; font-size: 11px; color: #666;
+            border-radius: 2px; cursor: pointer; min-width: 26px;
+        }
+        .btn-modal-page.active { background: #5A6268; color: #fff; border-color: #5A6268; }
+        .btn-modal-page:disabled { opacity: 0.4; cursor: default; }
+
+        /* Modal footer */
+        .modal-footer {
+            padding: 10px 16px; border-top: 1px solid #eee;
+            display: flex; justify-content: flex-end; flex-shrink: 0;
+        }
+        .btn-cancel-modal {
+            padding: 5px 16px; font-size: 12px; cursor: pointer;
+            border: 1px solid #ccc; border-radius: 2px;
+            background: #fff; color: #333;
+        }
+        .btn-cancel-modal:hover { background: #f5f5f5; }
+
+        /* ── CONFIRMATION POPUP ── */
+        .confirm-popup {
+            position: fixed;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+            padding: 14px 16px;
+            z-index: 1100;
+            width: 230px;
+            display: none;
+        }
+        .confirm-popup.active { display: block; }
+        .confirm-popup-title  { font-size: 13px; font-weight: bold; color: #333; margin-bottom: 6px; }
+        .confirm-popup-text   { font-size: 12px; color: #555; margin-bottom: 12px; }
+        .confirm-popup-btns   { display: flex; gap: 8px; justify-content: flex-end; }
+        .btn-confirm-sim {
+            background: #5A6268; color: #fff; border: none;
+            border-radius: 2px; padding: 4px 14px; font-size: 12px; cursor: pointer;
+        }
+        .btn-confirm-sim:hover { background: #4a5258; }
+        .btn-confirm-nao {
+            background: #fff; color: #333; border: 1px solid #ccc;
+            border-radius: 2px; padding: 4px 14px; font-size: 12px; cursor: pointer;
+        }
+        .btn-confirm-nao:hover { background: #f5f5f5; }
+
+        /* Footer */
+        .legacy-footer {
+            margin-top: 40px; padding: 14px 20px;
+            text-align: center; color: #999;
+            font-size: 11px; border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body class="legacy-page">
+
+    <!-- HEADER -->
+    <header class="legacy-header">
+        <div class="legacy-header-container">
+            <div class="legacy-header-logos">
+                <div class="logo-jexperts">
+                    <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo%20J.svg" alt="Logo J" class="logo-j-svg">
+                </div>
+                <div class="logo-divider"></div>
+                <div class="logo-channel">
+                    <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo-channel_.png" alt="Channel Logo" class="logo-channel-img">
+                </div>
+            </div>
+            <div class="legacy-header-actions">
+                <div class="release-notes-dropdown">
+                    <div class="release-notes-trigger">
+                        <span class="release-text">Release Notes</span>
+                        <i class="fa fa-th grid-icon"></i>
+                        <div class="notification-container">
+                            <i class="fa fa-bell bell-icon"></i>
+                            <span class="notification-badge">0</span>
+                        </div>
+                        <i class="fa fa-caret-down dropdown-caret"></i>
+                    </div>
+                </div>
+                <div class="profile-dropdown">
+                    <div class="profile-avatar" style="background-color: var(--chn-color-blue-brand);">EA</div>
+                    <div class="profile-info">
+                        <span class="profile-name">Elkar Almeida</span>
+                        <span class="profile-role">Gestor</span>
+                    </div>
+                    <i class="fa fa-caret-down dropdown-caret"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVBAR -->
+    <nav class="legacy-navbar" id="legacy-navbar">
+        <div class="navbar-home"><i class="fa fa-home"></i></div>
+
+        <div class="navbar-item is-active-page" data-menu="plano-estrategico">
+            <div class="navbar-item-trigger">
+                <i class="fa fa-puzzle-piece"></i>
+                Plano estratégico
+            </div>
+            <div class="navbar-dropdown">
+                <div class="navbar-dropdown-col">
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-flag"></i> Objetivos</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-puzzle-piece"></i> Diretrizes</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-puzzle-piece"></i> Mapa estratégico</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-bar-chart"></i> Reuniões</a>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-adjust"></i> Desempenho</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Planejamento de metas</a></li>
+                            <li><a href="#">Medições de indicadores</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-section" style="margin-top: 12px;">
+                        <div class="navbar-section-title"><i class="fa fa-cog"></i> Configurações</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Revisões</a></li>
+                            <li><a href="#">Perspectivas</a></li>
+                            <li><a href="#">Temas Estratégicos</a></li>
+                            <li><a href="#" class="link-more">Ver mais</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-list"></i> Relatórios</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Acompanhamento de desempenho estratégico</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-item" data-menu="meu-channel">
+            <div class="navbar-item-trigger">
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/meu_channel_menul.svg" alt="Meu Channel" class="navbar-module-icon" />
+                Meu Channel
+            </div>
+            <div class="navbar-dropdown">
+                <div class="navbar-dropdown-col">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-refresh"></i> Operações</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Minhas demandas abertas</a></li>
+                            <li><a href="#">Minhas demandas finalizadas</a></li>
+                            <li><a href="#">Demandas pendentes</a></li>
+                            <li><a href="#">Incluir nova demanda</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-bar-chart"></i> Reuniões</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Ações das reuniões</a></li>
+                            <li><a href="#">Decisões das reuniões</a></li>
+                            <li><a href="#">Minhas reuniões</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-briefcase"></i> Portfólios</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Proposição de projetos</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-file-text-o"></i> Planos de ação</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Meus planos de ação</a></li>
+                            <li><a href="#">Minhas ações</a></li>
+                            <li><a href="#">Minhas aprovações</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-line-chart"></i> Indicadores</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Indicadores que sou responsável</a></li>
+                            <li><a href="#">Aprovações de medições pendentes</a></li>
+                            <li><a href="#">Relatório de medições pendentes</a></li>
+                            <li><a href="#">Minhas medições reprovadas</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-exclamation-triangle"></i> Riscos corporativos</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Reportar incidente</a></li>
+                            <li><a href="#">Reportar risco</a></li>
+                            <li><a href="#">Meus Riscos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-item" data-menu="estrategia">
+            <div class="navbar-item-trigger">
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/estrategia_menu.svg" alt="Estratégia" class="navbar-module-icon" />
+                Estratégia
+            </div>
+            <div class="navbar-dropdown">
+                <div class="navbar-dropdown-col">
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-plus-square-o"></i> Planos estratégicos</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-flag"></i> Objetivos operacionais</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-briefcase"></i> Portfólios</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-th-list"></i> Programas</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-exclamation-triangle"></i> Riscos corporativos</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-calendar"></i> Acompanhamento de reuniões</a>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-bar-chart"></i> Relatórios</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Acompanhamento de desempenho estratégico</a></li>
+                            <li><a href="#">Visualização de planos estratégicos</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-cog"></i> Configurações</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Catálogo de processos</a></li>
+                            <li><a href="#">Categorias de fator de risco</a></li>
+                            <li><a href="#">Categorias de reuniões</a></li>
+                            <li><a href="#">Consulta propostas de projetos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-item" data-menu="desempenho">
+            <div class="navbar-item-trigger">
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/desempenho_menu.svg" alt="Desempenho" class="navbar-module-icon" />
+                Desempenho
+            </div>
+            <div class="navbar-dropdown">
+                <div class="navbar-dropdown-col">
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-calendar-check-o"></i> Planejamento de metas</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-line-chart"></i> Medições de indicador</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-file-text-o"></i> Planos de ação</a>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-bar-chart"></i> Relatórios</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Acompanhamento de indicadores</a></li>
+                            <li><a href="#">Visão histórica de indicadores</a></li>
+                            <li><a href="#">Benchmarking de indicadores</a></li>
+                            <li><a href="#">Acompanhamento de planos de ação</a></li>
+                            <li><a href="#">Consolidado de ações</a></li>
+                            <li><a href="#">Painéis de controle</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-cog"></i> Configurações</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Indicadores</a></li>
+                            <li><a href="#">Faixas de atenção</a></li>
+                            <li><a href="#">Configurações de alertas de indicadores</a></li>
+                            <li><a href="#" class="link-more">Ver mais</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="navbar-item" data-menu="projetos-demandas">
+            <div class="navbar-item-trigger">
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/projetos_demandas_menu.svg" alt="Projetos e demandas" class="navbar-module-icon" />
+                Planos e demandas
+            </div>
+        </div>
+
+        <div class="navbar-item" data-menu="administracao">
+            <div class="navbar-item-trigger">
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/administracao_meni.svg" alt="Administração" class="navbar-module-icon" />
+                Administração
+            </div>
+        </div>
+
+        <div class="navbar-item-plain" style="margin-left:auto">
+            <span style="font-size:13px; color:#ccc; font-weight:bold;">?</span>
+        </div>
+        <div class="navbar-item-plain"><i class="fa fa-info-circle"></i></div>
+    </nav>
+
+    <!-- BREADCRUMB STRIP -->
+    <div class="chn-breadcrumb">
+        <span>2025</span>&nbsp;&nbsp;<span>Plano:</span> planoelkar21
+    </div>
+
+    <!-- PAGE NAV -->
+    <div class="page-nav-area">
+        <a href="detalhe-plano.html" class="btn-back"><i class="fa fa-angle-left"></i></a>
+        <span class="plan-nav-title">plano de ação estratégico</span>
+        <span class="nav-separator"><i class="fa fa-angle-right"></i></span>
+        <span class="page-section-title">Planos Correlacionados</span>
+    </div>
+
+    <!-- PAGE CONTENT -->
+    <main class="legacy-content">
+      <div class="table-section">
+
+        <div class="chn-section-header">
+            <div class="chn-section-title">
+                Planos Correlacionados
+                <span id="correlatos-count" style="font-weight:normal;">(3 plano(s))</span>
+            </div>
+            <div class="legacy-table-group-actions">
+                <button class="chn-btn chn-btn-primary" style="height:20px; font-size:10px; padding:0 8px; gap:4px;" id="btn-open-modal">
+                    <i class="fa fa-plus"></i> Correlacionar plano
+                </button>
+            </div>
+        </div>
+
+        <div class="table-responsive-container">
+            <table class="legacy-table">
+                <thead>
+                    <tr>
+                        <th style="width:26%">Plano</th>
+                        <th style="width:13%">Área</th>
+                        <th style="width:13%">Responsável</th>
+                        <th style="width:11%">Status</th>
+                        <th style="width:18%">Andamento das ações</th>
+                        <th style="width:10%">Data limite</th>
+                        <th style="width:9%; text-align:center">Ações</th>
+                    </tr>
+                    <tr>
+                        <th><input type="text" placeholder="Filtrar plano..." class="filter-inline-input" style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
+                        <th><input type="text" placeholder="Filtrar área..." class="filter-inline-input" style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
+                        <th><input type="text" placeholder="Filtrar responsável..." class="filter-inline-input" style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
+                        <th>
+                            <select class="filter-inline-select" style="font-size:10px; height:18px; width:100%; box-sizing:border-box;">
+                                <option value="">Todos</option>
+                                <option>Em andamento</option>
+                                <option>Rascunho</option>
+                                <option>Concluído</option>
+                                <option>Cancelado</option>
+                            </select>
+                        </th>
+                        <th></th>
+                        <th><input type="text" placeholder="dd/mm/aaaa" class="filter-inline-input" style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="correlatos-tbody">
+                    <tr>
+                        <td>
+                            <a href="detalhe-plano.html" class="plan-name-link">Estabelecer Meta</a>
+                            <span class="plan-code-tag">#FAC24C</span>
+                        </td>
+                        <td>Recuperação de Metas</td>
+                        <td>Carlos Melquiades</td>
+                        <td><span class="status-badge st-andamento">Em andamento</span></td>
+                        <td>
+                            <div class="progress-cell">
+                                <div class="progress-track">
+                                    <div class="seg seg-ni"  style="width:20%"></div>
+                                    <div class="seg seg-ea"  style="width:20%"></div>
+                                    <div class="seg seg-fin" style="width:60%"></div>
+                                </div>
+                                <span class="progress-pct">60%</span>
+                            </div>
+                        </td>
+                        <td>24/04/2026</td>
+                        <td>
+                            <div class="action-btns">
+                                <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
+                                <button class="btn-icon remove btn-row-remove" title="Remover correlação" data-name="Estabelecer Meta"><i class="fa fa-chain-broken"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="detalhe-plano.html" class="plan-name-link">Plano de Avance</a>
+                            <span class="plan-code-tag">#FAC22C</span>
+                        </td>
+                        <td>Training Channel</td>
+                        <td>Carlos Melquiades</td>
+                        <td><span class="status-badge st-andamento">Em andamento</span></td>
+                        <td>
+                            <div class="progress-cell">
+                                <div class="progress-track">
+                                    <div class="seg seg-ni"  style="width:30%"></div>
+                                    <div class="seg seg-ea"  style="width:20%"></div>
+                                    <div class="seg seg-fin" style="width:50%"></div>
+                                </div>
+                                <span class="progress-pct">50%</span>
+                            </div>
+                        </td>
+                        <td>17/04/2026</td>
+                        <td>
+                            <div class="action-btns">
+                                <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
+                                <button class="btn-icon remove btn-row-remove" title="Remover correlação" data-name="Plano de Avance"><i class="fa fa-chain-broken"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="detalhe-plano.html" class="plan-name-link">Plano de Expansão</a>
+                            <span class="plan-code-tag">#FAC23C</span>
+                        </td>
+                        <td>Categoria 2</td>
+                        <td>Michelly Angelo</td>
+                        <td><span class="status-badge st-rascunho">Rascunho</span></td>
+                        <td>
+                            <div class="progress-cell">
+                                <div class="progress-track">
+                                    <div class="seg seg-ni"  style="width:10%"></div>
+                                    <div class="seg seg-ea"  style="width:20%"></div>
+                                    <div class="seg seg-fin" style="width:30%"></div>
+                                    <div class="seg seg-can" style="width:40%"></div>
+                                </div>
+                                <span class="progress-pct">30%</span>
+                            </div>
+                        </td>
+                        <td>24/04/2026</td>
+                        <td>
+                            <div class="action-btns">
+                                <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
+                                <button class="btn-icon remove btn-row-remove" title="Remover correlação" data-name="Plano de Expansão"><i class="fa fa-chain-broken"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="empty-state" id="empty-state" style="display:none;">
+                <i class="fa fa-chain-broken"></i>
+                <p>Não existem planos de ação correlacionados</p>
+            </div>
+        </div>
+
+        <div class="legacy-pagination" id="correlatos-pagination">
+            <div class="pagination-pages">
+                <span id="pagination-info">Página 1 de 1</span>
+                <div class="pagination-numbers">
+                    <span style="font-weight:bold; color:var(--chn-color-link)">1</span>
+                    <span>►</span>
+                </div>
+            </div>
+            <div style="display:flex; align-items:center; gap:8px;">
+                <select class="pagination-select">
+                    <option>10 itens por página</option>
+                    <option>25 itens por página</option>
+                    <option>50 itens por página</option>
+                </select>
+            </div>
+        </div>
+
+      </div><!-- /.table-section -->
+    </main><!-- /.legacy-content -->
+
+    <!-- SHARED CONFIRMATION POPUP -->
+    <div class="confirm-popup" id="confirm-popup">
+        <div class="confirm-popup-title">Confirmação</div>
+        <div class="confirm-popup-text">Deseja realmente desassociar?</div>
+        <div class="confirm-popup-btns">
+            <button class="btn-confirm-sim" id="confirm-sim">Sim</button>
+            <button class="btn-confirm-nao" id="confirm-nao">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- MODAL: ASSOCIAR PLANOS -->
+    <div class="modal-overlay" id="modal-assoc">
+        <div class="assoc-modal">
+
+            <div class="modal-header">
+                <h3>Correlacionar planos de ação</h3>
+                <button class="btn-close-modal" id="modal-close">✕</button>
+            </div>
+
+            <!-- Filtros: 3 linhas -->
+            <div class="modal-filters-area">
+                <div class="filter-row">
+                    <input type="text" id="filter-search" placeholder="Pesquisar por título ou código">
+                    <select id="filter-resp">
+                        <option value="">Responsável</option>
+                        <option>Carlos Melquiades</option>
+                        <option>Michelly Angelo</option>
+                        <option>Orlando Vasques</option>
+                        <option>Ana Souza</option>
+                        <option>Ricardo Oliveira</option>
+                    </select>
+                </div>
+                <div class="filter-row">
+                    <select id="filter-area">
+                        <option value="">Área</option>
+                        <option>E_Serviços</option>
+                        <option>Training Channel</option>
+                        <option>Área 0309-1</option>
+                        <option>Operações</option>
+                        <option>Inovação Digital</option>
+                    </select>
+                    <select id="filter-grupo">
+                        <option value="">Grupo</option>
+                        <option>Grupo Novo Indicador de área</option>
+                        <option>Grupo Estratégico</option>
+                    </select>
+                    <select id="filter-class">
+                        <option value="">Classificador</option>
+                        <option>Estratégico</option>
+                        <option>Operacional</option>
+                        <option>Tático</option>
+                    </select>
+                </div>
+                <div class="filter-row">
+                    <input type="text" id="filter-tags" placeholder="Tags (ex: inovação, gestão)">
+                    <input type="date" id="filter-de"   title="Período: de">
+                    <input type="date" id="filter-ate"  title="Período: até">
+                </div>
+            </div>
+
+            <!-- Lista de planos -->
+            <div class="modal-list" id="modal-list">
+
+                <!-- ─── ITENS: data-linked="true" = vinculado (fa-chain-broken azul + fundo) -->
+                <!--             data-linked="false" = não vinculado (fa-chain cinza)           -->
+
+                <div class="modal-item" data-item="1">
+                    <div class="item-info">
+                        <div class="item-title">Peso do indicador no fator de risco Ticket #9352</div>
+                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades</div>
+                    </div>
+                    <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
+                </div>
+
+                <div class="modal-item is-linked" data-item="2">
+                    <div class="item-info">
+                        <div class="item-title">GMAR - Desenvolvimento de Equipe</div>
+                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Estratégico</div>
+                    </div>
+                    <button class="btn-chain" data-linked="true" title="Desvincular"><i class="fa fa-chain-broken"></i></button>
+                </div>
+
+                <div class="modal-item" data-item="3">
+                    <div class="item-info">
+                        <div class="item-title">Ticket #8275 - RELATÓRIO DE INDICADORES POUPEX</div>
+                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades</div>
+                    </div>
+                    <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
+                </div>
+
+                <div class="modal-item" data-item="4">
+                    <div class="item-info">
+                        <div class="item-title">0509-2</div>
+                        <div class="item-meta">Área: Área 0309-1&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Michelly Angelo&nbsp;&nbsp;|&nbsp;&nbsp;Grupo(s): Grupo Novo Indicador de área</div>
+                    </div>
+                    <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
+                </div>
+
+                <div class="modal-item is-linked" data-item="5">
+                    <div class="item-info">
+                        <div class="item-title">SUB IND 1 - 1</div>
+                        <div class="item-meta">Projeto: chamado vixteam&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Orlando Vasques&nbsp;&nbsp;|&nbsp;&nbsp;Tags: inovação, capacitação</div>
+                    </div>
+                    <button class="btn-chain" data-linked="true" title="Desvincular"><i class="fa fa-chain-broken"></i></button>
+                </div>
+
+                <div class="modal-item" data-item="6">
+                    <div class="item-info">
+                        <div class="item-title">Plano de Contingência Operacional</div>
+                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ana Souza&nbsp;&nbsp;|&nbsp;&nbsp;Tags: contingência, operações</div>
+                    </div>
+                    <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
+                </div>
+
+                <div class="modal-item" data-item="7">
+                    <div class="item-info">
+                        <div class="item-title">Revisão de Processos Internos - Q2 2026</div>
+                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Estratégico</div>
+                    </div>
+                    <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
+                </div>
+
+                <div class="modal-item" data-item="8">
+                    <div class="item-info">
+                        <div class="item-title">Gestão de Fornecedores 2026</div>
+                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ricardo Oliveira&nbsp;&nbsp;|&nbsp;&nbsp;Tags: fornecedores, contratos</div>
+                    </div>
+                    <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
+                </div>
+
+                <div class="modal-item is-linked" data-item="9">
+                    <div class="item-info">
+                        <div class="item-title">Programa de Capacitação Técnica</div>
+                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Michelly Angelo&nbsp;&nbsp;|&nbsp;&nbsp;Tags: capacitação, RH</div>
+                    </div>
+                    <button class="btn-chain" data-linked="true" title="Desvincular"><i class="fa fa-chain-broken"></i></button>
+                </div>
+
+                <div class="modal-item" data-item="10">
+                    <div class="item-info">
+                        <div class="item-title">Otimização de Fluxo Operacional</div>
+                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ana Souza&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Operacional</div>
+                    </div>
+                    <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
+                </div>
+
+                <div class="modal-item" data-item="11">
+                    <div class="item-info">
+                        <div class="item-title">Análise de Riscos Corporativos - Q1 2026</div>
+                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ricardo Oliveira&nbsp;&nbsp;|&nbsp;&nbsp;Tags: riscos, compliance</div>
+                    </div>
+                    <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
+                </div>
+
+                <div class="modal-item" data-item="12">
+                    <div class="item-info">
+                        <div class="item-title">Plano de Inovação Digital 2026</div>
+                        <div class="item-meta">Área: Inovação Digital&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Orlando Vasques&nbsp;&nbsp;|&nbsp;&nbsp;Tags: inovação, digital, transformação</div>
+                    </div>
+                    <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
+                </div>
+
+            </div>
+
+            <!-- Paginação do modal -->
+            <div class="modal-pagination">
+                <span class="modal-page-info" id="modal-page-info">Exibindo 1–5 de 12</span>
+                <div class="modal-page-btns" id="modal-page-btns">
+                    <button class="btn-modal-page" id="modal-prev" disabled><i class="fa fa-angle-left"></i></button>
+                    <button class="btn-modal-page active" data-page="1">1</button>
+                    <button class="btn-modal-page" data-page="2">2</button>
+                    <button class="btn-modal-page" data-page="3">3</button>
+                    <button class="btn-modal-page" id="modal-next"><i class="fa fa-angle-right"></i></button>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-cancel-modal" id="modal-cancel">Cancelar</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="legacy-footer">
+        Channel - Da estratégia à execução © JExperts Tecnologia - 2026 Direitos reservados
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // ── Navbar
+            var navItems = document.querySelectorAll('.navbar-item');
+            navItems.forEach(function (item) {
+                var trigger = item.querySelector('.navbar-item-trigger');
+                if (trigger) {
+                    trigger.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        navItems.forEach(function (other) {
+                            if (other !== item) other.classList.remove('is-open');
+                        });
+                        item.classList.toggle('is-open');
+                    });
+                }
+            });
+            document.addEventListener('click', function () {
+                navItems.forEach(function (i) { i.classList.remove('is-open'); });
+            });
+            document.querySelectorAll('.navbar-dropdown').forEach(function (d) {
+                d.addEventListener('click', function (e) { e.stopPropagation(); });
+            });
+
+            // ── Modal open / close
+            var modalOverlay = document.getElementById('modal-assoc');
+
+            document.getElementById('btn-open-modal').addEventListener('click', function () {
+                modalOverlay.classList.add('active');
+            });
+
+            function closeModal() {
+                modalOverlay.classList.remove('active');
+                hideConfirm();
+            }
+            document.getElementById('modal-close').addEventListener('click', closeModal);
+            document.getElementById('modal-cancel').addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', function (e) {
+                if (e.target === modalOverlay) closeModal();
+            });
+
+            // ── Modal pagination (5 items per page)
+            var ITEMS_PER_PAGE = 5;
+            var allItems       = Array.from(document.querySelectorAll('.modal-item'));
+            var totalItems     = allItems.length;
+            var totalPages     = Math.ceil(totalItems / ITEMS_PER_PAGE);
+            var currentPage    = 1;
+
+            function renderPage(page) {
+                currentPage = page;
+                allItems.forEach(function (item, idx) {
+                    var start = (page - 1) * ITEMS_PER_PAGE;
+                    var end   = start + ITEMS_PER_PAGE;
+                    item.style.display = (idx >= start && idx < end) ? 'flex' : 'none';
+                });
+
+                var from = (page - 1) * ITEMS_PER_PAGE + 1;
+                var to   = Math.min(page * ITEMS_PER_PAGE, totalItems);
+                document.getElementById('modal-page-info').textContent =
+                    'Exibindo ' + from + '–' + to + ' de ' + totalItems;
+
+                document.querySelectorAll('.btn-modal-page[data-page]').forEach(function (btn) {
+                    btn.classList.toggle('active', parseInt(btn.dataset.page) === page);
+                });
+                document.getElementById('modal-prev').disabled = (page === 1);
+                document.getElementById('modal-next').disabled = (page === totalPages);
+            }
+
+            renderPage(1);
+
+            document.querySelectorAll('.btn-modal-page[data-page]').forEach(function (btn) {
+                btn.addEventListener('click', function () { renderPage(parseInt(this.dataset.page)); });
+            });
+            document.getElementById('modal-prev').addEventListener('click', function () {
+                if (currentPage > 1) renderPage(currentPage - 1);
+            });
+            document.getElementById('modal-next').addEventListener('click', function () {
+                if (currentPage < totalPages) renderPage(currentPage + 1);
+            });
+
+            // ── Shared confirm popup
+            var confirmPopup = document.getElementById('confirm-popup');
+            var pendingAction = null;
+
+            function showConfirm(anchorEl, onConfirm) {
+                var rect = anchorEl.getBoundingClientRect();
+                confirmPopup.style.top  = (rect.bottom + 6 + window.scrollY) + 'px';
+                confirmPopup.style.left = Math.max(8, rect.left - 210 + window.scrollX) + 'px';
+                confirmPopup.classList.add('active');
+                pendingAction = onConfirm;
+            }
+
+            function hideConfirm() {
+                confirmPopup.classList.remove('active');
+                pendingAction = null;
+            }
+
+            document.getElementById('confirm-sim').addEventListener('click', function () {
+                if (pendingAction) pendingAction();
+                hideConfirm();
+            });
+            document.getElementById('confirm-nao').addEventListener('click', hideConfirm);
+
+            document.addEventListener('click', function (e) {
+                if (!e.target.closest('.confirm-popup') &&
+                    !e.target.closest('.btn-chain') &&
+                    !e.target.closest('.btn-row-remove')) {
+                    hideConfirm();
+                }
+            });
+
+
+            // ── Chain buttons in modal
+            document.querySelectorAll('.btn-chain').forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var self     = this;
+                    var isLinked = self.dataset.linked === 'true';
+
+                    if (!isLinked) {
+                        // Vincular: feedback imediato
+                        self.dataset.linked = 'true';
+                        self.title = 'Desvincular';
+                        self.innerHTML = '<i class="fa fa-chain-broken"></i>';
+                        self.closest('.modal-item').classList.add('is-linked');
+                        hideConfirm();
+                    } else {
+                        // Desvincular: pede confirmação
+                        showConfirm(self, function () {
+                            self.dataset.linked = 'false';
+                            self.title = 'Vincular';
+                            self.innerHTML = '<i class="fa fa-chain"></i>';
+                            self.closest('.modal-item').classList.remove('is-linked');
+                            });
+                    }
+                });
+            });
+
+            // ── Remover correlato da tabela principal
+            document.querySelectorAll('.btn-row-remove').forEach(function (btn) {
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    var row = this.closest('tr');
+                    showConfirm(this, function () {
+                        row.remove();
+                        updateCount();
+                    });
+                });
+            });
+
+            function updateCount() {
+                var rows  = document.querySelectorAll('#correlatos-tbody tr');
+                var empty = document.getElementById('empty-state');
+                var info  = document.getElementById('pagination-info');
+                info.textContent = rows.length + ' plano(s) correlacionado(s)';
+                empty.style.display = rows.length === 0 ? 'block' : 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>

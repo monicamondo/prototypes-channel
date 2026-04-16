@@ -535,23 +535,154 @@
         </div>
     </header>
 
-    <!-- OFFICIAL NAVBAR -->
+    <!-- NAVBAR -->
     <nav class="legacy-navbar" id="legacy-navbar">
-        <div class="navbar-home">
-            <i class="fa fa-home"></i>
+        <div class="navbar-home"><i class="fa fa-home"></i></div>
+
+        <div class="navbar-item is-active-page" data-menu="plano-estrategico">
+            <div class="navbar-item-trigger">
+                <i class="fa fa-puzzle-piece"></i>
+                Plano estratégico
+            </div>
+            <div class="navbar-dropdown">
+                <div class="navbar-dropdown-col">
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-flag"></i> Objetivos</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-puzzle-piece"></i> Diretrizes</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-puzzle-piece"></i> Mapa estratégico</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-bar-chart"></i> Reuniões</a>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-adjust"></i> Desempenho</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Planejamento de metas</a></li>
+                            <li><a href="#">Medições de indicadores</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-section" style="margin-top: 12px;">
+                        <div class="navbar-section-title"><i class="fa fa-cog"></i> Configurações</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Revisões</a></li>
+                            <li><a href="#">Perspectivas</a></li>
+                            <li><a href="#">Temas Estratégicos</a></li>
+                            <li><a href="#" class="link-more">Ver mais</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-list"></i> Relatórios</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Acompanhamento de desempenho estratégico</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        
+
         <div class="navbar-item" data-menu="meu-channel">
             <div class="navbar-item-trigger">
                 <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/meu_channel_menul.svg" alt="Meu Channel" class="navbar-module-icon" />
                 Meu Channel
             </div>
+            <div class="navbar-dropdown">
+                <div class="navbar-dropdown-col">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-refresh"></i> Operações</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Minhas demandas abertas</a></li>
+                            <li><a href="#">Minhas demandas finalizadas</a></li>
+                            <li><a href="#">Demandas pendentes</a></li>
+                            <li><a href="#">Incluir nova demanda</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-bar-chart"></i> Reuniões</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Ações das reuniões</a></li>
+                            <li><a href="#">Decisões das reuniões</a></li>
+                            <li><a href="#">Minhas reuniões</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-briefcase"></i> Portfólios</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Proposição de projetos</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-file-text-o"></i> Planos de ação</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Meus planos de ação</a></li>
+                            <li><a href="#">Minhas ações</a></li>
+                            <li><a href="#">Minhas aprovações</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-line-chart"></i> Indicadores</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Indicadores que sou responsável</a></li>
+                            <li><a href="#">Aprovações de medições pendentes</a></li>
+                            <li><a href="#">Relatório de medições pendentes</a></li>
+                            <li><a href="#">Minhas medições reprovadas</a></li>
+                        </ul>
+                    </div>
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-exclamation-triangle"></i> Riscos corporativos</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Reportar incidente</a></li>
+                            <li><a href="#">Reportar risco</a></li>
+                            <li><a href="#">Meus Riscos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
-        
-        <div class="navbar-item is-active-page" data-menu="estrategia">
+
+        <div class="navbar-item" data-menu="estrategia">
             <div class="navbar-item-trigger">
                 <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/estrategia_menu.svg" alt="Estratégia" class="navbar-module-icon" />
                 Estratégia
+            </div>
+            <div class="navbar-dropdown">
+                <div class="navbar-dropdown-col">
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-plus-square-o"></i> Planos estratégicos</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-flag"></i> Objetivos operacionais</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-briefcase"></i> Portfólios</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-th-list"></i> Programas</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-exclamation-triangle"></i> Riscos corporativos</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-calendar"></i> Acompanhamento de reuniões</a>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-bar-chart"></i> Relatórios</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Acompanhamento de desempenho estratégico</a></li>
+                            <li><a href="#">Visualização de planos estratégicos</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-cog"></i> Configurações</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Catálogo de processos</a></li>
+                            <li><a href="#">Categorias de fator de risco</a></li>
+                            <li><a href="#">Categorias de reuniões</a></li>
+                            <li><a href="#">Consulta propostas de projetos</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -560,12 +691,45 @@
                 <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/desempenho_menu.svg" alt="Desempenho" class="navbar-module-icon" />
                 Desempenho
             </div>
+            <div class="navbar-dropdown">
+                <div class="navbar-dropdown-col">
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-calendar-check-o"></i> Planejamento de metas</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-line-chart"></i> Medições de indicador</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-file-text-o"></i> Planos de ação</a>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-bar-chart"></i> Relatórios</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Acompanhamento de indicadores</a></li>
+                            <li><a href="#">Visão histórica de indicadores</a></li>
+                            <li><a href="#">Benchmarking de indicadores</a></li>
+                            <li><a href="#">Acompanhamento de planos de ação</a></li>
+                            <li><a href="#">Consolidado de ações</a></li>
+                            <li><a href="#">Painéis de controle</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="navbar-col-divider"></div>
+                <div class="navbar-dropdown-col col-wide">
+                    <div class="navbar-section">
+                        <div class="navbar-section-title"><i class="fa fa-cog"></i> Configurações</div>
+                        <ul class="navbar-section-items">
+                            <li><a href="#">Indicadores</a></li>
+                            <li><a href="#">Faixas de atenção</a></li>
+                            <li><a href="#">Configurações de alertas de indicadores</a></li>
+                            <li><a href="#" class="link-more">Ver mais</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="navbar-item" data-menu="projetos-demandas">
             <div class="navbar-item-trigger">
                 <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/projetos_demandas_menu.svg" alt="Projetos e demandas" class="navbar-module-icon" />
-                Projetos e demandas
+                Planos e demandas
             </div>
         </div>
 
@@ -590,10 +754,10 @@
         <!-- PAGE HEADER AREA -->
         <div class="page-header-nav">
             <div class="breadcrumb-row">
-                <a href="#" class="btn-back"><i class="fa fa-angle-left"></i></a>
+                <a href="planos-de-acao.html" class="btn-back"><i class="fa fa-angle-left"></i></a>
                 <h2 class="page-title">
                     plano de ação estratégico
-                    <span class="help-icon-blue">?</span>
+                    <span class="help-icon-blue"><i class="fa fa-info"></i></span>
                 </h2>
             </div>
 
@@ -656,7 +820,7 @@
                         <i class="fa fa-file-text-o"></i>
                         <i class="fa fa-table"></i>
                         <div style="display:flex; align-items:center; gap: 4px;">
-                            <i class="fa fa-link" style="color: #267DD3;" title="Ver planos correlacionados" id="trigger-modal"></i>
+                            <a href="planos-correlacionados.html" style="color: #267DD3; font-size:14px;" title="Ver planos correlacionados"><i class="fa fa-link"></i></a>
                             <span class="new-tag">novo</span>
                         </div>
                         <i class="fa fa-angle-up" style="margin-left: 10px;"></i>
@@ -795,42 +959,23 @@
     <!-- INTERACTIVITY SCRIPTS -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Navbar behavior
+            // Navbar
             const navItems = document.querySelectorAll('.navbar-item');
             navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const isOpen = this.classList.contains('is-open');
-                    navItems.forEach(i => i.classList.remove('is-open'));
-                    if (!isOpen) this.classList.add('is-open');
-                });
-            });
-            
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.navbar-item')) {
-                    navItems.forEach(i => i.classList.remove('is-open'));
+                const trigger = item.querySelector('.navbar-item-trigger');
+                if (trigger) {
+                    trigger.addEventListener('click', function (e) {
+                        e.stopPropagation();
+                        navItems.forEach(other => { if (other !== item) other.classList.remove('is-open'); });
+                        item.classList.toggle('is-open');
+                    });
                 }
             });
-
-            // Modal behavior
-            const modal = document.getElementById('modal-association');
-            const trigger = document.getElementById('trigger-modal');
-            const closeBtn = document.getElementById('close-modal');
-            const cancelBtn = document.getElementById('btn-cancel-modal');
-
-            trigger.addEventListener('click', () => {
-                modal.classList.add('active');
+            document.addEventListener('click', function () {
+                navItems.forEach(i => i.classList.remove('is-open'));
             });
-
-            const closeModal = () => {
-                modal.classList.remove('active');
-            };
-
-            closeBtn.addEventListener('click', closeModal);
-            cancelBtn.addEventListener('click', closeModal);
-
-            // Close modal on background click
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeModal();
+            document.querySelectorAll('.navbar-dropdown').forEach(d => {
+                d.addEventListener('click', e => e.stopPropagation());
             });
         });
     </script>
