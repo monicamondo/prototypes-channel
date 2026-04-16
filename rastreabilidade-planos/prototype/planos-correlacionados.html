@@ -195,6 +195,42 @@
         }
         .filter-row input[type="date"] { color: #555; }
 
+        /* ── TAG INPUT ── */
+        .tag-input-wrapper {
+            flex: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
+            border: 1px solid #ccc; border-radius: 2px; background: #fff;
+            min-height: 28px; padding: 3px 6px; box-sizing: border-box; cursor: text;
+        }
+        .tag-chip {
+            display: inline-flex; align-items: center; gap: 3px;
+            background: #E8F0FE; color: #1565C0; border: 1px solid #B3C8F8;
+            border-radius: 2px; font-size: 10px; padding: 1px 5px;
+            white-space: nowrap; line-height: 1.4;
+        }
+        .tag-chip__remove {
+            background: none; border: none; cursor: pointer;
+            color: #1565C0; font-size: 11px; padding: 0; line-height: 1;
+        }
+        .tag-chip__remove:hover { color: #E7000B; }
+        .tag-input-field {
+            border: none; outline: none; font-size: 11px; color: #333;
+            flex: 1; min-width: 80px; background: transparent; height: 20px; padding: 0;
+        }
+
+        /* ── DATE FIELD WITH LABEL ── */
+        .filter-date-group {
+            display: flex; flex-direction: column; gap: 2px; flex: 1;
+        }
+        .filter-date-group label {
+            font-size: 9px; color: #888; font-weight: bold;
+            text-transform: uppercase; letter-spacing: 0.3px; line-height: 1;
+        }
+        .filter-date-group input[type="date"] {
+            border: 1px solid #ccc; border-radius: 2px; height: 22px;
+            padding: 0 6px; font-size: 11px; color: #555;
+            width: 100%; box-sizing: border-box; outline: none; background: #fff;
+        }
+
         /* Modal list */
         .modal-list {
             flex: 1; overflow-y: auto;
@@ -767,9 +803,17 @@
                     </select>
                 </div>
                 <div class="filter-row">
-                    <input type="text" id="filter-tags" placeholder="Tags (ex: inovação, gestão)">
-                    <input type="date" id="filter-de"   title="Período: de">
-                    <input type="date" id="filter-ate"  title="Período: até">
+                    <div class="tag-input-wrapper" id="tag-input-wrapper">
+                        <input type="text" class="tag-input-field" id="filter-tags" placeholder="Tags (Enter ou vírgula para adicionar)">
+                    </div>
+                    <div class="filter-date-group">
+                        <label for="filter-de">Data início</label>
+                        <input type="date" id="filter-de">
+                    </div>
+                    <div class="filter-date-group">
+                        <label for="filter-ate">Data fim</label>
+                        <input type="date" id="filter-ate">
+                    </div>
                 </div>
             </div>
 
@@ -903,6 +947,43 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+
+            // ── Tag Input
+            var tagWrapper = document.getElementById('tag-input-wrapper');
+            var tagField   = document.getElementById('filter-tags');
+            var activeTags = [];
+
+            function addTag(value) {
+                var val = value.trim().replace(/,+$/, '').trim();
+                if (!val || activeTags.indexOf(val) !== -1) return;
+                activeTags.push(val);
+
+                var chip = document.createElement('span');
+                chip.className = 'tag-chip';
+                chip.innerHTML = val + ' <button class="tag-chip__remove" type="button" aria-label="Remover ' + val + '">×</button>';
+                chip.querySelector('.tag-chip__remove').addEventListener('click', function () {
+                    activeTags = activeTags.filter(function (t) { return t !== val; });
+                    chip.remove();
+                });
+                tagWrapper.insertBefore(chip, tagField);
+                tagField.value = '';
+            }
+
+            tagField.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ',') {
+                    e.preventDefault();
+                    addTag(tagField.value);
+                } else if (e.key === 'Backspace' && tagField.value === '' && activeTags.length) {
+                    var last = tagWrapper.querySelectorAll('.tag-chip');
+                    if (last.length) last[last.length - 1].querySelector('.tag-chip__remove').click();
+                }
+            });
+
+            tagField.addEventListener('blur', function () {
+                if (tagField.value.trim()) addTag(tagField.value);
+            });
+
+            tagWrapper.addEventListener('click', function () { tagField.focus(); });
 
             // ── Navbar
             var navItems = document.querySelectorAll('.navbar-item');
