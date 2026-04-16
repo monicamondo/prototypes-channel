@@ -10,18 +10,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Design System - Foundations -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css">
 
     <!-- Design System - Components -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/table/Table.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/table/Table.css">
 
     <style>
         body {
@@ -32,9 +42,20 @@
             font-family: var(--chn-font-family);
         }
 
-        .legacy-content { flex: 1; padding: 20px; }
-        @media (max-width: 1280px) { .legacy-content { padding: 10px; } }
-        .table-section { margin-top: 10px; }
+        .legacy-content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        @media (max-width: 1280px) {
+            .legacy-content {
+                padding: 10px;
+            }
+        }
+
+        .table-section {
+            margin-top: 10px;
+        }
 
         /* ── SECTION HEADER (garante layout independente do CDN) ── */
         .chn-section-header {
@@ -46,12 +67,14 @@
             border-bottom: 1px solid #D5D5D5;
             background: #F8F8F8;
         }
+
         .chn-section-title {
             font-size: 11px;
             font-weight: bold;
             color: #333;
             padding-left: 4px;
         }
+
         .legacy-table-group-actions {
             display: flex;
             gap: 5px;
@@ -73,7 +96,10 @@
             box-sizing: border-box;
             width: 100%;
         }
-        .chn-breadcrumb span { font-weight: bold; }
+
+        .chn-breadcrumb span {
+            font-weight: bold;
+        }
 
         /* ── PAGE NAV ── */
         .page-nav-area {
@@ -84,186 +110,491 @@
             align-items: center;
             gap: 8px;
         }
-        .btn-back { color: #666; font-size: 18px; text-decoration: none; line-height: 1; }
-        .plan-nav-title { font-size: 14px; font-weight: 500; color: #444; }
-        .nav-separator { color: #ccc; font-size: 13px; }
-        .page-section-title { font-size: 14px; font-weight: bold; color: #267DD3; }
+
+        .btn-back {
+            color: #666;
+            font-size: 18px;
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .plan-nav-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: #444;
+        }
+
+        .nav-separator {
+            color: #ccc;
+            font-size: 13px;
+        }
+
+        .page-section-title {
+            font-size: 14px;
+            font-weight: bold;
+            color: #267DD3;
+        }
 
         /* ── STATUS BADGES ── */
         .status-badge {
-            padding: 2px 8px; border-radius: 3px;
-            font-size: 11px; font-weight: bold;
-            white-space: nowrap; display: inline-block;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-size: 11px;
+            font-weight: bold;
+            white-space: nowrap;
+            display: inline-block;
         }
-        .st-rascunho     { background: #606970; color: #fff; }
-        .st-andamento    { background: #0074D9; color: #fff; }
-        .st-finalizado   { background: #00A859; color: #fff; }
-        .st-cancelado    { background: #A0A0A0; color: #fff; }
-        .st-nao-iniciado { background: #96C9F4; color: #333; }
+
+        .st-rascunho {
+            background: #606970;
+            color: #fff;
+        }
+
+        .st-andamento {
+            background: #0074D9;
+            color: #fff;
+        }
+
+        .st-finalizado {
+            background: #00A859;
+            color: #fff;
+        }
+
+        .st-cancelado {
+            background: #A0A0A0;
+            color: #fff;
+        }
+
+        .st-nao-iniciado {
+            background: #96C9F4;
+            color: #333;
+        }
 
         /* ── PLAN LINK / CODE ── */
         .plan-name-link {
-            font-size: 11px; font-weight: bold;
-            color: #1565C0; text-decoration: none; display: block;
+            font-size: 11px;
+            font-weight: bold;
+            color: #1565C0;
+            text-decoration: none;
+            display: block;
         }
-        .plan-name-link:hover { text-decoration: underline; }
+
+        .plan-name-link:hover {
+            text-decoration: underline;
+        }
+
         .plan-code-tag {
-            font-size: 10px; color: #888;
-            border: 1px solid #D5D5D5; border-radius: 2px;
-            padding: 0 4px; display: inline-block; margin-top: 2px;
+            font-size: 10px;
+            color: #888;
+            border: 1px solid #D5D5D5;
+            border-radius: 2px;
+            padding: 0 4px;
+            display: inline-block;
+            margin-top: 2px;
         }
 
         /* ── PROGRESS BAR ── */
-        .progress-cell { display: flex; align-items: center; gap: 6px; }
-        .progress-track { flex: 1; height: 8px; background: #E0E0E0; border-radius: 2px; overflow: hidden; display: flex; }
-        .seg     { height: 100%; }
-        .seg-ni  { background: #96C9F4; }
-        .seg-ea  { background: #0074D9; }
-        .seg-fin { background: #00A859; }
-        .seg-can { background: #A0A0A0; }
-        .progress-pct { font-size: 10px; color: #555; white-space: nowrap; min-width: 26px; }
+        .progress-cell {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .progress-track {
+            flex: 1;
+            height: 8px;
+            background: #E0E0E0;
+            border-radius: 2px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .seg {
+            height: 100%;
+        }
+
+        .seg-ni {
+            background: #96C9F4;
+        }
+
+        .seg-ea {
+            background: #0074D9;
+        }
+
+        .seg-fin {
+            background: #00A859;
+        }
+
+        .seg-can {
+            background: #A0A0A0;
+        }
+
+        .progress-pct {
+            font-size: 10px;
+            color: #555;
+            white-space: nowrap;
+            min-width: 26px;
+        }
 
         /* ── ACTION BUTTONS ── */
-        .action-btns { display: flex; gap: 8px; align-items: center; justify-content: center; }
-        .btn-icon {
-            background: none; border: none; cursor: pointer;
-            color: #999; font-size: 13px; padding: 1px;
-            transition: color 0.15s; line-height: 1; text-decoration: none;
-            display: inline-flex; align-items: center;
+        .action-btns {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
         }
-        .btn-icon:hover        { color: #555; }
-        .btn-icon.remove:hover { color: #E7000B; }
+
+        .btn-icon {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #999;
+            font-size: 13px;
+            padding: 1px;
+            transition: color 0.15s;
+            line-height: 1;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-icon:hover {
+            color: #555;
+        }
+
+        .btn-icon.remove:hover {
+            color: #E7000B;
+        }
 
         /* ── FILTER ROW INPUTS ── */
         .filter-inline-input,
         .filter-inline-select {
-            width: 100%; box-sizing: border-box;
-            border: 1px solid #C0C0C0; background: #F5F5F5;
-            padding: 1px 4px; font-size: 10px; height: 18px;
-            font-family: inherit; outline: none; color: #333;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #C0C0C0;
+            background: #F5F5F5;
+            padding: 1px 4px;
+            font-size: 10px;
+            height: 18px;
+            font-family: inherit;
+            outline: none;
+            color: #333;
         }
 
 
         /* ── EMPTY STATE ── */
-        .empty-state { text-align: center; padding: 40px 20px; color: #999; }
-        .empty-state i { font-size: 28px; display: block; margin-bottom: 10px; color: #ddd; }
-        .empty-state p { font-size: 12px; margin: 0; }
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #999;
+        }
+
+        .empty-state i {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 10px;
+            color: #ddd;
+        }
+
+        .empty-state p {
+            font-size: 12px;
+            margin: 0;
+        }
 
         /* ── MODAL ASSOCIAR ── */
         .modal-overlay {
-            position: fixed; top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none; align-items: center; justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
             z-index: 1000;
         }
-        .modal-overlay.active { display: flex; }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
         .assoc-modal {
             background: #fff;
-            width: 680px; max-width: 94%;
+            width: 680px;
+            max-width: 94%;
             border-radius: 3px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            display: flex; flex-direction: column;
-            overflow: hidden; max-height: 92vh;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            max-height: 92vh;
         }
+
         .modal-header {
             background: var(--chn-color-navbar, #2c3e50);
-            color: #fff; padding: 10px 16px;
-            display: flex; justify-content: space-between; align-items: center;
+            color: #fff;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             flex-shrink: 0;
         }
-        .modal-header h3 { margin: 0; font-size: 14px; font-weight: bold; }
+
+        .modal-header h3 {
+            margin: 0;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
         .btn-close-modal {
-            background: none; border: none;
-            color: #fff; cursor: pointer; font-size: 16px; line-height: 1;
+            background: none;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
         }
 
         /* Modal filters */
         .modal-filters-area {
             padding: 12px 16px 10px;
             border-bottom: 1px solid #eee;
-            display: flex; flex-direction: column; gap: 7px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
             flex-shrink: 0;
+            background: #fff;
         }
-        .filter-row { display: flex; gap: 8px; }
+
+        .filter-row {
+            display: flex;
+            gap: 8px;
+        }
+
         .filter-row input,
         .filter-row select {
-            border: 1px solid #ccc; border-radius: 2px;
-            height: 28px; padding: 0 8px; font-size: 11px;
-            color: #333; flex: 1; outline: none;
-            background: #fff; box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            height: 28px;
+            padding: 0 8px;
+            font-size: 11px;
+            color: #333;
+            flex: 1;
+            outline: none;
+            background: #fff;
+            box-sizing: border-box;
         }
-        .filter-row input[type="date"] { color: #555; }
+
+        .filter-row input[type="date"] {
+            color: #555;
+        }
 
         /* ── TAG INPUT ── */
-        .tag-input-wrapper {
-            flex: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
-            border: 1px solid #ccc; border-radius: 2px; background: #fff;
-            min-height: 28px; padding: 3px 6px; box-sizing: border-box; cursor: text;
-        }
-        .tag-chip {
-            display: inline-flex; align-items: center; gap: 3px;
-            background: #E8F0FE; color: #1565C0; border: 1px solid #B3C8F8;
-            border-radius: 2px; font-size: 10px; padding: 1px 5px;
-            white-space: nowrap; line-height: 1.4;
-        }
-        .tag-chip__remove {
-            background: none; border: none; cursor: pointer;
-            color: #1565C0; font-size: 11px; padding: 0; line-height: 1;
-        }
-        .tag-chip__remove:hover { color: #E7000B; }
-        .tag-input-field {
-            border: none; outline: none; font-size: 11px; color: #333;
-            flex: 1; min-width: 80px; background: transparent; height: 20px; padding: 0;
+        .tag-row {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
         }
 
-        /* ── DATE FIELD WITH LABEL ── */
+        .tag-row-label {
+            font-size: 10px;
+            color: #777;
+            font-weight: bold;
+        }
+
+        .tag-input-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            background: #fff !important;
+            min-height: 28px;
+            padding: 3px 6px;
+            box-sizing: border-box;
+            cursor: text;
+        }
+
+        .tag-input-wrapper:focus-within {
+            border-color: #267DD3;
+            box-shadow: 0 0 0 2px rgba(38, 125, 211, 0.12);
+        }
+
+        .tag-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            background: #E8F0FE;
+            color: #1565C0;
+            border: 1px solid #B3C8F8;
+            border-radius: 2px;
+            font-size: 10px;
+            padding: 2px 8px 2px 8px;
+            white-space: nowrap;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .tag-chip__remove {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #7aaee8;
+            font-size: 13px;
+            padding: 0 0 0 2px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .tag-chip__remove:hover {
+            color: #E7000B;
+        }
+
+        .tag-input-field {
+            border: none;
+            outline: none;
+            font-size: 11px;
+            color: #333;
+            flex: 1;
+            min-width: 100px;
+            background: transparent;
+            height: 20px;
+            padding: 0;
+        }
+
+        .tag-input-hint {
+            font-size: 9px;
+            color: #aaa;
+            margin-top: 1px;
+        }
+
+        /* ── DATE FIELDS ── */
+        .filter-date-row {
+            display: flex;
+            gap: 8px;
+        }
+
         .filter-date-group {
-            display: flex; flex-direction: column; gap: 2px; flex: 1;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
+
         .filter-date-group label {
-            font-size: 9px; color: #888; font-weight: bold;
-            text-transform: uppercase; letter-spacing: 0.3px; line-height: 1;
+            font-size: 10px;
+            color: #777;
+            font-weight: bold;
         }
+
         .filter-date-group input[type="date"] {
-            border: 1px solid #ccc; border-radius: 2px; height: 22px;
-            padding: 0 6px; font-size: 11px; color: #555;
-            width: 100%; box-sizing: border-box; outline: none; background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            height: 28px;
+            padding: 0 6px;
+            font-size: 11px;
+            color: #555;
+            width: 100%;
+            box-sizing: border-box;
+            outline: none;
+            background: #fff;
+        }
+
+        .filter-date-group input[type="date"]:focus {
+            border-color: #267DD3;
+            box-shadow: 0 0 0 2px rgba(38, 125, 211, 0.12);
         }
 
         /* Modal list */
         .modal-list {
-            flex: 1; overflow-y: auto;
-            min-height: 220px; max-height: 320px;
+            flex: 1;
+            overflow-y: auto;
+            min-height: 220px;
+            max-height: 320px;
         }
-        .modal-list::-webkit-scrollbar { width: 6px; }
-        .modal-list::-webkit-scrollbar-track { background: #f5f5f5; }
-        .modal-list::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+
+        .modal-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .modal-list::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+
+        .modal-list::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
 
         .modal-item {
-            display: flex; align-items: flex-start; justify-content: space-between;
-            padding: 10px 16px; border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            padding: 10px 16px;
+            border-bottom: 1px solid #f0f0f0;
         }
-        .modal-item:hover { background: #fafafa; }
-        .modal-item.is-linked { background: #EDF4FF; }
-        .modal-item.hidden-item { display: none; }
 
-        .item-info { flex: 1; min-width: 0; }
-        .item-title { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 3px; }
-        .item-meta  { font-size: 11px; color: #888; line-height: 1.7; }
+        .modal-item:hover {
+            background: #fafafa;
+        }
+
+        .modal-item.is-linked {
+            background: #EDF4FF;
+        }
+
+        .modal-item.hidden-item {
+            display: none;
+        }
+
+        .item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .item-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        .item-meta {
+            font-size: 11px;
+            color: #888;
+            line-height: 1.7;
+        }
 
         /* Chain icon button */
         .btn-chain {
-            background: none; border: none; cursor: pointer;
-            font-size: 17px; padding: 2px 0 0 14px;
-            flex-shrink: 0; transition: color 0.15s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 17px;
+            padding: 2px 0 0 14px;
+            flex-shrink: 0;
+            transition: color 0.15s;
         }
+
         /* NOT linked: gray open chain */
-        .btn-chain[data-linked="false"]       { color: #bbb; }
-        .btn-chain[data-linked="false"]:hover { color: #267DD3; }
+        .btn-chain[data-linked="false"] {
+            color: #bbb;
+        }
+
+        .btn-chain[data-linked="false"]:hover {
+            color: #267DD3;
+        }
+
         /* Linked: blue closed (broken displays as "connected" in context) */
-        .btn-chain[data-linked="true"]        { color: #267DD3; }
-        .btn-chain[data-linked="true"]:hover  { color: #E7000B; }
+        .btn-chain[data-linked="true"] {
+            color: #267DD3;
+        }
+
+        .btn-chain[data-linked="true"]:hover {
+            color: #E7000B;
+        }
 
         /* Modal pagination */
         .modal-pagination {
@@ -275,27 +606,61 @@
             background: #fafafa;
             flex-shrink: 0;
         }
-        .modal-page-info { font-size: 11px; color: #888; }
-        .modal-page-btns { display: flex; gap: 4px; }
-        .btn-modal-page {
-            border: 1px solid #D1D1D1; background: #fff;
-            padding: 3px 8px; font-size: 11px; color: #666;
-            border-radius: 2px; cursor: pointer; min-width: 26px;
+
+        .modal-page-info {
+            font-size: 11px;
+            color: #888;
         }
-        .btn-modal-page.active { background: #5A6268; color: #fff; border-color: #5A6268; }
-        .btn-modal-page:disabled { opacity: 0.4; cursor: default; }
+
+        .modal-page-btns {
+            display: flex;
+            gap: 4px;
+        }
+
+        .btn-modal-page {
+            border: 1px solid #D1D1D1;
+            background: #fff;
+            padding: 3px 8px;
+            font-size: 11px;
+            color: #666;
+            border-radius: 2px;
+            cursor: pointer;
+            min-width: 26px;
+        }
+
+        .btn-modal-page.active {
+            background: #5A6268;
+            color: #fff;
+            border-color: #5A6268;
+        }
+
+        .btn-modal-page:disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
 
         /* Modal footer */
         .modal-footer {
-            padding: 10px 16px; border-top: 1px solid #eee;
-            display: flex; justify-content: flex-end; flex-shrink: 0;
+            padding: 10px 16px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: flex-end;
+            flex-shrink: 0;
         }
+
         .btn-cancel-modal {
-            padding: 5px 16px; font-size: 12px; cursor: pointer;
-            border: 1px solid #ccc; border-radius: 2px;
-            background: #fff; color: #333;
+            padding: 5px 16px;
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            background: #fff;
+            color: #333;
         }
-        .btn-cancel-modal:hover { background: #f5f5f5; }
+
+        .btn-cancel-modal:hover {
+            background: #f5f5f5;
+        }
 
         /* ── CONFIRMATION POPUP ── */
         .confirm-popup {
@@ -303,32 +668,72 @@
             background: #fff;
             border: 1px solid #ddd;
             border-radius: 3px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.22);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
             padding: 14px 16px;
             z-index: 1100;
             width: 230px;
             display: none;
         }
-        .confirm-popup.active { display: block; }
-        .confirm-popup-title  { font-size: 13px; font-weight: bold; color: #333; margin-bottom: 6px; }
-        .confirm-popup-text   { font-size: 12px; color: #555; margin-bottom: 12px; }
-        .confirm-popup-btns   { display: flex; gap: 8px; justify-content: flex-end; }
+
+        .confirm-popup.active {
+            display: block;
+        }
+
+        .confirm-popup-title {
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .confirm-popup-text {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 12px;
+        }
+
+        .confirm-popup-btns {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+
         .btn-confirm-sim {
-            background: #5A6268; color: #fff; border: none;
-            border-radius: 2px; padding: 4px 14px; font-size: 12px; cursor: pointer;
+            background: #5A6268;
+            color: #fff;
+            border: none;
+            border-radius: 2px;
+            padding: 4px 14px;
+            font-size: 12px;
+            cursor: pointer;
         }
-        .btn-confirm-sim:hover { background: #4a5258; }
+
+        .btn-confirm-sim:hover {
+            background: #4a5258;
+        }
+
         .btn-confirm-nao {
-            background: #fff; color: #333; border: 1px solid #ccc;
-            border-radius: 2px; padding: 4px 14px; font-size: 12px; cursor: pointer;
+            background: #fff;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            padding: 4px 14px;
+            font-size: 12px;
+            cursor: pointer;
         }
-        .btn-confirm-nao:hover { background: #f5f5f5; }
+
+        .btn-confirm-nao:hover {
+            background: #f5f5f5;
+        }
 
         /* Footer */
         .legacy-footer {
-            margin-top: 40px; padding: 14px 20px;
-            text-align: center; color: #999;
-            font-size: 11px; border-top: 1px solid #eee;
+            margin-top: 40px;
+            padding: 14px 20px;
+            text-align: center;
+            color: #999;
+            font-size: 11px;
+            border-top: 1px solid #eee;
         }
     </style>
 </head>
@@ -340,11 +745,13 @@
         <div class="legacy-header-container">
             <div class="legacy-header-logos">
                 <div class="logo-jexperts">
-                    <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo%20J.svg" alt="Logo J" class="logo-j-svg">
+                    <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo%20J.svg"
+                        alt="Logo J" class="logo-j-svg">
                 </div>
                 <div class="logo-divider"></div>
                 <div class="logo-channel">
-                    <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo-channel_.png" alt="Channel Logo" class="logo-channel-img">
+                    <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo-channel_.png"
+                        alt="Channel Logo" class="logo-channel-img">
                 </div>
             </div>
             <div class="legacy-header-actions">
@@ -420,7 +827,8 @@
 
         <div class="navbar-item" data-menu="meu-channel">
             <div class="navbar-item-trigger">
-                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/meu_channel_menul.svg" alt="Meu Channel" class="navbar-module-icon" />
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/meu_channel_menul.svg"
+                    alt="Meu Channel" class="navbar-module-icon" />
                 Meu Channel
             </div>
             <div class="navbar-dropdown">
@@ -472,7 +880,8 @@
                         </ul>
                     </div>
                     <div class="navbar-section">
-                        <div class="navbar-section-title"><i class="fa fa-exclamation-triangle"></i> Riscos corporativos</div>
+                        <div class="navbar-section-title"><i class="fa fa-exclamation-triangle"></i> Riscos corporativos
+                        </div>
                         <ul class="navbar-section-items">
                             <li><a href="#">Reportar incidente</a></li>
                             <li><a href="#">Reportar risco</a></li>
@@ -485,7 +894,8 @@
 
         <div class="navbar-item" data-menu="estrategia">
             <div class="navbar-item-trigger">
-                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/estrategia_menu.svg" alt="Estratégia" class="navbar-module-icon" />
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/estrategia_menu.svg"
+                    alt="Estratégia" class="navbar-module-icon" />
                 Estratégia
             </div>
             <div class="navbar-dropdown">
@@ -494,7 +904,8 @@
                     <a class="navbar-direct-link" href="#"><i class="fa fa-flag"></i> Objetivos operacionais</a>
                     <a class="navbar-direct-link" href="#"><i class="fa fa-briefcase"></i> Portfólios</a>
                     <a class="navbar-direct-link" href="#"><i class="fa fa-th-list"></i> Programas</a>
-                    <a class="navbar-direct-link" href="#"><i class="fa fa-exclamation-triangle"></i> Riscos corporativos</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-exclamation-triangle"></i> Riscos
+                        corporativos</a>
                     <a class="navbar-direct-link" href="#"><i class="fa fa-calendar"></i> Acompanhamento de reuniões</a>
                 </div>
                 <div class="navbar-col-divider"></div>
@@ -524,12 +935,14 @@
 
         <div class="navbar-item" data-menu="desempenho">
             <div class="navbar-item-trigger">
-                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/desempenho_menu.svg" alt="Desempenho" class="navbar-module-icon" />
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/desempenho_menu.svg"
+                    alt="Desempenho" class="navbar-module-icon" />
                 Desempenho
             </div>
             <div class="navbar-dropdown">
                 <div class="navbar-dropdown-col">
-                    <a class="navbar-direct-link" href="#"><i class="fa fa-calendar-check-o"></i> Planejamento de metas</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-calendar-check-o"></i> Planejamento de
+                        metas</a>
                     <a class="navbar-direct-link" href="#"><i class="fa fa-line-chart"></i> Medições de indicador</a>
                     <a class="navbar-direct-link" href="#"><i class="fa fa-file-text-o"></i> Planos de ação</a>
                 </div>
@@ -564,14 +977,16 @@
 
         <div class="navbar-item" data-menu="projetos-demandas">
             <div class="navbar-item-trigger">
-                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/projetos_demandas_menu.svg" alt="Projetos e demandas" class="navbar-module-icon" />
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/projetos_demandas_menu.svg"
+                    alt="Projetos e demandas" class="navbar-module-icon" />
                 Planos e demandas
             </div>
         </div>
 
         <div class="navbar-item" data-menu="administracao">
             <div class="navbar-item-trigger">
-                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/administracao_meni.svg" alt="Administração" class="navbar-module-icon" />
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/administracao_meni.svg"
+                    alt="Administração" class="navbar-module-icon" />
                 Administração
             </div>
         </div>
@@ -597,156 +1012,168 @@
 
     <!-- PAGE CONTENT -->
     <main class="legacy-content">
-      <div class="table-section">
+        <div class="table-section">
 
-        <div class="chn-section-header">
-            <div class="chn-section-title">
-                Planos Correlacionados
-                <span id="correlatos-count" style="font-weight:normal;">(3 plano(s))</span>
-            </div>
-            <div class="legacy-table-group-actions">
-                <button class="chn-btn chn-btn-primary" style="height:20px; font-size:10px; padding:0 8px; gap:4px;" id="btn-open-modal">
-                    <i class="fa fa-plus"></i> Correlacionar plano
-                </button>
-            </div>
-        </div>
-
-        <div class="table-responsive-container">
-            <table class="legacy-table">
-                <thead>
-                    <tr>
-                        <th style="width:26%">Plano</th>
-                        <th style="width:13%">Área</th>
-                        <th style="width:13%">Responsável</th>
-                        <th style="width:11%">Status</th>
-                        <th style="width:18%">Andamento das ações</th>
-                        <th style="width:10%">Data limite</th>
-                        <th style="width:9%; text-align:center">Ações</th>
-                    </tr>
-                    <tr>
-                        <th><input type="text" placeholder="Filtrar plano..." class="filter-inline-input" style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
-                        <th><input type="text" placeholder="Filtrar área..." class="filter-inline-input" style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
-                        <th><input type="text" placeholder="Filtrar responsável..." class="filter-inline-input" style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
-                        <th>
-                            <select class="filter-inline-select" style="font-size:10px; height:18px; width:100%; box-sizing:border-box;">
-                                <option value="">Todos</option>
-                                <option>Em andamento</option>
-                                <option>Rascunho</option>
-                                <option>Concluído</option>
-                                <option>Cancelado</option>
-                            </select>
-                        </th>
-                        <th></th>
-                        <th><input type="text" placeholder="dd/mm/aaaa" class="filter-inline-input" style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="correlatos-tbody">
-                    <tr>
-                        <td>
-                            <a href="detalhe-plano.html" class="plan-name-link">Estabelecer Meta</a>
-                            <span class="plan-code-tag">#FAC24C</span>
-                        </td>
-                        <td>Recuperação de Metas</td>
-                        <td>Carlos Melquiades</td>
-                        <td><span class="status-badge st-andamento">Em andamento</span></td>
-                        <td>
-                            <div class="progress-cell">
-                                <div class="progress-track">
-                                    <div class="seg seg-ni"  style="width:20%"></div>
-                                    <div class="seg seg-ea"  style="width:20%"></div>
-                                    <div class="seg seg-fin" style="width:60%"></div>
-                                </div>
-                                <span class="progress-pct">60%</span>
-                            </div>
-                        </td>
-                        <td>24/04/2026</td>
-                        <td>
-                            <div class="action-btns">
-                                <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
-                                <button class="btn-icon remove btn-row-remove" title="Remover correlação" data-name="Estabelecer Meta"><i class="fa fa-chain-broken"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="detalhe-plano.html" class="plan-name-link">Plano de Avance</a>
-                            <span class="plan-code-tag">#FAC22C</span>
-                        </td>
-                        <td>Training Channel</td>
-                        <td>Carlos Melquiades</td>
-                        <td><span class="status-badge st-andamento">Em andamento</span></td>
-                        <td>
-                            <div class="progress-cell">
-                                <div class="progress-track">
-                                    <div class="seg seg-ni"  style="width:30%"></div>
-                                    <div class="seg seg-ea"  style="width:20%"></div>
-                                    <div class="seg seg-fin" style="width:50%"></div>
-                                </div>
-                                <span class="progress-pct">50%</span>
-                            </div>
-                        </td>
-                        <td>17/04/2026</td>
-                        <td>
-                            <div class="action-btns">
-                                <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
-                                <button class="btn-icon remove btn-row-remove" title="Remover correlação" data-name="Plano de Avance"><i class="fa fa-chain-broken"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <a href="detalhe-plano.html" class="plan-name-link">Plano de Expansão</a>
-                            <span class="plan-code-tag">#FAC23C</span>
-                        </td>
-                        <td>Categoria 2</td>
-                        <td>Michelly Angelo</td>
-                        <td><span class="status-badge st-rascunho">Rascunho</span></td>
-                        <td>
-                            <div class="progress-cell">
-                                <div class="progress-track">
-                                    <div class="seg seg-ni"  style="width:10%"></div>
-                                    <div class="seg seg-ea"  style="width:20%"></div>
-                                    <div class="seg seg-fin" style="width:30%"></div>
-                                    <div class="seg seg-can" style="width:40%"></div>
-                                </div>
-                                <span class="progress-pct">30%</span>
-                            </div>
-                        </td>
-                        <td>24/04/2026</td>
-                        <td>
-                            <div class="action-btns">
-                                <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
-                                <button class="btn-icon remove btn-row-remove" title="Remover correlação" data-name="Plano de Expansão"><i class="fa fa-chain-broken"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="empty-state" id="empty-state" style="display:none;">
-                <i class="fa fa-chain-broken"></i>
-                <p>Não existem planos de ação correlacionados</p>
-            </div>
-        </div>
-
-        <div class="legacy-pagination" id="correlatos-pagination">
-            <div class="pagination-pages">
-                <span id="pagination-info">Página 1 de 1</span>
-                <div class="pagination-numbers">
-                    <span style="font-weight:bold; color:var(--chn-color-link)">1</span>
-                    <span>►</span>
+            <div class="chn-section-header">
+                <div class="chn-section-title">
+                    Planos Correlacionados
+                    <span id="correlatos-count" style="font-weight:normal;">(3 plano(s))</span>
+                </div>
+                <div class="legacy-table-group-actions">
+                    <button class="chn-btn chn-btn-primary" style="height:20px; font-size:10px; padding:0 8px; gap:4px;"
+                        id="btn-open-modal">
+                        <i class="fa fa-plus"></i> Correlacionar plano
+                    </button>
                 </div>
             </div>
-            <div style="display:flex; align-items:center; gap:8px;">
-                <select class="pagination-select">
-                    <option>10 itens por página</option>
-                    <option>25 itens por página</option>
-                    <option>50 itens por página</option>
-                </select>
-            </div>
-        </div>
 
-      </div><!-- /.table-section -->
+            <div class="table-responsive-container">
+                <table class="legacy-table">
+                    <thead>
+                        <tr>
+                            <th style="width:26%">Plano</th>
+                            <th style="width:13%">Área</th>
+                            <th style="width:13%">Responsável</th>
+                            <th style="width:11%">Status</th>
+                            <th style="width:18%">Andamento das ações</th>
+                            <th style="width:10%">Data limite</th>
+                            <th style="width:9%; text-align:center">Ações</th>
+                        </tr>
+                        <tr>
+                            <th><input type="text" placeholder="Filtrar plano..." class="filter-inline-input"
+                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
+                            <th><input type="text" placeholder="Filtrar área..." class="filter-inline-input"
+                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
+                            <th><input type="text" placeholder="Filtrar responsável..." class="filter-inline-input"
+                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
+                            <th>
+                                <select class="filter-inline-select"
+                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;">
+                                    <option value="">Todos</option>
+                                    <option>Em andamento</option>
+                                    <option>Rascunho</option>
+                                    <option>Concluído</option>
+                                    <option>Cancelado</option>
+                                </select>
+                            </th>
+                            <th></th>
+                            <th><input type="text" placeholder="dd/mm/aaaa" class="filter-inline-input"
+                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="correlatos-tbody">
+                        <tr>
+                            <td>
+                                <a href="detalhe-plano.html" class="plan-name-link">Estabelecer Meta</a>
+                                <span class="plan-code-tag">#FAC24C</span>
+                            </td>
+                            <td>Recuperação de Metas</td>
+                            <td>Carlos Melquiades</td>
+                            <td><span class="status-badge st-andamento">Em andamento</span></td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-track">
+                                        <div class="seg seg-ni" style="width:20%"></div>
+                                        <div class="seg seg-ea" style="width:20%"></div>
+                                        <div class="seg seg-fin" style="width:60%"></div>
+                                    </div>
+                                    <span class="progress-pct">60%</span>
+                                </div>
+                            </td>
+                            <td>24/04/2026</td>
+                            <td>
+                                <div class="action-btns">
+                                    <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i
+                                            class="fa fa-external-link"></i></a>
+                                    <button class="btn-icon remove btn-row-remove" title="Remover correlação"
+                                        data-name="Estabelecer Meta"><i class="fa fa-chain-broken"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="detalhe-plano.html" class="plan-name-link">Plano de Avance</a>
+                                <span class="plan-code-tag">#FAC22C</span>
+                            </td>
+                            <td>Training Channel</td>
+                            <td>Carlos Melquiades</td>
+                            <td><span class="status-badge st-andamento">Em andamento</span></td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-track">
+                                        <div class="seg seg-ni" style="width:30%"></div>
+                                        <div class="seg seg-ea" style="width:20%"></div>
+                                        <div class="seg seg-fin" style="width:50%"></div>
+                                    </div>
+                                    <span class="progress-pct">50%</span>
+                                </div>
+                            </td>
+                            <td>17/04/2026</td>
+                            <td>
+                                <div class="action-btns">
+                                    <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i
+                                            class="fa fa-external-link"></i></a>
+                                    <button class="btn-icon remove btn-row-remove" title="Remover correlação"
+                                        data-name="Plano de Avance"><i class="fa fa-chain-broken"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a href="detalhe-plano.html" class="plan-name-link">Plano de Expansão</a>
+                                <span class="plan-code-tag">#FAC23C</span>
+                            </td>
+                            <td>Categoria 2</td>
+                            <td>Michelly Angelo</td>
+                            <td><span class="status-badge st-rascunho">Rascunho</span></td>
+                            <td>
+                                <div class="progress-cell">
+                                    <div class="progress-track">
+                                        <div class="seg seg-ni" style="width:10%"></div>
+                                        <div class="seg seg-ea" style="width:20%"></div>
+                                        <div class="seg seg-fin" style="width:30%"></div>
+                                        <div class="seg seg-can" style="width:40%"></div>
+                                    </div>
+                                    <span class="progress-pct">30%</span>
+                                </div>
+                            </td>
+                            <td>24/04/2026</td>
+                            <td>
+                                <div class="action-btns">
+                                    <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i
+                                            class="fa fa-external-link"></i></a>
+                                    <button class="btn-icon remove btn-row-remove" title="Remover correlação"
+                                        data-name="Plano de Expansão"><i class="fa fa-chain-broken"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="empty-state" id="empty-state" style="display:none;">
+                    <i class="fa fa-chain-broken"></i>
+                    <p>Não existem planos de ação correlacionados</p>
+                </div>
+            </div>
+
+            <div class="legacy-pagination" id="correlatos-pagination">
+                <div class="pagination-pages">
+                    <span id="pagination-info">Página 1 de 1</span>
+                    <div class="pagination-numbers">
+                        <span style="font-weight:bold; color:var(--chn-color-link)">1</span>
+                        <span>►</span>
+                    </div>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                    <select class="pagination-select">
+                        <option>10 itens por página</option>
+                        <option>25 itens por página</option>
+                        <option>50 itens por página</option>
+                    </select>
+                </div>
+            </div>
+
+        </div><!-- /.table-section -->
     </main><!-- /.legacy-content -->
 
     <!-- SHARED CONFIRMATION POPUP -->
@@ -802,10 +1229,15 @@
                         <option>Tático</option>
                     </select>
                 </div>
-                <div class="filter-row">
+                <div class="tag-row">
+                    <span class="tag-row-label">Tagssssss</span>
                     <div class="tag-input-wrapper" id="tag-input-wrapper">
-                        <input type="text" class="tag-input-field" id="filter-tags" placeholder="Tags (Enter ou vírgula para adicionar)">
+                        <input type="text" class="tag-input-field" id="filter-tags"
+                            placeholder="Digite uma tag e pressione Enter ou vírgula...">
                     </div>
+                    <span class="tag-input-hint">Ex: inovação, gestão, estratégia</span>
+                </div>
+                <div class="filter-date-row">
                     <div class="filter-date-group">
                         <label for="filter-de">Data início</label>
                         <input type="date" id="filter-de">
@@ -826,7 +1258,8 @@
                 <div class="modal-item" data-item="1">
                     <div class="item-info">
                         <div class="item-title">Peso do indicador no fator de risco Ticket #9352</div>
-                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades</div>
+                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades
+                        </div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
@@ -834,15 +1267,18 @@
                 <div class="modal-item is-linked" data-item="2">
                     <div class="item-info">
                         <div class="item-title">GMAR - Desenvolvimento de Equipe</div>
-                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Estratégico</div>
+                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos
+                            Melquiades&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Estratégico</div>
                     </div>
-                    <button class="btn-chain" data-linked="true" title="Desvincular"><i class="fa fa-chain-broken"></i></button>
+                    <button class="btn-chain" data-linked="true" title="Desvincular"><i
+                            class="fa fa-chain-broken"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="3">
                     <div class="item-info">
                         <div class="item-title">Ticket #8275 - RELATÓRIO DE INDICADORES POUPEX</div>
-                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades</div>
+                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos
+                            Melquiades</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
@@ -850,7 +1286,8 @@
                 <div class="modal-item" data-item="4">
                     <div class="item-info">
                         <div class="item-title">0509-2</div>
-                        <div class="item-meta">Área: Área 0309-1&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Michelly Angelo&nbsp;&nbsp;|&nbsp;&nbsp;Grupo(s): Grupo Novo Indicador de área</div>
+                        <div class="item-meta">Área: Área 0309-1&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Michelly
+                            Angelo&nbsp;&nbsp;|&nbsp;&nbsp;Grupo(s): Grupo Novo Indicador de área</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
@@ -858,15 +1295,18 @@
                 <div class="modal-item is-linked" data-item="5">
                     <div class="item-info">
                         <div class="item-title">SUB IND 1 - 1</div>
-                        <div class="item-meta">Projeto: chamado vixteam&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Orlando Vasques&nbsp;&nbsp;|&nbsp;&nbsp;Tags: inovação, capacitação</div>
+                        <div class="item-meta">Projeto: chamado vixteam&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Orlando
+                            Vasques&nbsp;&nbsp;|&nbsp;&nbsp;Tags: inovação, capacitação</div>
                     </div>
-                    <button class="btn-chain" data-linked="true" title="Desvincular"><i class="fa fa-chain-broken"></i></button>
+                    <button class="btn-chain" data-linked="true" title="Desvincular"><i
+                            class="fa fa-chain-broken"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="6">
                     <div class="item-info">
                         <div class="item-title">Plano de Contingência Operacional</div>
-                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ana Souza&nbsp;&nbsp;|&nbsp;&nbsp;Tags: contingência, operações</div>
+                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ana
+                            Souza&nbsp;&nbsp;|&nbsp;&nbsp;Tags: contingência, operações</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
@@ -874,7 +1314,8 @@
                 <div class="modal-item" data-item="7">
                     <div class="item-info">
                         <div class="item-title">Revisão de Processos Internos - Q2 2026</div>
-                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Estratégico</div>
+                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos
+                            Melquiades&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Estratégico</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
@@ -882,7 +1323,8 @@
                 <div class="modal-item" data-item="8">
                     <div class="item-info">
                         <div class="item-title">Gestão de Fornecedores 2026</div>
-                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ricardo Oliveira&nbsp;&nbsp;|&nbsp;&nbsp;Tags: fornecedores, contratos</div>
+                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ricardo
+                            Oliveira&nbsp;&nbsp;|&nbsp;&nbsp;Tags: fornecedores, contratos</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
@@ -890,15 +1332,18 @@
                 <div class="modal-item is-linked" data-item="9">
                     <div class="item-info">
                         <div class="item-title">Programa de Capacitação Técnica</div>
-                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Michelly Angelo&nbsp;&nbsp;|&nbsp;&nbsp;Tags: capacitação, RH</div>
+                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Michelly
+                            Angelo&nbsp;&nbsp;|&nbsp;&nbsp;Tags: capacitação, RH</div>
                     </div>
-                    <button class="btn-chain" data-linked="true" title="Desvincular"><i class="fa fa-chain-broken"></i></button>
+                    <button class="btn-chain" data-linked="true" title="Desvincular"><i
+                            class="fa fa-chain-broken"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="10">
                     <div class="item-info">
                         <div class="item-title">Otimização de Fluxo Operacional</div>
-                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ana Souza&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Operacional</div>
+                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ana
+                            Souza&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Operacional</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
@@ -906,7 +1351,8 @@
                 <div class="modal-item" data-item="11">
                     <div class="item-info">
                         <div class="item-title">Análise de Riscos Corporativos - Q1 2026</div>
-                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ricardo Oliveira&nbsp;&nbsp;|&nbsp;&nbsp;Tags: riscos, compliance</div>
+                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ricardo
+                            Oliveira&nbsp;&nbsp;|&nbsp;&nbsp;Tags: riscos, compliance</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
@@ -914,7 +1360,8 @@
                 <div class="modal-item" data-item="12">
                     <div class="item-info">
                         <div class="item-title">Plano de Inovação Digital 2026</div>
-                        <div class="item-meta">Área: Inovação Digital&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Orlando Vasques&nbsp;&nbsp;|&nbsp;&nbsp;Tags: inovação, digital, transformação</div>
+                        <div class="item-meta">Área: Inovação Digital&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Orlando
+                            Vasques&nbsp;&nbsp;|&nbsp;&nbsp;Tags: inovação, digital, transformação</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
@@ -950,23 +1397,38 @@
 
             // ── Tag Input
             var tagWrapper = document.getElementById('tag-input-wrapper');
-            var tagField   = document.getElementById('filter-tags');
+            var tagField = document.getElementById('filter-tags');
             var activeTags = [];
 
             function addTag(value) {
                 var val = value.trim().replace(/,+$/, '').trim();
-                if (!val || activeTags.indexOf(val) !== -1) return;
+                if (!val || activeTags.indexOf(val) !== -1) { tagField.value = ''; return; }
                 activeTags.push(val);
 
                 var chip = document.createElement('span');
                 chip.className = 'tag-chip';
-                chip.innerHTML = val + ' <button class="tag-chip__remove" type="button" aria-label="Remover ' + val + '">×</button>';
-                chip.querySelector('.tag-chip__remove').addEventListener('click', function () {
+
+                var label = document.createElement('span');
+                label.textContent = val;
+
+                var btn = document.createElement('button');
+                btn.className = 'tag-chip__remove';
+                btn.type = 'button';
+                btn.setAttribute('aria-label', 'Remover ' + val);
+                btn.textContent = '×';
+                btn.addEventListener('mousedown', function (e) {
+                    // Impede blur do tagField antes de remover
+                    e.preventDefault();
                     activeTags = activeTags.filter(function (t) { return t !== val; });
                     chip.remove();
+                    tagField.focus();
                 });
+
+                chip.appendChild(label);
+                chip.appendChild(btn);
                 tagWrapper.insertBefore(chip, tagField);
                 tagField.value = '';
+                tagField.focus();
             }
 
             tagField.addEventListener('keydown', function (e) {
@@ -974,13 +1436,16 @@
                     e.preventDefault();
                     addTag(tagField.value);
                 } else if (e.key === 'Backspace' && tagField.value === '' && activeTags.length) {
-                    var last = tagWrapper.querySelectorAll('.tag-chip');
-                    if (last.length) last[last.length - 1].querySelector('.tag-chip__remove').click();
+                    var chips = tagWrapper.querySelectorAll('.tag-chip');
+                    if (chips.length) chips[chips.length - 1].querySelector('.tag-chip__remove').dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
                 }
             });
 
             tagField.addEventListener('blur', function () {
-                if (tagField.value.trim()) addTag(tagField.value);
+                // Só converte em tag ao sair se não foi o clique num chip__remove que causou o blur
+                setTimeout(function () {
+                    if (tagField.value.trim()) addTag(tagField.value);
+                }, 150);
             });
 
             tagWrapper.addEventListener('click', function () { tagField.focus(); });
@@ -1025,21 +1490,21 @@
 
             // ── Modal pagination (5 items per page)
             var ITEMS_PER_PAGE = 5;
-            var allItems       = Array.from(document.querySelectorAll('.modal-item'));
-            var totalItems     = allItems.length;
-            var totalPages     = Math.ceil(totalItems / ITEMS_PER_PAGE);
-            var currentPage    = 1;
+            var allItems = Array.from(document.querySelectorAll('.modal-item'));
+            var totalItems = allItems.length;
+            var totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
+            var currentPage = 1;
 
             function renderPage(page) {
                 currentPage = page;
                 allItems.forEach(function (item, idx) {
                     var start = (page - 1) * ITEMS_PER_PAGE;
-                    var end   = start + ITEMS_PER_PAGE;
+                    var end = start + ITEMS_PER_PAGE;
                     item.style.display = (idx >= start && idx < end) ? 'flex' : 'none';
                 });
 
                 var from = (page - 1) * ITEMS_PER_PAGE + 1;
-                var to   = Math.min(page * ITEMS_PER_PAGE, totalItems);
+                var to = Math.min(page * ITEMS_PER_PAGE, totalItems);
                 document.getElementById('modal-page-info').textContent =
                     'Exibindo ' + from + '–' + to + ' de ' + totalItems;
 
@@ -1068,7 +1533,7 @@
 
             function showConfirm(anchorEl, onConfirm) {
                 var rect = anchorEl.getBoundingClientRect();
-                confirmPopup.style.top  = (rect.bottom + 6 + window.scrollY) + 'px';
+                confirmPopup.style.top = (rect.bottom + 6 + window.scrollY) + 'px';
                 confirmPopup.style.left = Math.max(8, rect.left - 210 + window.scrollX) + 'px';
                 confirmPopup.classList.add('active');
                 pendingAction = onConfirm;
@@ -1098,7 +1563,7 @@
             document.querySelectorAll('.btn-chain').forEach(function (btn) {
                 btn.addEventListener('click', function (e) {
                     e.stopPropagation();
-                    var self     = this;
+                    var self = this;
                     var isLinked = self.dataset.linked === 'true';
 
                     if (!isLinked) {
@@ -1115,7 +1580,7 @@
                             self.title = 'Vincular';
                             self.innerHTML = '<i class="fa fa-chain"></i>';
                             self.closest('.modal-item').classList.remove('is-linked');
-                            });
+                        });
                     }
                 });
             });
@@ -1133,9 +1598,9 @@
             });
 
             function updateCount() {
-                var rows  = document.querySelectorAll('#correlatos-tbody tr');
+                var rows = document.querySelectorAll('#correlatos-tbody tr');
                 var empty = document.getElementById('empty-state');
-                var info  = document.getElementById('pagination-info');
+                var info = document.getElementById('pagination-info');
                 info.textContent = rows.length + ' plano(s) correlacionado(s)';
                 empty.style.display = rows.length === 0 ? 'block' : 'none';
             }
@@ -1143,4 +1608,5 @@
     </script>
 
 </body>
+
 </html>
