@@ -533,6 +533,7 @@
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
+            gap: 10px;
             padding: 10px 16px;
             border-bottom: 1px solid #f0f0f0;
         }
@@ -547,6 +548,13 @@
 
         .modal-item.hidden-item {
             display: none;
+        }
+
+        /* Coluna do badge de tipo */
+        .item-type-col {
+            flex-shrink: 0;
+            width: 58px;
+            padding-top: 1px;
         }
 
         .item-info {
@@ -594,6 +602,72 @@
 
         .btn-chain[data-linked="true"]:hover {
             color: #E7000B;
+        }
+
+        /* ── PLAN TYPE BADGES (modal) ── */
+        .plan-type-badge {
+            display: inline;
+            border-radius: 3px;
+            font-size: 10px;
+            font-weight: bold;
+            padding: 2px 7px;
+            white-space: nowrap;
+            line-height: 1.4;
+            vertical-align: middle;
+        }
+
+        .plan-type-badge.tipo-risco {
+            background: #E8740A;
+            color: #fff;
+        }
+
+        .plan-type-badge.tipo-area {
+            background: #267DD3;
+            color: #fff;
+        }
+
+        .plan-type-badge.tipo-projeto {
+            background: #2E8B57;
+            color: #fff;
+        }
+
+        /* ── TAGS CHIPS (table) ── */
+        .table-tag-chip {
+            display: inline-block;
+            background: #E8F0FE;
+            color: #1565C0;
+            border: 1px solid #B3C8F8;
+            border-radius: 2px;
+            font-size: 9px;
+            padding: 1px 5px;
+            margin: 1px 1px 1px 0;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        /* ── ORIGIN BADGE (table – smaller) ── */
+        .origin-type-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            border-radius: 3px;
+            font-size: 9px;
+            font-weight: bold;
+            padding: 1px 6px;
+            white-space: nowrap;
+            margin-bottom: 2px;
+            line-height: 1.4;
+        }
+
+        .origin-type-badge.tipo-risco  { background: #E8740A; color: #fff; }
+        .origin-type-badge.tipo-area   { background: #267DD3; color: #fff; }
+        .origin-type-badge.tipo-projeto { background: #2E8B57; color: #fff; }
+
+        .origin-name {
+            font-size: 10px;
+            color: #555;
+            display: block;
+            margin-top: 1px;
         }
 
         /* Modal pagination */
@@ -1031,13 +1105,14 @@
                 <table class="legacy-table">
                     <thead>
                         <tr>
-                            <th style="width:26%">Plano</th>
-                            <th style="width:13%">Área</th>
-                            <th style="width:13%">Responsável</th>
-                            <th style="width:11%">Status</th>
-                            <th style="width:18%">Andamento das ações</th>
-                            <th style="width:10%">Data limite</th>
-                            <th style="width:9%; text-align:center">Ações</th>
+                            <th style="width:24%">Plano</th>
+                            <th style="width:12%">Área</th>
+                            <th style="width:12%">Responsável</th>
+                            <th style="width:10%">Status</th>
+                            <th style="width:15%">Andamento das ações</th>
+                            <th style="width:15%">Vínculo</th>
+                            <th style="width:8%">Data limite</th>
+                            <th style="width:7%; text-align:center">Ações</th>
                         </tr>
                         <tr>
                             <th><input type="text" placeholder="Filtrar plano..." class="filter-inline-input"
@@ -1057,6 +1132,15 @@
                                 </select>
                             </th>
                             <th></th>
+                            <th>
+                                <select class="filter-inline-select"
+                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;">
+                                    <option value="">Tipo vínculo</option>
+                                    <option>Risco</option>
+                                    <option>Área</option>
+                                    <option>Projeto</option>
+                                </select>
+                            </th>
                             <th><input type="text" placeholder="dd/mm/aaaa" class="filter-inline-input"
                                     style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
                             <th></th>
@@ -1066,7 +1150,7 @@
                         <tr>
                             <td>
                                 <a href="detalhe-plano.html" class="plan-name-link">Estabelecer Meta</a>
-                                <span class="plan-code-tag">#FAC24C</span>
+                                <span class="plan-code-tag">#FAC22C1</span>
                             </td>
                             <td>Recuperação de Metas</td>
                             <td>Carlos Melquiades</td>
@@ -1081,6 +1165,10 @@
                                     <span class="progress-pct">60%</span>
                                 </div>
                             </td>
+                            <td>
+                                <span class="origin-type-badge tipo-risco">Risco</span>
+                                <span class="origin-name">Peso do indicador #8352</span>
+                            </td>
                             <td>24/04/2026</td>
                             <td>
                                 <div class="action-btns">
@@ -1094,7 +1182,7 @@
                         <tr>
                             <td>
                                 <a href="detalhe-plano.html" class="plan-name-link">Plano de Avance</a>
-                                <span class="plan-code-tag">#FAC22C</span>
+                                <span class="plan-code-tag">#FAC22C2</span>
                             </td>
                             <td>Training Channel</td>
                             <td>Carlos Melquiades</td>
@@ -1109,6 +1197,10 @@
                                     <span class="progress-pct">50%</span>
                                 </div>
                             </td>
+                            <td>
+                                <span class="origin-type-badge tipo-area">Área</span>
+                                <span class="origin-name">Training Channel</span>
+                            </td>
                             <td>17/04/2026</td>
                             <td>
                                 <div class="action-btns">
@@ -1122,9 +1214,9 @@
                         <tr>
                             <td>
                                 <a href="detalhe-plano.html" class="plan-name-link">Plano de Expansão</a>
-                                <span class="plan-code-tag">#FAC23C</span>
+                                <span class="plan-code-tag">#FAC22C3</span>
                             </td>
-                            <td>Categoria 2</td>
+                            <td>Inovação Digital</td>
                             <td>Michelly Angelo</td>
                             <td><span class="status-badge st-rascunho">Rascunho</span></td>
                             <td>
@@ -1137,6 +1229,10 @@
                                     </div>
                                     <span class="progress-pct">30%</span>
                                 </div>
+                            </td>
+                            <td>
+                                <span class="origin-type-badge tipo-projeto">Projeto</span>
+                                <span class="origin-name">SUB IND 1 - 1</span>
                             </td>
                             <td>24/04/2026</td>
                             <td>
@@ -1230,7 +1326,7 @@
                     </select>
                 </div>
                 <div class="tag-row">
-                    <span class="tag-row-label">Tagssssss</span>
+                    <span class="tag-row-label">Tags</span>
                     <div class="tag-input-wrapper" id="tag-input-wrapper">
                         <input type="text" class="tag-input-field" id="filter-tags"
                             placeholder="Digite uma tag e pressione Enter ou vírgula...">
@@ -1256,112 +1352,133 @@
                 <!--             data-linked="false" = não vinculado (fa-chain cinza)           -->
 
                 <div class="modal-item" data-item="1">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-risco">Risco</span>
+                    </div>
                     <div class="item-info">
-                        <div class="item-title">Peso do indicador no fator de risco Ticket #9352</div>
-                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades
-                        </div>
+                        <div class="item-title">Peso do indicador no fator de risco Ticket #8352</div>
+                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
 
                 <div class="modal-item is-linked" data-item="2">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-area">Área</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">GMAR - Desenvolvimento de Equipe</div>
-                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos
-                            Melquiades&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Estratégico</div>
+                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Estratégico</div>
                     </div>
-                    <button class="btn-chain" data-linked="true" title="Desvincular"><i
-                            class="fa fa-chain-broken"></i></button>
+                    <button class="btn-chain" data-linked="true" title="Desvincular"><i class="fa fa-chain-broken"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="3">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-area">Área</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">Ticket #8275 - RELATÓRIO DE INDICADORES POUPEX</div>
-                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos
-                            Melquiades</div>
+                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="4">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-area">Área</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">0509-2</div>
-                        <div class="item-meta">Área: Área 0309-1&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Michelly
-                            Angelo&nbsp;&nbsp;|&nbsp;&nbsp;Grupo(s): Grupo Novo Indicador de área</div>
+                        <div class="item-meta">Área: Área 0309-1&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Michelly Angelo&nbsp;&nbsp;|&nbsp;&nbsp;Grupo(s): Grupo Novo Indicador de área</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
 
                 <div class="modal-item is-linked" data-item="5">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-projeto">Projeto</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">SUB IND 1 - 1</div>
-                        <div class="item-meta">Projeto: chamado vixteam&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Orlando
-                            Vasques&nbsp;&nbsp;|&nbsp;&nbsp;Tags: inovação, capacitação</div>
+                        <div class="item-meta">Projeto: chamado vixteam&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Orlando Vasques&nbsp;&nbsp;|&nbsp;&nbsp;Tags: inovação, capacitação</div>
                     </div>
-                    <button class="btn-chain" data-linked="true" title="Desvincular"><i
-                            class="fa fa-chain-broken"></i></button>
+                    <button class="btn-chain" data-linked="true" title="Desvincular"><i class="fa fa-chain-broken"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="6">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-area">Área</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">Plano de Contingência Operacional</div>
-                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ana
-                            Souza&nbsp;&nbsp;|&nbsp;&nbsp;Tags: contingência, operações</div>
+                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ana Souza&nbsp;&nbsp;|&nbsp;&nbsp;Tags: contingência, operações</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="7">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-risco">Risco</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">Revisão de Processos Internos - Q2 2026</div>
-                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos
-                            Melquiades&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Estratégico</div>
+                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Carlos Melquiades&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Estratégico</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="8">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-projeto">Projeto</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">Gestão de Fornecedores 2026</div>
-                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ricardo
-                            Oliveira&nbsp;&nbsp;|&nbsp;&nbsp;Tags: fornecedores, contratos</div>
+                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ricardo Oliveira&nbsp;&nbsp;|&nbsp;&nbsp;Tags: fornecedores, contratos</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
 
                 <div class="modal-item is-linked" data-item="9">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-area">Área</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">Programa de Capacitação Técnica</div>
-                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Michelly
-                            Angelo&nbsp;&nbsp;|&nbsp;&nbsp;Tags: capacitação, RH</div>
+                        <div class="item-meta">Área: Training Channel&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Michelly Angelo&nbsp;&nbsp;|&nbsp;&nbsp;Tags: capacitação, RH</div>
                     </div>
-                    <button class="btn-chain" data-linked="true" title="Desvincular"><i
-                            class="fa fa-chain-broken"></i></button>
+                    <button class="btn-chain" data-linked="true" title="Desvincular"><i class="fa fa-chain-broken"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="10">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-area">Área</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">Otimização de Fluxo Operacional</div>
-                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ana
-                            Souza&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Operacional</div>
+                        <div class="item-meta">Área: Operações&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ana Souza&nbsp;&nbsp;|&nbsp;&nbsp;Classificador: Operacional</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="11">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-risco">Risco</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">Análise de Riscos Corporativos - Q1 2026</div>
-                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ricardo
-                            Oliveira&nbsp;&nbsp;|&nbsp;&nbsp;Tags: riscos, compliance</div>
+                        <div class="item-meta">Área: E_Serviços&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Ricardo Oliveira&nbsp;&nbsp;|&nbsp;&nbsp;Tags: riscos, compliance</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
 
                 <div class="modal-item" data-item="12">
+                    <div class="item-type-col">
+                        <span class="plan-type-badge tipo-projeto">Projeto</span>
+                    </div>
                     <div class="item-info">
                         <div class="item-title">Plano de Inovação Digital 2026</div>
-                        <div class="item-meta">Área: Inovação Digital&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Orlando
-                            Vasques&nbsp;&nbsp;|&nbsp;&nbsp;Tags: inovação, digital, transformação</div>
+                        <div class="item-meta">Área: Inovação Digital&nbsp;&nbsp;|&nbsp;&nbsp;Responsável: Orlando Vasques&nbsp;&nbsp;|&nbsp;&nbsp;Tags: inovação, digital, transformação</div>
                     </div>
                     <button class="btn-chain" data-linked="false" title="Vincular"><i class="fa fa-chain"></i></button>
                 </div>
