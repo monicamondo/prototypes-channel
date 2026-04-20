@@ -56,6 +56,7 @@
               <col class="col-name" />
               <col class="col-documentation" />
               <col class="col-repository" />
+              <col class="col-video" />
               <col class="col-prototype" />
             </colgroup>
             <thead>
@@ -64,6 +65,7 @@
                 <th>Nome</th>
                 <th>Documentação</th>
                 <th>Repositório<br>GitHub</th>
+                <th>Vídeo</th>
                 <th>Protótipo</th>
               </tr>
             </thead>
@@ -146,6 +148,7 @@
       status: "Preencher",
       name: "Preencher",
       documentationUrl: "",
+      videoUrl: "",
       prototypeRepoPath: "demanda",
       prototypePagePath: "demanda/index.html",
       sprintDeliveries: [
@@ -153,6 +156,7 @@
           status: "Preencher",
           functionality: "Preencher",
           requirement: "Preencher",
+          videoUrl: "",
           prototypeRepoPath: "demanda/sprint-1",
           prototypePagePath: "demanda/sprint-1/index.html"
         }
@@ -163,22 +167,23 @@
     const demandEntries = [
       {
         status: "Concluído",
-        name: "Planos e Grupo de Ações",
-        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4073881612",
-        prototypeRepoPath: "planos-grupos-acoes/prototype",
-        prototypePagePath: "https://www.figma.com/make/Q69aQLZGMWQVEv47PgeTCE/Vincular-Planos-de-A%C3%A7%C3%A3o-ao-Objetivo-estat%C3%A9gico--Copy-?fullscreen=1&t=PiPrwA1oAzQMv7GZ-1",
-        sprintDeliveries: []
+        name: "Rastreabilidade entre planos de ação",
+        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4081614853/RQ005+-+Permitir+Rastreabilidade+entre+Planos+de+A+o",
+        videoUrl: "https://drive.google.com/file/d/11JPBfiuQyQAt5LDZ8dponKDj_ogq0PRM/view?usp=sharing",
+        prototypeRepoPath: "rastreabilidade-planos/prototype",
+        prototypePagePath: "rastreabilidade-planos/prototype/planos-de-acao.html"
       },
       {
-        status: "Em andamento",
+        status: "Concluído",
         name: "Key Results",
         documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4084957192/RQ004+-+Criar+o+conceito+de+resultados+chave",
-        prototypeRepoPath: "key-results",
+        videoUrl: "",
         sprintDeliveries: [
           {
             status: "Concluído",
             functionality: "Gerenciar KRs",
             requirement: "RQ004",
+            videoUrl: "",
             prototypeRepoPath: "key-results/gerenciar-krs",
             prototypePagePath: "key-results/prototype/gerenciar-krs/gerenciar-kr.html"
           },
@@ -186,17 +191,20 @@
             status: "Concluído",
             functionality: "Parametrizar pesos",
             requirement: "RQ004",
+            videoUrl: "",
             prototypeRepoPath: "key-results/parametrizar-pesos",
             prototypePagePath: "key-results/prototype/parametrizar-pesos/parametrizar-pesos.html"
           }
         ]
       },
       {
-        status: "Aguardando aprovação",
-        name: "Rastreabilidade entre planos de ação",
-        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4081614853/RQ005+-+Permitir+Rastreabilidade+entre+Planos+de+A+o",
-        prototypeRepoPath: "rastreabilidade-planos/prototype",
-        prototypePagePath: "rastreabilidade-planos/prototype/planos-de-acao.html"
+        status: "Concluído",
+        name: "Planos e Grupo de Ações",
+        documentationUrl: "https://channel.atlassian.net/wiki/spaces/QC/pages/4073881612",
+        videoUrl: "",
+        prototypeRepoPath: "planos-grupos-acoes/prototype",
+        prototypePagePath: "https://www.figma.com/make/Q69aQLZGMWQVEv47PgeTCE/Vincular-Planos-de-A%C3%A7%C3%A3o-ao-Objetivo-estat%C3%A9gico--Copy-?fullscreen=1&t=PiPrwA1oAzQMv7GZ-1",
+        sprintDeliveries: []
       }
     ];
 
@@ -280,6 +288,7 @@
             </td>
             <td data-label="Documentação Requisito">${delivery.requirement}</td>
             <td data-label="Repositório GitHub (html/css)">${renderLinkCell("Ver repositório", repoUrl)}</td>
+            <td data-label="Vídeo">${renderLinkCell("Assistir", delivery.videoUrl)}</td>
             <td data-label="Protótipo navegável">${renderActionButton("Acessar", prototypeUrl, "catalog-button--subtle", isDisabled)}</td>
           </tr>
         `;
@@ -329,6 +338,7 @@
           </td>
           <td data-label="Documentação">${documentationCell}</td>
           <td data-label="Repositório<br>GitHub">${repositoryCell}</td>
+          <td data-label="Vídeo">${renderLinkCell("Assistir", entry.videoUrl)}</td>
           <td data-label="Protótipo Navegável">${prototypeCell}</td>
         </tr>
       `;
