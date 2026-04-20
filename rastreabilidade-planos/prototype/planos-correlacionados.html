@@ -616,20 +616,18 @@
             vertical-align: middle;
         }
 
-        .plan-type-badge.tipo-risco {
-            background: #E8740A;
-            color: #fff;
-        }
-
-        .plan-type-badge.tipo-area {
-            background: #267DD3;
-            color: #fff;
-        }
-
-        .plan-type-badge.tipo-projeto {
-            background: #2E8B57;
-            color: #fff;
-        }
+        /* Origem: Área */
+        .plan-type-badge.tipo-area             { background: #267DD3; color: #fff; }
+        /* Origem: Riscos */
+        .plan-type-badge.tipo-risco            { background: #E8740A; color: #fff; }
+        /* Origem: Portfólios */
+        .plan-type-badge.tipo-portfolio        { background: #7B4FD8; color: #fff; }
+        /* Origem: Operação */
+        .plan-type-badge.tipo-operacao         { background: #0097A7; color: #fff; }
+        /* Origem: Projetos */
+        .plan-type-badge.tipo-projeto          { background: #2E8B57; color: #fff; }
+        /* Origem: Plano Estratégico */
+        .plan-type-badge.tipo-plano-estrategico { background: #5A6268; color: #fff; }
 
         /* ── TAGS CHIPS (table) ── */
         .table-tag-chip {
@@ -659,9 +657,18 @@
             line-height: 1.4;
         }
 
-        .origin-type-badge.tipo-risco  { background: #E8740A; color: #fff; }
-        .origin-type-badge.tipo-area   { background: #267DD3; color: #fff; }
-        .origin-type-badge.tipo-projeto { background: #2E8B57; color: #fff; }
+        /* Origem: Área */
+        .origin-type-badge.tipo-area             { background: #267DD3; color: #fff; }
+        /* Origem: Riscos */
+        .origin-type-badge.tipo-risco            { background: #E8740A; color: #fff; }
+        /* Origem: Portfólios */
+        .origin-type-badge.tipo-portfolio        { background: #7B4FD8; color: #fff; }
+        /* Origem: Operação */
+        .origin-type-badge.tipo-operacao         { background: #0097A7; color: #fff; }
+        /* Origem: Projetos */
+        .origin-type-badge.tipo-projeto          { background: #2E8B57; color: #fff; }
+        /* Origem: Plano Estratégico */
+        .origin-type-badge.tipo-plano-estrategico { background: #5A6268; color: #fff; }
 
         .origin-name {
             font-size: 10px;
@@ -1136,9 +1143,12 @@
                                 <select class="filter-inline-select"
                                     style="font-size:10px; height:18px; width:100%; box-sizing:border-box;">
                                     <option value="">Selecione</option>
-                                    <option>Risco</option>
                                     <option>Área</option>
-                                    <option>Projeto</option>
+                                    <option>Riscos</option>
+                                    <option>Portfólios</option>
+                                    <option>Operação</option>
+                                    <option>Projetos</option>
+                                    <option>Plano Estratégico</option>
                                 </select>
                             </th>
                             <th><input type="text" placeholder="dd/mm/aaaa" class="filter-inline-input"
@@ -1305,11 +1315,14 @@
                     </select>
                 </div>
                 <div class="filter-row">
-                    <select id="filter-tipo">
-                        <option value="">Tipo</option>
+                    <select id="filter-origem">
+                        <option value="">Origem</option>
                         <option>Área</option>
+                        <option>Riscos</option>
+                        <option>Portfólios</option>
+                        <option>Operação</option>
                         <option>Projetos</option>
-                        <option>Risco</option>
+                        <option>Plano Estratégico</option>
                     </select>
                     <select id="filter-grupo">
                         <option value="">Grupo</option>
