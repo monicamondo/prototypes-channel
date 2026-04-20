@@ -289,11 +289,13 @@
     <!-- Conteúdo Principal -->
     <main class="container-fluid legacy-content">
 
-        <!-- Seleção de Revisões (Standardized) -->
+        <!-- Seleção de Objetivo Estratégico (Standardized) -->
         <div class="chn-page-title-bar mb-3">
-            <label class="chn-title">Revisões:</label>
-            <select class="chn-input">
-                <option>2025</option>
+            <label class="chn-title">Objetivo:</label>
+            <select class="chn-input" style="width: 450px;">
+                <option>Aumentar Market Share em 15% até o fim do semestre</option>
+                <option>Reduzir custos operacionais em 10% através de automação</option>
+                <option>Melhorar o NPS (Net Promoter Score) de 65 para 80</option>
             </select>
         </div>
 
@@ -303,7 +305,7 @@
                 <div class="table-section shadow-sm bg-white">
                     <div class="chn-section-header">
                         <div class="chn-section-title">
-                            Objetivos <span style="font-weight:normal;">({{items.length}} itens)</span>
+                            Indicadores e KRs <span style="font-weight:normal;">({{items.length}} itens)</span>
                             <span class="chn-info-btn" title="Objetivos do Ciclo">i</span>
                         </div>
                     </div>
@@ -312,16 +314,12 @@
                         <table class="legacy-table table m-0">
                             <thead>
                                 <tr>
-                                    <th style="width: 40px; text-align: center;">Associados</th>
                                     <th>Nome</th>
                                     <th style="width: 100px; text-align: center;">Tipo</th>
-                                    <th style="width: 100px; text-align: right;">Meta</th>
-                                    <th style="width: 120px; text-align: left;">Última medição</th>
-                                    <th style="width: 120px; text-align: left;">Status do progresso</th>
+                                    <th style="width: 160px; text-align: left;">Desempenho</th>
                                     <th style="width: 100px; text-align: right;">Peso</th>
                                 </tr>
                                 <tr class="filter-row">
-                                    <td style="text-align: center;"></td>
                                     <td><input type="text" placeholder="" ng-model="filterNome"
                                             class="form-control form-control-sm"></td>
                                     <td>
@@ -330,15 +328,6 @@
                                             <option value="Indicador">Indicador</option>
                                             <option value="KR">KR</option>
                                         </select>
-                                    </td>
-                                    <td></td>
-                                    <td style="text-align: center;">
-                                        <div class="calendar-filter-wrapper" title="Filtrar por data">
-                                            <input type="date" id="date-filter">
-                                            <img src="../../../../ds-channel/src/assets/img/calendar.gif"
-                                                class="calendar-icon-trigger"
-                                                onclick="this.previousElementSibling.showPicker();">
-                                        </div>
                                     </td>
                                     <td></td>
                                     <td style="text-align: right;">
@@ -353,16 +342,10 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="item in items | filter:{nome: filterNome, tipo: filterTipo}">
-                                    <td class="text-center">
-                                        <input type="checkbox" checked disabled class="form-check-input m-0"
-                                            style="width:13px; height:13px;">
-                                    </td>
                                     <td>{{item.nome}}</td>
                                     <td class="text-center">
                                         <span class="tipo-tag" ng-class="item.tipo.toLowerCase()">{{item.tipo}}</span>
                                     </td>
-                                    <td class="text-end">{{fmtVal(item.meta, item.unidade)}}</td>
-                                    <td class="text-start" style="font-size: 10px;">{{item.ultimaMedicao || '—'}}</td>
                                     <td class="text-start">
                                         <div class="kr-progress-bar-bg">
                                             <div class="kr-progress-bar-fill"
@@ -379,30 +362,17 @@
                             </tbody>
                             <tfoot>
                                 <tr class="total-row">
-                                    <td colspan="6" class="text-end">Total</td>
-                                    <td class="text-end fw-bold">{{getTotalPeso()}}</td>
+                                    <td colspan="2" class="text-end">Desempenho do objetivo:</td>
+                                    <td class="text-start">
+                                        <div class="kr-progress-bar-bg" style="width: 100px; display: inline-block; vertical-align: middle;">
+                                            <div class="kr-progress-bar-fill" ng-style="{'width': getMediaDesempenho() + '%', 'background-color': getBarColor({avg: getMediaDesempenho()})}"></div>
+                                        </div>
+                                        <span style="font-size: 11px; margin-left: 5px;">{{getMediaDesempenho()}}%</span>
+                                    </td>
+                                    <td class="text-end fw-bold">Total: {{getTotalPeso()}}</td>
                                 </tr>
                             </tfoot>
                         </table>
-
-                        <div
-                            class="legacy-pagination d-flex justify-content-between align-items-center px-3 py-2 bg-white border-top">
-                            <div class="pagination-pages fs-smaller">
-                                <span>Página 1 de 1</span>
-                                <div class="pagination-numbers d-inline-flex gap-1 ms-2">
-                                    <span class="fw-bold" style="color: var(--chn-color-primary);">1</span>
-                                    <span>►</span>
-                                </div>
-                            </div>
-                            <div>
-                                <select class="pagination-select form-select form-select-sm"
-                                    style="font-size: 10px; width: auto;">
-                                    <option>10 itens por página</option>
-                                    <option>25 itens por página</option>
-                                    <option>50 itens por página</option>
-                                </select>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -441,15 +411,21 @@
                     return Math.round(((item.valorAtual - item.baseline) / (item.meta - item.baseline)) * 100);
                 };
 
+                $scope.getTotalPeso = function () {
+                    return $scope.items.reduce((acc, item) => acc + (item.peso || 0), 0);
+                };
+
+                $scope.getMediaDesempenho = function () {
+                    if (!$scope.items.length) return 0;
+                    const soma = $scope.items.reduce((acc, item) => acc + $scope.getPct(item), 0);
+                    return Math.round(soma / $scope.items.length);
+                };
+
                 $scope.getBarColor = function (item) {
-                    const pct = $scope.getPct(item);
+                    const pct = item.avg !== undefined ? item.avg : $scope.getPct(item);
                     if (pct < 70) return '#CC3333';
                     if (pct < 95) return '#E6B800';
                     return '#4CAF50';
-                };
-
-                $scope.getTotalPeso = function () {
-                    return $scope.items.reduce((acc, item) => acc + (item.peso || 0), 0);
                 };
             }]);
     </script>
