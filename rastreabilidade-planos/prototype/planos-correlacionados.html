@@ -482,7 +482,8 @@
             padding: 0;
             line-height: 26px;
             box-shadow: none !important;
-            width: auto; /* Prevent taking full width of wrapper */
+            width: auto;
+            /* Prevent taking full width of wrapper */
         }
 
         .tag-input-hint {
@@ -636,12 +637,35 @@
             vertical-align: middle;
         }
 
-        .plan-type-badge.origem-area              { background: #267DD3; color: #fff; }
-        .plan-type-badge.origem-riscos            { background: #E8740A; color: #fff; }
-        .plan-type-badge.origem-portfolios        { background: #7B4FD8; color: #fff; }
-        .plan-type-badge.origem-operacao          { background: #0097A7; color: #fff; }
-        .plan-type-badge.origem-projetos          { background: #2E8B57; color: #fff; }
-        .plan-type-badge.origem-plano-estrategico { background: #5A6268; color: #fff; }
+        .plan-type-badge.origem-area {
+            background: #267DD3;
+            color: #fff;
+        }
+
+        .plan-type-badge.origem-riscos {
+            background: #E8740A;
+            color: #fff;
+        }
+
+        .plan-type-badge.origem-portfolios {
+            background: #7B4FD8;
+            color: #fff;
+        }
+
+        .plan-type-badge.origem-operacao {
+            background: #0097A7;
+            color: #fff;
+        }
+
+        .plan-type-badge.origem-projetos {
+            background: #2E8B57;
+            color: #fff;
+        }
+
+        .plan-type-badge.origem-plano-estrategico {
+            background: #5A6268;
+            color: #fff;
+        }
 
         /* ── ORIGIN BADGES TABLE (smaller) ── */
         .origin-type-badge {
@@ -653,17 +677,41 @@
             font-weight: bold;
             padding: 1px 6px;
             white-space: nowrap;
-            margin-top: 4px; /* Space from top */
+            margin-top: 4px;
+            /* Space from top */
             margin-bottom: 2px;
             line-height: 1.4;
         }
 
-        .origin-type-badge.origem-area              { background: #267DD3; color: #fff; }
-        .origin-type-badge.origem-riscos            { background: #E8740A; color: #fff; }
-        .origin-type-badge.origem-portfolios        { background: #7B4FD8; color: #fff; }
-        .origin-type-badge.origem-operacao          { background: #0097A7; color: #fff; }
-        .origin-type-badge.origem-projetos          { background: #2E8B57; color: #fff; }
-        .origin-type-badge.origem-plano-estrategico { background: #5A6268; color: #fff; }
+        .origin-type-badge.origem-area {
+            background: #267DD3;
+            color: #fff;
+        }
+
+        .origin-type-badge.origem-riscos {
+            background: #E8740A;
+            color: #fff;
+        }
+
+        .origin-type-badge.origem-portfolios {
+            background: #7B4FD8;
+            color: #fff;
+        }
+
+        .origin-type-badge.origem-operacao {
+            background: #0097A7;
+            color: #fff;
+        }
+
+        .origin-type-badge.origem-projetos {
+            background: #2E8B57;
+            color: #fff;
+        }
+
+        .origin-type-badge.origem-plano-estrategico {
+            background: #5A6268;
+            color: #fff;
+        }
 
         .origin-name {
             font-size: 10px;
@@ -816,6 +864,229 @@
             color: #999;
             font-size: 11px;
             border-top: 1px solid #eee;
+        }
+
+        /* --- ANGULAR VERSION (page-angular) --- */
+        .angular-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--chn-font-family);
+            font-size: 11px;
+            background: #fff;
+        }
+
+        .angular-table thead tr {
+            background: #F3F3F3;
+            border-top: 1px solid #E0E0E0;
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .angular-table th {
+            padding: 8px 12px;
+            text-align: left;
+            font-weight: 500;
+            color: #777;
+            border: none;
+        }
+
+        .angular-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #EAEAEA;
+            border-right: none;
+            vertical-align: top;
+            color: #555;
+        }
+
+        .angular-table tbody tr:hover {
+            background: #F9F9F9;
+        }
+
+        .angular-table-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 3px;
+            display: block;
+        }
+
+        .angular-table-subtitle {
+            font-size: 10px;
+            color: #888;
+            display: block;
+            line-height: 1.5;
+        }
+
+        .angular-table-tag {
+            display: inline-block;
+            border: 1px solid #dcdcdc;
+            border-radius: 2px;
+            padding: 1px 4px;
+            font-size: 9px;
+            color: #888;
+            margin-bottom: 4px;
+        }
+
+        .angular-status {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .angular-status.rascunho {
+            background: #606970;
+        }
+
+        .angular-status.andamento {
+            background: #267DD3;
+        }
+
+        .angular-status.finalizado {
+            background: #00A859;
+        }
+
+        .angular-overdue {
+            color: #E7000B;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-top: 4px;
+        }
+
+        .angular-action-btn {
+            background: none;
+            border: none;
+            color: #666;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .angular-action-btn:hover {
+            color: #333;
+        }
+
+        /* ANGULAR PAGINATION */
+        .angular-pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            font-family: var(--chn-font-family);
+            font-size: 11px;
+        }
+
+        .angular-pagination-controls {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            background: #fff;
+        }
+
+        .angular-pagination-btn {
+            background: none;
+            border: none;
+            padding: 4px 10px;
+            color: #666;
+            font-size: 11px;
+            cursor: pointer;
+            border-right: 1px solid #ccc;
+        }
+
+        .angular-pagination-btn:last-child {
+            border-right: none;
+        }
+
+        .angular-pagination-btn:hover {
+            background: #f0f0f0;
+        }
+
+        .angular-pagination-btn.is-active {
+            background: #5A6268;
+            color: #fff;
+        }
+
+        .angular-pagination-select {
+            border: 1px solid #ccc;
+            padding: 4px 8px;
+            border-radius: 2px;
+            color: #555;
+            font-size: 11px;
+            background: #fff;
+            outline: none;
+        }
+
+        /* ANGULAR FILTERS */
+        .angular-filters-wrapper {
+            background: #F9F9F9;
+            border: 1px solid #E0E0E0;
+            border-bottom: none;
+            padding: 10px 12px;
+            font-family: var(--chn-font-family);
+        }
+
+        .angular-filters-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        .angular-filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            flex: 1;
+        }
+
+        .angular-filter-input,
+        .angular-filter-select {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 4px 10px;
+            height: 34px;
+            font-size: 13px;
+            color: #333;
+            outline: none;
+            background: #fff;
+        }
+
+        .angular-filter-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #777;
+            margin-top: 6px;
+        }
+
+        .angular-date-wrapper {
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .angular-date-wrapper .angular-filter-input {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none;
+        }
+
+        .angular-date-btn {
+            border: 1px solid #ccc;
+            background: #fff;
+            height: 34px;
+            padding: 0 10px;
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            cursor: pointer;
+            color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -1087,268 +1358,431 @@
     <!-- PAGE NAV -->
     <div class="page-nav-area">
         <a href="detalhe-plano.html" class="btn-back"><i class="fa fa-angle-left"></i></a>
-        <span class="plan-nav-title">plano de ação estratégico</span>
+        <span class="plan-nav-title">Definição de metas e resultados específicos</span>
         <span class="nav-separator"><i class="fa fa-angle-right"></i></span>
         <span class="page-section-title">Planos Correlacionados</span>
     </div>
 
     <!-- PAGE CONTENT -->
-    <main class="legacy-content">
-        <div class="table-section">
+    <main class="legacy-content page-angular">
+        <div class="table-section" style="margin-bottom: 40px;">
 
-            <div class="chn-section-header">
-                <div class="chn-section-title">
-                    Planos Correlacionados
-                    <span id="correlatos-count" style="font-weight:normal;">(3 plano(s))</span>
+            <div class="chn-section-header"
+                style="border-bottom: 2px solid #EEE; padding-bottom: 15px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+                <div class="chn-section-title"
+                    style="flex:1; display:flex; align-items:center; font-size: 14px; color: #000000;">
+                    <button type="button" class="btn-collapse-toggle"
+                        style="background:none;border:none;box-shadow:none;color:#000000;cursor:pointer;margin-right:8px;padding:0;font-size:16px;outline:none;"
+                        onclick="toggleSection('origem-content', this)">
+                        <i class="fa fa-chevron-up"></i>
+                    </button>
+                    <span style="font-weight:normal;">Definição de metas e resultados
+                        específicos</span>&nbsp;
+                    <span style="font-weight:normal;"> - Correlação do tipo: </span>&nbsp;
+                    <strong style="font-weight:900;">Origem</strong>
+                    <span style="font-weight:normal; font-size: 14px; margin-left: 10px;">(3 plano(s))</span>
                 </div>
-                <div class="legacy-table-group-actions">
-                    <button class="chn-btn chn-btn-primary" style="height:20px; font-size:10px; padding:0 8px; gap:4px;"
-                        id="btn-open-modal">
-                        <i class="fa fa-plus"></i> Correlacionar plano
+                <div class="legacy-table-group-actions" style="margin-top: 0;">
+                    <button class="chn-btn chn-btn-primary" id="btn-open-modal" style="margin-bottom: 0;">
+                        Correlacionar plano
                     </button>
                 </div>
             </div>
 
-            <div class="table-responsive-container">
-                <table class="legacy-table">
-                    <thead>
-                        <tr>
-                            <th style="width:24%">Plano</th>
-                            <th style="width:12%">Área</th>
-                            <th style="width:12%">Responsável</th>
-                            <th style="width:10%">Status</th>
-                            <th style="width:15%">Andamento das ações</th>
-                            <th style="width:15%">Origem</th>
-                            <th style="width:8%">Data limite</th>
-                            <th style="width:7%; text-align:center">Ações</th>
-                        </tr>
-                        <tr>
-                            <th><input type="text" placeholder="Filtrar plano..." class="filter-inline-input"
-                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
-                            <th><input type="text" placeholder="Filtrar área..." class="filter-inline-input"
-                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
-                            <th><input type="text" placeholder="Filtrar responsável..." class="filter-inline-input"
-                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
-                            <th>
-                                <select class="filter-inline-select"
-                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;">
-                                    <option value="">Todos</option>
-                                    <option>Em andamento</option>
-                                    <option>Rascunho</option>
-                                    <option>Concluído</option>
-                                    <option>Cancelado</option>
-                                </select>
-                            </th>
-                            <th></th>
-                            <th>
-                                <select class="filter-inline-select"
-                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;">
-                                    <option value="">Selecione</option>
-                                    <option>Risco</option>
-                                    <option>Área</option>
-                                    <option>Projeto</option>
-                                    <option>Portfólio</option>
-                                    <option>Operação</option>
-                                    <option>Plano estratégico</option>
-                                </select>
-                            </th>
-                            <th><input type="text" placeholder="dd/mm/aaaa" class="filter-inline-input"
-                                    style="font-size:10px; height:18px; width:100%; box-sizing:border-box;"></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody id="correlatos-tbody">
-                        <!-- Exemplo: Área -->
-                        <tr>
-                            <td>
-                                <a href="detalhe-plano.html" class="plan-name-link">Plano de Avance</a>
-                                <span class="plan-code-tag">#FAC22C1</span>
-                            </td>
-                            <td>Training Channel</td>
-                            <td>Carlos Melquiades</td>
-                            <td><span class="status-badge st-andamento">Em andamento</span></td>
-                            <td>
-                                <div class="progress-cell">
-                                    <div class="progress-track">
-                                        <div class="seg seg-ni" style="width:20%"></div>
-                                        <div class="seg seg-ea" style="width:20%"></div>
-                                        <div class="seg seg-fin" style="width:60%"></div>
-                                    </div>
-                                    <span class="progress-pct">60%</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="origin-type-badge origem-area">Área</span>
-                                <span class="origin-name">Training Channel</span>
-                            </td>
-                            <td>24/04/2026</td>
-                            <td>
-                                <div class="action-btns">
-                                    <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
-                                    <button class="btn-icon remove btn-row-remove" title="Remover"><i class="fa fa-chain-broken"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Exemplo: Riscos -->
-                        <tr>
-                            <td>
-                                <a href="detalhe-plano.html" class="plan-name-link">Mitigação de Riscos Operacionais</a>
-                                <span class="plan-code-tag">#RSK-001</span>
-                            </td>
-                            <td>Gestão de Riscos</td>
-                            <td>Michelly Angelo</td>
-                            <td><span class="status-badge st-rascunho">Rascunho</span></td>
-                            <td>
-                                <div class="progress-cell">
-                                    <div class="progress-track"><div class="seg seg-ea" style="width:10%"></div></div>
-                                    <span class="progress-pct">10%</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="origin-type-badge origem-riscos">Riscos</span>
-                                <span class="origin-name">Risco de Infraestrutura</span>
-                            </td>
-                            <td>12/05/2026</td>
-                            <td>
-                                <div class="action-btns">
-                                    <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
-                                    <button class="btn-icon remove btn-row-remove" title="Remover"><i class="fa fa-chain-broken"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Exemplo: Portfólios -->
-                        <tr>
-                            <td>
-                                <a href="detalhe-plano.html" class="plan-name-link">Expansão de Mercado Norte</a>
-                                <span class="plan-code-tag">#PTF-2025</span>
-                            </td>
-                            <td>Comercial</td>
-                            <td>Carlos Melquiades</td>
-                            <td><span class="status-badge st-andamento">Em andamento</span></td>
-                            <td>
-                                <div class="progress-cell">
-                                    <div class="progress-track"><div class="seg seg-fin" style="width:40%"></div></div>
-                                    <span class="progress-pct">40%</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="origin-type-badge origem-portfolios">Portfólios</span>
-                                <span class="origin-name">Portfólio Estratégico 2025</span>
-                            </td>
-                            <td>30/12/2025</td>
-                            <td>
-                                <div class="action-btns">
-                                    <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
-                                    <button class="btn-icon remove btn-row-remove" title="Remover"><i class="fa fa-chain-broken"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Exemplo: Operação -->
-                        <tr>
-                            <td>
-                                <a href="detalhe-plano.html" class="plan-name-link">Otimização de Supply Chain</a>
-                                <span class="plan-code-tag">#OPS-442</span>
-                            </td>
-                            <td>Logística</td>
-                            <td>Ana Souza</td>
-                            <td><span class="status-badge st-finalizado">Finalizado</span></td>
-                            <td>
-                                <div class="progress-cell">
-                                    <div class="progress-track"><div class="seg seg-fin" style="width:100%"></div></div>
-                                    <span class="progress-pct">100%</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="origin-type-badge origem-operacao">Operação</span>
-                                <span class="origin-name">Processo Industrial A1</span>
-                            </td>
-                            <td>20/03/2026</td>
-                            <td>
-                                <div class="action-btns">
-                                    <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
-                                    <button class="btn-icon remove btn-row-remove" title="Remover"><i class="fa fa-chain-broken"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Exemplo: Projetos -->
-                        <tr>
-                            <td>
-                                <a href="detalhe-plano.html" class="plan-name-link">Implementação ERP</a>
-                                <span class="plan-code-tag">#PRJ-088</span>
-                            </td>
-                            <td>TI</td>
-                            <td>Ricardo Oliveira</td>
-                            <td><span class="status-badge st-andamento">Em andamento</span></td>
-                            <td>
-                                <div class="progress-cell">
-                                    <div class="progress-track"><div class="seg seg-ea" style="width:25%"></div></div>
-                                    <span class="progress-pct">25%</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="origin-type-badge origem-projetos">Projetos</span>
-                                <span class="origin-name">Projeto Modernização</span>
-                            </td>
-                            <td>15/08/2026</td>
-                            <td>
-                                <div class="action-btns">
-                                    <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
-                                    <button class="btn-icon remove btn-row-remove" title="Remover"><i class="fa fa-chain-broken"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <!-- Exemplo: Plano Estratégico -->
-                        <tr>
-                            <td>
-                                <a href="detalhe-plano.html" class="plan-name-link">Cultura Organizacional</a>
-                                <span class="plan-code-tag">#EST-2026</span>
-                            </td>
-                            <td>RH</td>
-                            <td>Michelly Angelo</td>
-                            <td><span class="status-badge st-nao-iniciado">Não iniciado</span></td>
-                            <td>
-                                <div class="progress-cell">
-                                    <div class="progress-track"><div class="seg seg-ni" style="width:0%"></div></div>
-                                    <span class="progress-pct">0%</span>
-                                </div>
-                            </td>
-                            <td>
-                                <span class="origin-type-badge origem-plano-estrategico">Plano Estratégico</span>
-                                <span class="origin-name">Diretriz: Capital Humano</span>
-                            </td>
-                            <td>01/01/2026</td>
-                            <td>
-                                <div class="action-btns">
-                                    <a href="detalhe-plano.html" class="btn-icon" title="Abrir plano"><i class="fa fa-external-link"></i></a>
-                                    <button class="btn-icon remove btn-row-remove" title="Remover"><i class="fa fa-chain-broken"></i></button>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="empty-state" id="empty-state" style="display:none;">
-                    <i class="fa fa-chain-broken"></i>
-                    <p>Não existem planos de ação correlacionados</p>
-                </div>
-            </div>
+            <div id="origem-content">
 
-            <div class="legacy-pagination" id="correlatos-pagination">
-                <div class="pagination-pages">
-                    <span id="pagination-info">Página 1 de 1</span>
-                    <div class="pagination-numbers">
-                        <span style="font-weight:bold; color:var(--chn-color-link)">1</span>
-                        <span>►</span>
+                <!-- CABEÇALHO FILTROS -->
+                <div class="angular-filters-wrapper">
+                    <div class="angular-filters-row">
+                        <div class="angular-filter-group" style="flex:1.5;">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Plano</label>
+                            <input type="text" class="angular-filter-input" placeholder="Filtrar plano..." />
+                        </div>
+                        <div class="angular-filter-group" style="flex:1;">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Área</label>
+                            <input type="text" class="angular-filter-input" placeholder="Filtrar área..." />
+                        </div>
+                        <div class="angular-filter-group">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Responsável</label>
+                            <input type="text" class="angular-filter-input" placeholder="Filtrar responsável..." />
+                        </div>
+                        <div class="angular-filter-group">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Status</label>
+                            <select class="angular-filter-select">
+                                <option value="">Todos</option>
+                                <option>Em andamento</option>
+                                <option>Rascunho</option>
+                                <option>Concluído</option>
+                                <option>Cancelado</option>
+                            </select>
+                        </div>
+                        <div class="angular-filter-group">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Origem</label>
+                            <select class="angular-filter-select">
+                                <option value="">Selecione</option>
+                                <option>Risco</option>
+                                <option>Área</option>
+                                <option>Projeto</option>
+                                <option>Portfólio</option>
+                                <option>Operação</option>
+                                <option>Plano estratégico</option>
+                            </select>
+                        </div>
+                        <div class="angular-filter-group">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Data limite</label>
+                            <div class="angular-date-wrapper">
+                                <input type="text" class="angular-filter-input" placeholder="dd/mm/aaaa" />
+                                <button class="angular-date-btn"><i class="fa fa-calendar"></i></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div style="display:flex; align-items:center; gap:8px;">
-                    <select class="pagination-select">
-                        <option>10 itens por página</option>
-                        <option>25 itens por página</option>
-                        <option>50 itens por página</option>
-                    </select>
+
+                <div class="table-responsive-container">
+                    <table class="angular-table">
+                        <thead>
+                            <tr>
+                                <th style="width:22%">Nome</th>
+                                <th style="width:12%">Área</th>
+                                <th style="width:12%">Responsável</th>
+                                <th style="width:10%">Status</th>
+                                <th style="width:15%">Andamento das ações</th>
+                                <th style="width:15%">Origem</th>
+                                <th style="width:8%">Data limite</th>
+                                <th style="width:100px; text-align:center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="correlatos-tbody">
+                            <!-- Exemplo: Área -->
+                            <tr>
+                                <td>
+                                    <a href="detalhe-plano.html" class="plan-name-link">Plano de Avance</a>
+                                    <span class="plan-code-tag">#FAC22C1</span>
+                                </td>
+                                <td>Training Channel</td>
+                                <td>Carlos Melquiades</td>
+                                <td><span class="status-badge st-andamento">Em andamento</span></td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <div class="progress-track">
+                                            <div class="seg seg-ni" style="width:20%"></div>
+                                            <div class="seg seg-ea" style="width:20%"></div>
+                                            <div class="seg seg-fin" style="width:60%"></div>
+                                        </div>
+                                        <span class="progress-pct">60%</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:6px;">
+                                        <span class="origin-type-badge origem-area" style="margin-bottom:0;">Área</span>
+                                        <span class="origin-name" style="margin-top:0;">Training Channel</span>
+                                    </div>
+                                </td>
+                                <td>24/04/2026</td>
+                                <td style="text-align:center; white-space:nowrap;">
+                                    <button class="angular-action-btn" title="Abrir plano"><i
+                                            class="fa fa-external-link"></i></button>
+                                    <button class="angular-action-btn" title="Remover correlação"><i
+                                            class="fa fa-chain-broken"></i></button>
+                                </td>
+                            </tr>
+                            <!-- Exemplo: Riscos -->
+                            <tr>
+                                <td>
+                                    <a href="detalhe-plano.html" class="plan-name-link">Mitigação de Riscos
+                                        Operacionais</a>
+                                    <span class="plan-code-tag">#RSK-001</span>
+                                </td>
+                                <td>Gestão de Riscos</td>
+                                <td>Michelly Angelo</td>
+                                <td><span class="status-badge st-rascunho">Rascunho</span></td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <div class="progress-track">
+                                            <div class="seg seg-ea" style="width:10%"></div>
+                                        </div>
+                                        <span class="progress-pct">10%</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:6px;">
+                                        <span class="origin-type-badge origem-riscos"
+                                            style="margin-bottom:0;">Riscos</span>
+                                        <span class="origin-name" style="margin-top:0;">Risco de Infraestrutura</span>
+                                    </div>
+                                </td>
+                                <td>12/05/2026</td>
+                                <td style="text-align:center; white-space:nowrap;">
+                                    <button class="angular-action-btn" title="Abrir plano"><i
+                                            class="fa fa-external-link"></i></button>
+                                    <button class="angular-action-btn" title="Remover correlação"><i
+                                            class="fa fa-chain-broken"></i></button>
+                                </td>
+                            </tr>
+                            <!-- Exemplo: Portfólios -->
+                            <tr>
+                                <td>
+                                    <a href="detalhe-plano.html" class="plan-name-link">Expansão de Mercado Norte</a>
+                                    <span class="plan-code-tag">#PTF-2025</span>
+                                </td>
+                                <td>Comercial</td>
+                                <td>Carlos Melquiades</td>
+                                <td><span class="status-badge st-andamento">Em andamento</span></td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <div class="progress-track">
+                                            <div class="seg seg-fin" style="width:40%"></div>
+                                        </div>
+                                        <span class="progress-pct">40%</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:6px;">
+                                        <span class="origin-type-badge origem-portfolios"
+                                            style="margin-bottom:0;">Portfólios</span>
+                                        <span class="origin-name" style="margin-top:0;">Portfólio Estratégico
+                                            2025</span>
+                                    </div>
+                                </td>
+                                <td>30/12/2025</td>
+                                <td style="text-align:center; white-space:nowrap;">
+                                    <button class="angular-action-btn" title="Abrir plano"><i
+                                            class="fa fa-external-link"></i></button>
+                                    <button class="angular-action-btn" title="Remover correlação"><i
+                                            class="fa fa-chain-broken"></i></button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <div class="empty-state" id="empty-state" style="display:none;">
+                        <i class="fa fa-chain-broken"></i>
+                        <p>Não existem planos de ação correlacionados</p>
+                    </div>
+                </div>
+
+                <!-- PAGINAÇÃO ANGULAR -->
+                <div class="angular-pagination" id="correlatos-pagination">
+                    <div class="angular-pagination-controls">
+                        <button class="angular-pagination-btn" disabled>&laquo;</button>
+                        <button class="angular-pagination-btn" disabled>&lsaquo;</button>
+                        <button class="angular-pagination-btn is-active">1</button>
+                        <button class="angular-pagination-btn">&rsaquo;</button>
+                        <button class="angular-pagination-btn">&raquo;</button>
+                    </div>
+                    <div>
+                        <select class="angular-pagination-select">
+                            <option>10 itens por página</option>
+                            <option>25 itens por página</option>
+                            <option>50 itens por página</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div> <!-- Fechamento da div origem-content -->
+        </div><!-- /.table-section -->
+
+        <!-- LISTAGEM DE DESTINO -->
+        <div class="table-section" id="table-section-destino">
+            <div class="chn-section-header"
+                style="border-bottom: 2px solid #EEE; padding-bottom: 15px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between;">
+                <div class="chn-section-title"
+                    style="flex:1; display:flex; align-items:center; font-size: 14px; color: #000000;">
+                    <button type="button" class="btn-collapse-toggle"
+                        style="background:none;border:none;box-shadow:none;color:#000000;cursor:pointer;margin-right:8px;padding:0;font-size:16px;outline:none;"
+                        onclick="toggleSection('destino-content', this)">
+                        <i class="fa fa-chevron-up"></i>
+                    </button>
+                    <span style="font-weight:normal;">Definição de metas e resultados
+                        específicos</span>&nbsp;
+                    <span style="font-weight:normal;">- Correlação do tipo:</span>&nbsp;
+                    <strong style="font-weight:900;">Destino</strong>
+                    <span style="font-weight:normal; font-size: 14px; margin-left: 10px;">(3 plano(s))</span>
                 </div>
             </div>
 
+            <div id="destino-content">
+
+                <!-- CABEÇALHO FILTROS DESTINO -->
+                <div class="angular-filters-wrapper">
+                    <div class="angular-filters-row">
+                        <div class="angular-filter-group" style="flex:1.5;">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Plano</label>
+                            <input type="text" class="angular-filter-input" placeholder="Filtrar plano..." />
+                        </div>
+                        <div class="angular-filter-group" style="flex:1;">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Área</label>
+                            <input type="text" class="angular-filter-input" placeholder="Filtrar área..." />
+                        </div>
+                        <div class="angular-filter-group">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Responsável</label>
+                            <input type="text" class="angular-filter-input" placeholder="Filtrar responsável..." />
+                        </div>
+                        <div class="angular-filter-group">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Status</label>
+                            <select class="angular-filter-select">
+                                <option value="">Todos</option>
+                                <option>Em andamento</option>
+                                <option>Rascunho</option>
+                                <option>Concluído</option>
+                                <option>Cancelado</option>
+                            </select>
+                        </div>
+                        <div class="angular-filter-group">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Origem</label>
+                            <select class="angular-filter-select">
+                                <option value="">Selecione</option>
+                                <option>Risco</option>
+                                <option>Área</option>
+                                <option>Projeto</option>
+                                <option>Portfólio</option>
+                                <option>Operação</option>
+                                <option>Plano estratégico</option>
+                            </select>
+                        </div>
+                        <div class="angular-filter-group">
+                            <label style="font-size:13px;color:#777;font-weight:bold">Data limite</label>
+                            <div class="angular-date-wrapper">
+                                <input type="text" class="angular-filter-input" placeholder="dd/mm/aaaa" />
+                                <button class="angular-date-btn"><i class="fa fa-calendar"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive-container">
+                    <table class="angular-table">
+                        <thead>
+                            <tr>
+                                <th style="width:22%">Nome</th>
+                                <th style="width:12%">Área</th>
+                                <th style="width:12%">Responsável</th>
+                                <th style="width:10%">Status</th>
+                                <th style="width:15%">Andamento das ações</th>
+                                <th style="width:15%">Origem</th>
+                                <th style="width:8%">Data limite</th>
+                                <th style="width:70px; text-align:center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody id="correlatos-destino-tbody">
+
+                            <!-- Exemplo: Operação -->
+                            <tr>
+                                <td>
+                                    <a href="detalhe-plano.html" class="plan-name-link">Otimização de Supply Chain</a>
+                                    <span class="plan-code-tag">#OPS-442</span>
+                                </td>
+                                <td>Logística</td>
+                                <td>Ana Souza</td>
+                                <td><span class="status-badge st-finalizado">Finalizado</span></td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <div class="progress-track">
+                                            <div class="seg seg-fin" style="width:100%"></div>
+                                        </div>
+                                        <span class="progress-pct">100%</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:6px;">
+                                        <span class="origin-type-badge origem-operacao"
+                                            style="margin-bottom:0;">Operação</span>
+                                        <span class="origin-name" style="margin-top:0;">Processo Industrial A1</span>
+                                    </div>
+                                </td>
+                                <td>20/03/2026</td>
+                                <td style="text-align:center; white-space:nowrap;">
+                                    <button class="angular-action-btn" title="Abrir plano"><i
+                                            class="fa fa-external-link"></i></button>
+                                </td>
+                            </tr>
+                            <!-- Exemplo: Projetos -->
+                            <tr>
+                                <td>
+                                    <a href="detalhe-plano.html" class="plan-name-link">Implementação ERP</a>
+                                    <span class="plan-code-tag">#PRJ-088</span>
+                                </td>
+                                <td>TI</td>
+                                <td>Ricardo Oliveira</td>
+                                <td><span class="status-badge st-andamento">Em andamento</span></td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <div class="progress-track">
+                                            <div class="seg seg-ea" style="width:25%"></div>
+                                        </div>
+                                        <span class="progress-pct">25%</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:6px;">
+                                        <span class="origin-type-badge origem-projetos"
+                                            style="margin-bottom:0;">Projetos</span>
+                                        <span class="origin-name" style="margin-top:0;">Projeto Modernização</span>
+                                    </div>
+                                </td>
+                                <td>15/08/2026</td>
+                                <td style="text-align:center; white-space:nowrap;">
+                                    <button class="angular-action-btn" title="Abrir plano"><i
+                                            class="fa fa-external-link"></i></button>
+                                </td>
+                            </tr>
+                            <!-- Exemplo: Plano Estratégico -->
+                            <tr>
+                                <td>
+                                    <a href="detalhe-plano.html" class="plan-name-link">Cultura Organizacional</a>
+                                    <span class="plan-code-tag">#EST-2026</span>
+                                </td>
+                                <td>RH</td>
+                                <td>Michelly Angelo</td>
+                                <td><span class="status-badge st-nao-iniciado">Não iniciado</span></td>
+                                <td>
+                                    <div class="progress-cell">
+                                        <div class="progress-track">
+                                            <div class="seg seg-ni" style="width:0%"></div>
+                                        </div>
+                                        <span class="progress-pct">0%</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div style="display:flex; align-items:center; gap:6px;">
+                                        <span class="origin-type-badge origem-plano-estrategico"
+                                            style="margin-bottom:0;">Plano Estratégico</span>
+                                        <span class="origin-name" style="margin-top:0;">Diretriz: Capital Humano</span>
+                                    </div>
+                                </td>
+                                <td>01/01/2026</td>
+                                <td style="text-align:center; white-space:nowrap;">
+                                    <button class="angular-action-btn" title="Abrir plano"><i
+                                            class="fa fa-external-link"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="empty-state" style="display:none;">
+                        <i class="fa fa-chain-broken"></i>
+                        <p>Não existem planos de ação correlacionados</p>
+                    </div>
+                </div>
+
+                <!-- PAGINAÇÃO ANGULAR -->
+                <div class="angular-pagination">
+                    <div class="angular-pagination-controls">
+                        <button class="angular-pagination-btn" disabled>&laquo;</button>
+                        <button class="angular-pagination-btn" disabled>&lsaquo;</button>
+                        <button class="angular-pagination-btn is-active">1</button>
+                        <button class="angular-pagination-btn">&rsaquo;</button>
+                        <button class="angular-pagination-btn">&raquo;</button>
+                    </div>
+                    <div>
+                        <select class="angular-pagination-select">
+                            <option>10 itens por página</option>
+                            <option>25 itens por página</option>
+                            <option>50 itens por página</option>
+                        </select>
+                    </div>
+                </div>
+
+            </div> <!-- Fechamento da div destino-content -->
         </div><!-- /.table-section -->
     </main><!-- /.legacy-content -->
 
@@ -1474,7 +1908,8 @@
                 </div>
                 <!-- Plano Estratégico -->
                 <div class="modal-item" data-item="6">
-                    <div class="item-type-col"><span class="plan-type-badge origem-plano-estrategico">Plano Estratégico</span></div>
+                    <div class="item-type-col"><span class="plan-type-badge origem-plano-estrategico">Plano
+                            Estratégico</span></div>
                     <div class="item-info">
                         <div class="item-title">Reestruturação da Marca</div>
                         <div class="item-meta">Estratégia: Marketing | Responsável: Carlos Melquiades</div>
@@ -1508,6 +1943,18 @@
     </footer>
 
     <script>
+        function toggleSection(id, btn) {
+            var el = document.getElementById(id);
+            var icon = btn.querySelector('i');
+            if (el.style.display === 'none') {
+                el.style.display = 'block';
+                icon.className = 'fa fa-chevron-up';
+            } else {
+                el.style.display = 'none';
+                icon.className = 'fa fa-chevron-down';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
 
             // ── Tag Input

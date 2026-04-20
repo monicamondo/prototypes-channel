@@ -10,17 +10,26 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Design System - Foundations -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/colors.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/typography.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/spacing.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/borders.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/shadows.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/foundations/tokens/globals.css">
 
     <!-- Design System - Components -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/header/Header.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/navbar/Navbar.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/components/button/Button.css">
 
     <style>
         body {
@@ -182,7 +191,7 @@
             right: -4px;
             color: #FFA500;
             font-size: 10px;
-            text-shadow: 0 0 2px rgba(0,0,0,0.2);
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
         }
 
         /* Icons Row */
@@ -225,9 +234,11 @@
             background: #F5F5F5;
             border-bottom: 1px solid #E0E0E0;
             display: flex;
-            gap: 24px; /* Aumentado para evitar colagem */
+            gap: 24px;
+            /* Aumentado para evitar colagem */
             align-items: flex-start;
-            flex-wrap: wrap; /* Melhora responsividade */
+            flex-wrap: wrap;
+            /* Melhora responsividade */
         }
 
         .filter-group {
@@ -235,10 +246,12 @@
             flex-direction: column;
             gap: 6px;
             flex: 1;
-            min-width: 180px; /* Evita que fiquem muito estreitos */
+            min-width: 180px;
+            /* Evita que fiquem muito estreitos */
         }
 
-        .filters-strip input, .filters-strip select {
+        .filters-strip input,
+        .filters-strip select {
             border: 1px solid #ccc;
             border-radius: 3px;
             padding: 4px 10px;
@@ -320,7 +333,7 @@
             border-radius: 4px;
             padding: 12px;
             margin-bottom: 12px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
         }
 
         .task-title {
@@ -349,16 +362,16 @@
         }
 
         .btn-add-group-strip {
-             border: 1px solid #ddd;
-             border-radius: 4px;
-             padding: 8px 16px;
-             background: #fff;
-             color: #267DD3;
-             font-size: 13px;
-             cursor: pointer;
-             display: flex;
-             align-items: center;
-             gap: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px 16px;
+            background: #fff;
+            color: #267DD3;
+            font-size: 13px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         /* ── MODAL OVERLAY ── */
@@ -368,8 +381,9 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: none; /* Hidden by default */
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            /* Hidden by default */
             align-items: center;
             justify-content: center;
             z-index: 1000;
@@ -384,7 +398,7 @@
             width: 800px;
             max-width: 90%;
             border-radius: 4px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
             display: flex;
             flex-direction: column;
             overflow: hidden;
@@ -442,7 +456,8 @@
             font-weight: bold;
         }
 
-        .modal-field input, .modal-field select {
+        .modal-field input,
+        .modal-field select {
             border: 1px solid #ccc;
             height: 24px;
             padding: 0 8px;
@@ -502,11 +517,13 @@
         <div class="legacy-header-container">
             <div class="legacy-header-logos">
                 <div class="logo-jexperts">
-                    <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo%20J.svg" alt="Logo J" class="logo-j-svg">
+                    <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo%20J.svg"
+                        alt="Logo J" class="logo-j-svg">
                 </div>
                 <div class="logo-divider"></div>
                 <div class="logo-channel">
-                    <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo-channel_.png" alt="Channel Logo" class="logo-channel-img">
+                    <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo-channel_.png"
+                        alt="Channel Logo" class="logo-channel-img">
                 </div>
             </div>
 
@@ -584,7 +601,8 @@
 
         <div class="navbar-item" data-menu="meu-channel">
             <div class="navbar-item-trigger">
-                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/meu_channel_menul.svg" alt="Meu Channel" class="navbar-module-icon" />
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/meu_channel_menul.svg"
+                    alt="Meu Channel" class="navbar-module-icon" />
                 Meu Channel
             </div>
             <div class="navbar-dropdown">
@@ -636,7 +654,8 @@
                         </ul>
                     </div>
                     <div class="navbar-section">
-                        <div class="navbar-section-title"><i class="fa fa-exclamation-triangle"></i> Riscos corporativos</div>
+                        <div class="navbar-section-title"><i class="fa fa-exclamation-triangle"></i> Riscos corporativos
+                        </div>
                         <ul class="navbar-section-items">
                             <li><a href="#">Reportar incidente</a></li>
                             <li><a href="#">Reportar risco</a></li>
@@ -649,7 +668,8 @@
 
         <div class="navbar-item" data-menu="estrategia">
             <div class="navbar-item-trigger">
-                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/estrategia_menu.svg" alt="Estratégia" class="navbar-module-icon" />
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/estrategia_menu.svg"
+                    alt="Estratégia" class="navbar-module-icon" />
                 Estratégia
             </div>
             <div class="navbar-dropdown">
@@ -658,7 +678,8 @@
                     <a class="navbar-direct-link" href="#"><i class="fa fa-flag"></i> Objetivos operacionais</a>
                     <a class="navbar-direct-link" href="#"><i class="fa fa-briefcase"></i> Portfólios</a>
                     <a class="navbar-direct-link" href="#"><i class="fa fa-th-list"></i> Programas</a>
-                    <a class="navbar-direct-link" href="#"><i class="fa fa-exclamation-triangle"></i> Riscos corporativos</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-exclamation-triangle"></i> Riscos
+                        corporativos</a>
                     <a class="navbar-direct-link" href="#"><i class="fa fa-calendar"></i> Acompanhamento de reuniões</a>
                 </div>
                 <div class="navbar-col-divider"></div>
@@ -688,12 +709,14 @@
 
         <div class="navbar-item" data-menu="desempenho">
             <div class="navbar-item-trigger">
-                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/desempenho_menu.svg" alt="Desempenho" class="navbar-module-icon" />
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/desempenho_menu.svg"
+                    alt="Desempenho" class="navbar-module-icon" />
                 Desempenho
             </div>
             <div class="navbar-dropdown">
                 <div class="navbar-dropdown-col">
-                    <a class="navbar-direct-link" href="#"><i class="fa fa-calendar-check-o"></i> Planejamento de metas</a>
+                    <a class="navbar-direct-link" href="#"><i class="fa fa-calendar-check-o"></i> Planejamento de
+                        metas</a>
                     <a class="navbar-direct-link" href="#"><i class="fa fa-line-chart"></i> Medições de indicador</a>
                     <a class="navbar-direct-link" href="#"><i class="fa fa-file-text-o"></i> Planos de ação</a>
                 </div>
@@ -728,14 +751,16 @@
 
         <div class="navbar-item" data-menu="projetos-demandas">
             <div class="navbar-item-trigger">
-                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/projetos_demandas_menu.svg" alt="Projetos e demandas" class="navbar-module-icon" />
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/projetos_demandas_menu.svg"
+                    alt="Projetos e demandas" class="navbar-module-icon" />
                 Planos e demandas
             </div>
         </div>
 
         <div class="navbar-item" data-menu="administracao">
             <div class="navbar-item-trigger">
-                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/administracao_meni.svg" alt="Administração" class="navbar-module-icon" />
+                <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/administracao_meni.svg"
+                    alt="Administração" class="navbar-module-icon" />
                 Administração
             </div>
         </div>
@@ -750,13 +775,13 @@
 
     <!-- PAGE CONTENT -->
     <div class="legacy-content-wrapper">
-        
+
         <!-- PAGE HEADER AREA -->
         <div class="page-header-nav">
             <div class="breadcrumb-row">
                 <a href="planos-de-acao.html" class="btn-back"><i class="fa fa-angle-left"></i></a>
                 <h2 class="page-title">
-                    plano de ação estratégico
+                    Definição de metas e resultados específicos
                     <span class="help-icon-blue"><i class="fa fa-info"></i></span>
                 </h2>
             </div>
@@ -820,7 +845,8 @@
                         <i class="fa fa-file-text-o"></i>
                         <i class="fa fa-table"></i>
                         <div style="display:flex; align-items:center; gap: 4px;">
-                            <a href="planos-correlacionados.html" style="color: #267DD3; font-size:14px;" title="Ver planos correlacionados"><i class="fa fa-link"></i></a>
+                            <a href="planos-correlacionados.html" style="color: #267DD3; font-size:14px;"
+                                title="Ver planos correlacionados"><i class="fa fa-link"></i></a>
                             <span class="new-tag">novo</span>
                         </div>
                         <i class="fa fa-angle-up" style="margin-left: 10px;"></i>
@@ -857,7 +883,7 @@
 
         <!-- KANBAN BOARD AREA -->
         <div class="kanban-area">
-            
+
             <!-- Column Fazer -->
             <div class="kanban-column">
                 <div class="column-header">
@@ -871,9 +897,11 @@
                     <div class="task-footer">
                         <div class="avatar-group">
                             <div class="btn-circle-add" style="width: 20px; height: 20px; font-size: 12px;">+</div>
-                            <div class="user-avatar" style="background-color: #49773D; width: 20px; height: 20px; font-size: 8px;">
+                            <div class="user-avatar"
+                                style="background-color: #49773D; width: 20px; height: 20px; font-size: 8px;">
                                 EA
-                                <i class="fa fa-star avatar-star" style="font-size: 8px; right: -2px; bottom: -1px;"></i>
+                                <i class="fa fa-star avatar-star"
+                                    style="font-size: 8px; right: -2px; bottom: -1px;"></i>
                             </div>
                         </div>
                         <div class="task-status-dropdown">
@@ -958,7 +986,7 @@
 
     <!-- INTERACTIVITY SCRIPTS -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Navbar
             const navItems = document.querySelectorAll('.navbar-item');
             navItems.forEach(item => {
@@ -982,4 +1010,4 @@
 
 </body>
 
-</html>
+</html>
