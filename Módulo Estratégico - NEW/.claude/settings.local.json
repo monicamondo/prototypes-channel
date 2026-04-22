@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:stratagem-copy-a770d8e6.base44.app)",
+      "WebFetch(domain:primeng.org)",
+      "mcp__browsermcp__browser_navigate",
+      "mcp__filesystem__read_file",
+      "mcp__browsermcp__browser_screenshot",
+      "Bash(python -c \"import json; d=json.load\\(open\\(r'C:\\\\Users\\\\Mondo\\\\.claude\\\\projects\\\\C--Dev-Jexperts-Channel-prototypes-channel-M-dulo-Estrat-gico---NEW\\\\55fde71e-133e-491f-84bd-78fab8f45e4c\\\\tool-results\\\\mcp-filesystem-read_file-1776858341017.txt'\\)\\); print\\(len\\(d['content']\\)\\); print\\(d['content'][:3000]\\)\")",
+      "Bash(python3 -c \"import json; d=json.load\\(open\\(r'C:\\\\Users\\\\Mondo\\\\.claude\\\\projects\\\\C--Dev-Jexperts-Channel-prototypes-channel-M-dulo-Estrat-gico---NEW\\\\55fde71e-133e-491f-84bd-78fab8f45e4c\\\\tool-results\\\\mcp-filesystem-read_file-1776858341017.txt'\\)\\); print\\(len\\(d['content']\\)\\); print\\(d['content'][:3000]\\)\")",
+      "Bash(pandoc \"C:/Users/Mondo/AppData/Local/Temp/avaliacao_libs.docx\" -t plain --wrap=none)",
+      "Bash(unzip -o \"C:/Users/Mondo/AppData/Local/Temp/avaliacao_libs2.docx\" word/document.xml -d \"C:/Users/Mondo/AppData/Local/Temp/avaliacao_unzip2\")",
+      "Bash(unzip -o \"C:/Dev/Jexperts/Channel/prototypes-channel/Módulo Estratégico - NEW/Estratégico Channel/Avaliacao_Libs_Canvas_CanvasBSC.docx\" word/document.xml -d \"C:/Users/Mondo/AppData/Local/Temp/avaliacao_unzip3\")",
+      "mcp__browsermcp__browser_snapshot",
+      "mcp__browsermcp__browser_click",
+      "Bash(python3 -c ' *)",
+      "Bash(py --version)",
+      "mcp__filesystem__read_text_file",
+      "Bash(where jq *)",
+      "Read(//usr/bin/**)",
+      "Read(//mingw64/bin/**)"
+    ]
+  }
+}
