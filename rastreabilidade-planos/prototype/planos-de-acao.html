@@ -152,13 +152,19 @@
             border-radius: 3px;
             padding: 0 8px;
             font-size: 11px;
-            flex: 1;
             height: 28px;
             color: #333;
             box-sizing: border-box;
             background-color: #fff;
             outline: none;
             line-height: normal;
+            width: 100%;
+        }
+
+        .filters-strip>input,
+        .filters-strip>select,
+        .filters-strip>div {
+            flex: 1;
         }
 
         .check-container {
@@ -202,13 +208,23 @@
             min-height: 400px;
             cursor: pointer;
         }
-        .plan-card:hover { border-color: #267DD3; box-shadow: 0 2px 8px rgba(38,125,211,0.12); }
+
+        .plan-card:hover {
+            border-color: #267DD3;
+            box-shadow: 0 2px 8px rgba(38, 125, 211, 0.12);
+        }
+
         .card-link-overlay {
-            position: absolute; inset: 0;
+            position: absolute;
+            inset: 0;
             z-index: 0;
             border-radius: 4px;
         }
-        .card-footer { position: relative; z-index: 1; }
+
+        .card-footer {
+            position: relative;
+            z-index: 1;
+        }
 
         .plan-card.overdue {
             border: 1px solid #FF4D4D;
@@ -367,25 +383,6 @@
             cursor: pointer;
         }
 
-        .chn-breadcrumb {
-            background-color: #ddd;
-            border-bottom: 1px solid #D5D5D5;
-            padding: 6px 16px;
-            font-size: 11px;
-            color: #333;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            min-height: 16px;
-            box-sizing: border-box;
-            width: 100%;
-        }
-
-        .chn-breadcrumb span {
-            font-weight: bold;
-        }
-
-        .chn-breadcrumb,
         .chn-path {
             font-family: inherit;
         }
@@ -718,11 +715,6 @@
         <div class="navbar-item-plain"><i class="fa fa-info-circle"></i></div>
     </nav>
 
-    <!-- DS-CHANNEL SUB-NAVBAR -->
-    <div class="chn-breadcrumb">
-        <span>2025</span>&nbsp;&nbsp;<span>Plano:</span> planoelkar21
-    </div>
-
     <!-- PAGE CONTENT -->
     <div class="legacy-content-wrapper">
 
@@ -808,7 +800,7 @@
                 <div class="plan-card">
                     <a href="detalhe-plano.html" class="card-link-overlay" aria-label="Abrir plano"></a>
                     <div class="card-top">
-                        <h3 class="card-title">Plano de Avance</h3>
+                        <h3 class="card-title">Definição de metas</h3>
                         <div class="card-middle-row">
                             <span class="code-box">#FAC22C</span>
                             <span class="card-date">17/04/2026</span>
