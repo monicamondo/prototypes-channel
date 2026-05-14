@@ -22,7 +22,30 @@
 </head>
 
 <body>
-  <div class="page-shell">
+  <section class="access-page" id="access-page" aria-labelledby="access-title">
+    <div class="access-panel">
+      <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo%20J.svg"
+        alt="Logo JExperts" class="access-panel__logo" />
+      <div class="access-panel__heading">
+        <span>Biblioteca de protótipos</span>
+        <h1 id="access-title">Acesso restrito</h1>
+      </div>
+      <form class="access-form" id="access-form">
+        <label class="access-field">
+          <span>Login</span>
+          <input id="access-username" name="username" type="text" autocomplete="username" value="devteam" required />
+        </label>
+        <label class="access-field">
+          <span>Senha</span>
+          <input id="access-password" name="password" type="password" autocomplete="current-password" required />
+        </label>
+        <p class="access-error" id="access-error" role="alert" hidden></p>
+        <button class="access-submit" id="access-submit" type="submit">Entrar</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="page-shell" id="protected-page" hidden>
     <header class="hero">
       <div class="hero__brand">
         <img src="https://cdn.jsdelivr.net/gh/monicamondo/ds-channel@main/src/assets/img/logo%20J.svg"
@@ -43,6 +66,7 @@
             <span class="catalog-card__eyebrow">Biblioteca de acessos</span>
             <h2 id="catalog-title">Demandas prototipadas</h2>
           </div>
+          <button class="catalog-signout" type="button" data-sign-out>Sair</button>
           <p class="catalog-card__support">
             <button class="catalog-help-link" type="button" data-open-dev-help>SAIBA MAIS</button><br> sobre
             como organizamos as entregas do design.
@@ -144,6 +168,106 @@
 
   <!-- Script para adicionar linha na bilbioteca de protótipos -->
   <script>
+    // === AUTENTICAÇÃO ===
+    const supabaseConfig = {
+      url: "https://qppbahihixwvfihldbjn.supabase.co",
+      anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFwcGJhaGloaXh3dmZpaGxkYmpuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwMDYxNTQsImV4cCI6MjA5MzU4MjE1NH0.v73dvLnvR8psSWKAPvduXflWd_EJwsaLHjNWkJqA8sI"
+    };
+
+    const accessStorageKey = "channel-prototype-library-access";
+
+    const readAccessSession = () => {
+      const cookiePrefix = `${accessStorageKey}=`;
+      const accessCookie = document.cookie.split("; ").find((c) => c.startsWith(cookiePrefix));
+      if (!accessCookie) return null;
+      try { return JSON.parse(decodeURIComponent(accessCookie.slice(cookiePrefix.length))); } catch { return null; }
+    };
+
+    const clearAccessSession = () => {
+      document.cookie = `${accessStorageKey}=; path=/; max-age=0; SameSite=Lax`;
+    };
+
+    const storeAccessSession = () => {
+      const value = encodeURIComponent(JSON.stringify({ authenticated: true }));
+      document.cookie = `${accessStorageKey}=${value}; path=/; SameSite=Lax`;
+    };
+
+    const hasValidAccessSession = () => {
+      const session = readAccessSession();
+      return session && session.authenticated === true;
+    };
+
+    const setAuthenticatedView = (isAuthenticated) => {
+      const accessPage = document.getElementById("access-page");
+      const protectedPage = document.getElementById("protected-page");
+      if (accessPage) accessPage.hidden = isAuthenticated;
+      if (protectedPage) protectedPage.hidden = !isAuthenticated;
+    };
+
+    const getRedirectAfterLogin = () => {
+      const redirect = new URLSearchParams(window.location.search).get("redirect");
+      return redirect && redirect.startsWith("/") ? redirect : "";
+    };
+
+    const verifyChannelAccess = async (username, password) => {
+      const response = await fetch(`${supabaseConfig.url}/rest/v1/rpc/verify_channel_prototype_library_login`, {
+        method: "POST",
+        headers: {
+          apikey: supabaseConfig.anonKey,
+          Authorization: `Bearer ${supabaseConfig.anonKey}`,
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({ login_name: username.trim(), login_password: password })
+      });
+      if (!response.ok) throw new Error("Não foi possível validar o acesso.");
+      return (await response.json()) === true;
+    };
+
+    const setupAccessForm = () => {
+      setAuthenticatedView(hasValidAccessSession());
+
+      const accessForm = document.getElementById("access-form");
+      const accessError = document.getElementById("access-error");
+      const submitButton = document.getElementById("access-submit");
+
+      if (accessForm) {
+        accessForm.addEventListener("submit", async (event) => {
+          event.preventDefault();
+          const formData = new FormData(accessForm);
+          const username = String(formData.get("username") || "");
+          const password = String(formData.get("password") || "");
+
+          if (accessError) { accessError.hidden = true; accessError.textContent = ""; }
+          if (submitButton) { submitButton.disabled = true; submitButton.textContent = "Validando..."; }
+
+          try {
+            const isValid = await verifyChannelAccess(username, password);
+            if (!isValid) {
+              if (accessError) { accessError.textContent = "Login ou senha inválidos."; accessError.hidden = false; }
+              return;
+            }
+            storeAccessSession();
+            const redirectAfterLogin = getRedirectAfterLogin();
+            if (redirectAfterLogin) { window.location.href = redirectAfterLogin; return; }
+            setAuthenticatedView(true);
+          } catch (error) {
+            if (accessError) {
+              accessError.textContent = error instanceof Error ? error.message : "Não foi possível validar o acesso.";
+              accessError.hidden = false;
+            }
+          } finally {
+            if (submitButton) { submitButton.disabled = false; submitButton.textContent = "Entrar"; }
+          }
+        });
+      }
+
+      document.querySelectorAll("[data-sign-out]").forEach((button) => {
+        button.addEventListener("click", () => { clearAccessSession(); setAuthenticatedView(false); });
+      });
+    };
+
+    // === CATÁLOGO ===
     const demandEntryTemplate = {
       status: "Preencher",
       name: "Preencher",
@@ -424,6 +548,8 @@
         toggleExpandedState(demandId);
       });
     });
+
+    setupAccessForm();
 
     document.getElementById("footer-year").textContent = String(new Date().getFullYear());
 

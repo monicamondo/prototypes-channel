@@ -2,6 +2,15 @@
 <html lang="pt-BR">
 
 <head>
+  <script>
+  (function () {
+    try {
+      var key = "channel-prototype-library-access";
+      var hasCookie = document.cookie.split("; ").some(function (c) { return c.indexOf(key + "=") === 0; });
+      if (!hasCookie) { window.location.replace("/?redirect=" + encodeURIComponent(window.location.pathname + window.location.search + window.location.hash)); }
+    } catch (e) { window.location.replace("/"); }
+  }());
+  </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JExperts Channel - Planos de Ação</title>
